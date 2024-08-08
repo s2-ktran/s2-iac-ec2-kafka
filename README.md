@@ -1,5 +1,6 @@
 # Provisioning EC2 + Kafka using Infrastructure as Code
-Using infrastructure as code to provision EC2 with Kafka
+
+Using terraform to provision an EC2 kafka instance that is running.
 
 ## Launch Configurations
 
@@ -7,10 +8,9 @@ Using infrastructure as code to provision EC2 with Kafka
 
 - git
 - aws-cli
-- aws-cdk >= 2.128.0
-- node >= 21.6.1
-- npm >= 10.4.0
-- jq >= 1.7.1
+- terraform
+- curl
+- git
 
 ### Deployment
 
