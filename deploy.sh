@@ -6,6 +6,7 @@ set -e
 # Fetch your current public IP address
 MY_IP=$(curl -s https://api.ipify.org)
 
+# TODO: Pull in SingleStore IP addresses using bash
 # Define your SingleStore IP addresses
 SINGLE_STORE_IPS="52.39.174.38/32,44.230.94.214/32,35.81.56.251/32,52.35.160.52/32"
 
