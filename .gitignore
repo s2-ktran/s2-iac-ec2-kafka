@@ -1,0 +1,18 @@
+# Terraform files
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+.terraform.lock.hcl
+
+# Crash log files
+crash.log
+
+# Exclude any environment-specific files
+*.tfvars
+
+# Terraform workspace files
+.terraform-env/
+
+# Local override files (usually used for local development)
+override.tf
+override.tf.json
