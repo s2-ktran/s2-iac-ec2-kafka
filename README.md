@@ -27,7 +27,6 @@ Run the following commands:
 
 ```bash
 ./testing/test.sh
-python3 testing/stream_kafka.py
 ```
 
 ### Teardown
@@ -46,3 +45,4 @@ Once you are finished using the project, use the following command to delete the
 | :------------------- | :------------------------------------------------------------- |
 | terraform/           | Terraform source code.                                         |
 | scripts/             | shell scripts to build, deploy, and interact with the project. |
+| testing/             | Example kafka ingestion.                                       |
