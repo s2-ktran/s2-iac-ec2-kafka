@@ -11,10 +11,6 @@ cd $SCRIPT_DIR/../terraform/
 MY_IP=$(curl -s https://api.ipify.org)
 echo "Current IP Address: $MY_IP"
 
-# TODO: Pull in SingleStore IP addresses using bash
-# Define your SingleStore IP addresses
-# SINGLE_STORE_IPS=
-
 # Enter in dbEndpoint, username, and password
 read -p "Enter the first SingleStore endpoint: " IP_1
 read -p "Enter the second SingleStore endpoint: " IP_2
@@ -40,8 +36,6 @@ fi
 
 # Prompt for the EC2 instance type
 read -p "Enter the EC2 instance type (default is t2.large): " INSTANCE_TYPE
-
-# Set default instance type if none is provided
 INSTANCE_TYPE=${INSTANCE_TYPE:-t2.large}
 
 # Initialize Terraform with the specified region
@@ -50,11 +44,8 @@ terraform init -var "region=${AWS_REGION}" -var "instance_type=${INSTANCE_TYPE}"
 # Apply Terraform configuration to create resources
 terraform apply -var "my_ip=${MY_IP}/32" -var "single_store_ips=${SINGLE_STORE_IPS_LIST}" -var "region=${AWS_REGION}" -var "instance_type=${INSTANCE_TYPE}" -auto-approve
 
-# Fetch the EC2 public IP output from Terraform
-EC2_PUBLIC_IP=$(terraform output -raw ec2_public_ip)
-
 # Apply Terraform configuration again to update the EC2 public IP in Kafka configuration
-terraform apply -var "my_ip=${MY_IP}/32" -var "single_store_ips=${SINGLE_STORE_IPS_LIST}" -var "ec2_public_ip=${EC2_PUBLIC_IP}" -var "region=${AWS_REGION}" -var "instance_type=${INSTANCE_TYPE}" -auto-approve
+terraform apply -var "my_ip=${MY_IP}/32" -var "single_store_ips=${SINGLE_STORE_IPS_LIST}" -var "region=${AWS_REGION}" -var "instance_type=${INSTANCE_TYPE}" -auto-approve
 
 # Optional: Display the SSH command
 echo "SSH into the instance using:"

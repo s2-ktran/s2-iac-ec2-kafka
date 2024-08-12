@@ -34,5 +34,5 @@ Once you are finished using the project, use the following command to delete the
 
 | Path                 | Description                                                    |
 | :------------------- | :------------------------------------------------------------- |
-| cdk/                 | AWS CDK source code.                                           |
+| terraform/           | Terraform source code.                                         |
 | scripts/             | shell scripts to build, deploy, and interact with the project. |
