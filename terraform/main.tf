@@ -1,3 +1,7 @@
+provider "aws" {
+  region = var.region
+}
+
 variable "instance_type" {
   description = "The type of EC2 instance to use"
   type        = string
@@ -18,10 +22,6 @@ variable "my_ip" {
 variable "single_store_ips" {
   description = "List of SingleStore outbound IP addresses"
   type        = list(string)
-}
-
-provider "aws" {
-  region = var.region
 }
 
 data "aws_ami" "amazon_linux_2" {
@@ -80,19 +80,19 @@ resource "aws_instance" "kafka_ec2" {
               wget https://downloads.apache.org/kafka/3.7.1/kafka_2.13-3.7.1.tgz
               tar -xzf kafka_2.13-3.7.1.tgz
               cd kafka_2.13-3.7.1
+
+              PUBLIC_IP=$(curl -s http://checkip.amazonaws.com)
               
               sed -i 's|#listeners=PLAINTEXT://:9092|listeners=PLAINTEXT://0.0.0.0:9092|' config/server.properties
-              sed -i "s|#advertised.listeners=PLAINTEXT://your.host.name:9092|advertised.listeners=PLAINTEXT://0.0.0.0:9092|" config/server.properties
+              sed -i "s|#advertised.listeners=PLAINTEXT://your.host.name:9092|advertised.listeners=PLAINTEXT://$PUBLIC_IP:9092|" config/server.properties
               
               nohup bin/zookeeper-server-start.sh config/zookeeper.properties > zookeeper.log 2>&1 &
-              sleep 10  # Ensure Zookeeper is up and running
+              sleep 30  # Ensure Zookeeper is up and running
               
               nohup bin/kafka-server-start.sh config/server.properties > kafka.log 2>&1 &
-              sleep 10  # Ensure Kafka is up and running
+              sleep 30  # Ensure Kafka is up and running
               
-              BOOTSTRAP_SERVER=`curl -s http://169.254.169.254/latest/meta-data/public-ipv4`
-              bin/kafka-topics.sh --create --topic event_topic --bootstrap-server $BOOTSTRAP_SERVER:9092 --partitions 8
-              bin/kafka-topics.sh --create --topic vehicle_topic --bootstrap-server $BOOTSTRAP_SERVER:9092 --partitions 8
+              bin/kafka-topics.sh --create --topic event_topic --bootstrap-server $PUBLIC_IP:9092 --partitions 8
 
             EOF
 
@@ -105,8 +105,4 @@ resource "aws_instance" "kafka_ec2" {
 output "ec2_public_ip" {
   description = "The public IP address of the EC2 instance"
   value       = aws_instance.kafka_ec2.public_ip
-}
-
-output "ssh_command" {
-  value = "ssh -i \"hv-demothon.pem\" ec2-user@${aws_instance.kafka_ec2.public_ip}"
 }
