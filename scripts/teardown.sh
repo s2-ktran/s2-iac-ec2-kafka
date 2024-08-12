@@ -3,6 +3,10 @@
 # Ensure the script exits if any command fails
 set -e
 
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+echo "Script directory: $SCRIPT_DIR"
+cd $SCRIPT_DIR/../terraform/
+
 # Prompt for the AWS region
 read -p "Enter the AWS region (e.g., us-east-1): " AWS_REGION
 
