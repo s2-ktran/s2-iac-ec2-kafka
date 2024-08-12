@@ -34,12 +34,6 @@ data "aws_ami" "amazon_linux_2" {
   }
 }
 
-# TODO: Create resource key pair
-# resource "aws_key_pair" "hv_demothon_key" {
-#   key_name   = "hv-demothon"
-#   public_key = file("~/Downloads/hv-demothon.pem")
-# }
-
 resource "aws_security_group" "kafka_sg" {
   name        = "kafka-security-group"
   description = "Security group for Kafka"
@@ -74,9 +68,8 @@ resource "aws_security_group" "kafka_sg" {
 }
 
 resource "aws_instance" "kafka_ec2" {
-  ami           = data.aws_ami.amazon_linux_2.id
-  instance_type = var.instance_type
-  #   key_name        = aws_key_pair.hv_demothon_key.key_name
+  ami             = data.aws_ami.amazon_linux_2.id
+  instance_type   = var.instance_type
   security_groups = [aws_security_group.kafka_sg.name]
 
   user_data = <<-EOF
@@ -92,7 +85,15 @@ resource "aws_instance" "kafka_ec2" {
               sed -i "s|#advertised.listeners=PLAINTEXT://your.host.name:9092|advertised.listeners=PLAINTEXT://0.0.0.0:9092|" config/server.properties
               
               nohup bin/zookeeper-server-start.sh config/zookeeper.properties > zookeeper.log 2>&1 &
+              sleep 10  # Ensure Zookeeper is up and running
+              
               nohup bin/kafka-server-start.sh config/server.properties > kafka.log 2>&1 &
+              sleep 10  # Ensure Kafka is up and running
+              
+              BOOTSTRAP_SERVER=`curl -s http://169.254.169.254/latest/meta-data/public-ipv4`
+              bin/kafka-topics.sh --create --topic event_topic --bootstrap-server $BOOTSTRAP_SERVER:9092 --partitions 8
+              bin/kafka-topics.sh --create --topic vehicle_topic --bootstrap-server $BOOTSTRAP_SERVER:9092 --partitions 8
+
             EOF
 
   tags = {

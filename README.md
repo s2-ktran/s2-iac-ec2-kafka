@@ -11,6 +11,7 @@ Using terraform to provision an EC2 kafka instance that is running.
 - terraform
 - curl
 - git
+- python3
 
 ### Deployment
 
@@ -18,6 +19,15 @@ Run the following command to build and deploy the application. Be sure to setup 
 
 ```bash
 ./scripts/deploy.sh
+```
+
+### Testing
+
+Run the following commands:
+
+```bash
+./testing/test.sh
+python3 testing/stream_kafka.py
 ```
 
 ### Teardown

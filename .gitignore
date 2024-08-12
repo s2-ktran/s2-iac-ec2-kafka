@@ -18,3 +18,5 @@ crash.log
 # Local override files (usually used for local development)
 override.tf
 override.tf.json
+
+env

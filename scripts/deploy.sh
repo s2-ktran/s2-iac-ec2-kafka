@@ -47,7 +47,12 @@ terraform apply -var "my_ip=${MY_IP}/32" -var "single_store_ips=${SINGLE_STORE_I
 # Apply Terraform configuration again to update the EC2 public IP in Kafka configuration
 terraform apply -var "my_ip=${MY_IP}/32" -var "single_store_ips=${SINGLE_STORE_IPS_LIST}" -var "region=${AWS_REGION}" -var "instance_type=${INSTANCE_TYPE}" -auto-approve
 
-# Optional: Display the SSH command
-echo "SSH into the instance using:"
-terraform output ssh_command
+# Capture the Terraform output
+EC2_PUBLIC_IP=$(terraform output -raw ec2_public_ip)
+
+# Export the EC2 public IP as an environment variable
+export EC2_PUBLIC_IP
+
+# Print the public IP for verification
+echo "EC2 Public IP: $EC2_PUBLIC_IP"
 

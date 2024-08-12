@@ -13,11 +13,15 @@ read -p "Enter the AWS region (e.g., us-east-1): " AWS_REGION
 # Fetch your current public IP address
 MY_IP=$(curl -s https://api.ipify.org)
 
-# TODO: Pull in SingleStore IP addresses using bash
-# Define your SingleStore IP addresses
-SINGLE_STORE_IPS="52.39.174.38/32,44.230.94.214/32,35.81.56.251/32,52.35.160.52/32"
+# Enter in dbEndpoint, username, and password
+read -p "Enter the first SingleStore endpoint: " IP_1
+read -p "Enter the second SingleStore endpoint: " IP_2
+read -p "Enter the third SingleStore endpoint: " IP_3
+read -p "Enter the fourth SingleStore endpoint: " IP_4
 
-# Convert the comma-separated IP addresses to a format acceptable by Terraform
+# Export the variables
+echo "These 4 IP addresses you entered are: $IP_1, $IP_2, $IP_3, $IP_4"
+SINGLE_STORE_IPS="$IP_1/32,$IP_2/32,$IP_3/32,$IP_4/32"
 SINGLE_STORE_IPS_LIST=$(echo $SINGLE_STORE_IPS | sed 's/,/","/g' | sed 's/^/["/' | sed 's/$/"]/')
 
 # Validate the region
