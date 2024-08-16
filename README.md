@@ -15,19 +15,41 @@ Using terraform to provision an EC2 kafka instance that is running.
 
 ### Deployment
 
-Retrieve the 4 output IP addresses from your SingleStore workspace cluster. Run the following command to build and deploy the application. Be sure to setup your AWS account using `aws configure`.
+Retrieve the 4 output IP addresses from your SingleStore workspace cluster. Run the following command to build and deploy the application. Be sure to setup your AWS account using `aws configure`. This script takes a few minutes to run due to the restart cycles of the instance for zookeeper and kafka.
 
 ```bash
 ./scripts/deploy.sh
 ```
 
-### Testing
+### Data Ingestion into Kafka
 
 Run the following commands:
 
 ```bash
 export EC2_PUBLIC_IP="outputted public IP"
 . scripts/test.sh
+```
+
+### SingleStore Ingestion
+
+Load the notebook `testing/test-kafka.ipynb` into SingleStore Helios.
+
+Run the commands and replace the IP address and topic:
+
+```sql
+-- Create pipelines for Kafka
+CREATE OR REPLACE PIPELINE event_logs_kafka AS
+LOAD DATA KAFKA '<IP_ADDRESS>/<TOPIC>'
+INTO TABLE event_log
+(
+    event_id <- event_id,
+    timestamp <- timestamp,
+    type <- type,
+    description <- description,
+    related_vehicle_id <- related_vehicle_id,
+    additional_info <- additional_info
+)
+FORMAT JSON;
 ```
 
 ### Teardown
