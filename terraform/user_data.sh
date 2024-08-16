@@ -4,7 +4,7 @@ exec > /var/log/user-data.log 2>&1
 
 # Update and install necessary packages
 sudo yum update -y
-sudo dnf install -y java-21-amazon-corretto
+sudo yum install -y java-1.8.0-openjdk  # Install OpenJDK 8
 
 # Download and extract Kafka
 wget https://downloads.apache.org/kafka/3.7.1/kafka_2.13-3.7.1.tgz

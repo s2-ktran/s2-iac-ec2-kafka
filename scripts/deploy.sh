@@ -55,5 +55,13 @@ terraform apply \
   -var "aws_profile_name=${AWS_PROFILE_NAME}" \
   -auto-approve
 
-# Capture the Terraform output
+# Capture the Terraform outputs
 EC2_PUBLIC_IP=$(terraform output -raw ec2_public_ip)
+INSTANCE_ID=$(terraform output -raw ec2_instance_id)
+
+# Wait until the instance is running
+echo "Waiting until $INSTANCE_ID is fully running..."
+aws ec2 wait instance-running --instance-ids $INSTANCE_ID
+echo "Instance $INSTANCE_ID is now running."
+
+

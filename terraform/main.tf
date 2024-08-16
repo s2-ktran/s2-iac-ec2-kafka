@@ -88,6 +88,7 @@ resource "aws_instance" "kafka_ec2" {
   instance_type               = var.instance_type
   security_groups             = [aws_security_group.kafka_sg.name]
   associate_public_ip_address = false
+  key_name                    = "testing" # Specify your existing key pair name
 
   tags = {
     Name = local.instance_name
@@ -119,3 +120,9 @@ output "ec2_public_ip" {
   description = "The public IP address of the EC2 instance"
   value       = aws_eip.kafka_ip.public_ip
 }
+
+output "ec2_instance_id" {
+  value       = aws_instance.kafka_ec2.id
+  description = "The ID of the Kafka EC2 instance."
+}
+
