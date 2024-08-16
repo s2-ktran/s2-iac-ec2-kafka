@@ -79,6 +79,6 @@ def produce_event_logs_to_kafka(num_records, topic_name):
 # Example usage
 if __name__ == "__main__":
     num_records = 10  # Number of event logs to generate
-    topic_name = "vehicle_topic"  # Kafka topic to send the logs to
+    topic_name = "event_topic"  # Kafka topic to send the logs to
     create_kafka_topic(topic_name)
     produce_event_logs_to_kafka(num_records, topic_name)
