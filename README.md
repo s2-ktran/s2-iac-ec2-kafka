@@ -26,10 +26,8 @@ Retrieve the 4 output IP addresses from your SingleStore workspace cluster. Run 
 Run the following commands:
 
 ```bash
-. scripts/test.sh
-. env/bin/active
 export EC2_PUBLIC_IP="outputted public IP"
-./scripts/test.sh
+. scripts/test.sh
 ```
 
 ### Teardown

@@ -34,7 +34,7 @@ if [[ -z "$AWS_REGION" ]]; then
 fi
 
 # Pull AWS profile_name
-export AWS_PROFILE=$(aws sts get-caller-identity --query UserId --output text | awk -F':' '{print $2}' | awk -F'@' '{print $1}')
+export AWS_PROFILE_NAME=$(aws sts get-caller-identity --query UserId --output text | awk -F':' '{print $2}' | awk -F'@' '{print $1}')
 
 # Prompt for the EC2 instance type
 read -p "Enter the EC2 instance type (default is t2.large): " INSTANCE_TYPE
@@ -52,7 +52,7 @@ terraform apply \
   -var "single_store_ips=${SINGLE_STORE_IPS_LIST}" \
   -var "region=${AWS_REGION}" \
   -var "instance_type=${INSTANCE_TYPE}" \
-  -var "aws_profile_name=${AWS_PROFILE}" \
+  -var "aws_profile_name=${AWS_PROFILE_NAME}" \
   -auto-approve
 
 # Capture the Terraform output
