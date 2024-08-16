@@ -2,6 +2,27 @@ provider "aws" {
   region = var.region
 }
 
+data "aws_ami" "amazon_linux_2" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+  }
+}
+
+locals {
+  instance_name_prefix = "kafka-instance"
+  instance_name        = "${local.instance_name_prefix}-${var.aws_profile_name}"
+}
+
+variable "aws_profile_name" {
+  description = "The AWS profile name to use for naming resources"
+  type        = string
+  default     = "default"
+}
+
 variable "instance_type" {
   description = "The type of EC2 instance to use"
   type        = string
@@ -24,18 +45,13 @@ variable "single_store_ips" {
   type        = list(string)
 }
 
-data "aws_ami" "amazon_linux_2" {
-  most_recent = true
-  owners      = ["amazon"]
 
-  filter {
-    name   = "name"
-    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
-  }
+
+resource "aws_eip" "kafka_ip" {
+  instance = aws_instance.kafka_ec2.id
 }
 
 resource "aws_security_group" "kafka_sg" {
-  name        = "kafka-security-group"
   description = "Security group for Kafka"
 
   ingress {
@@ -68,41 +84,38 @@ resource "aws_security_group" "kafka_sg" {
 }
 
 resource "aws_instance" "kafka_ec2" {
-  ami             = data.aws_ami.amazon_linux_2.id
-  instance_type   = var.instance_type
-  security_groups = [aws_security_group.kafka_sg.name]
-
-  user_data = <<-EOF
-              #!/bin/bash
-              sudo yum update -y
-              sudo dnf install -y java-21-amazon-corretto
-              
-              wget https://downloads.apache.org/kafka/3.7.1/kafka_2.13-3.7.1.tgz
-              tar -xzf kafka_2.13-3.7.1.tgz
-              cd kafka_2.13-3.7.1
-
-              PUBLIC_IP=$(curl -s http://checkip.amazonaws.com)
-              
-              sed -i 's|#listeners=PLAINTEXT://:9092|listeners=PLAINTEXT://0.0.0.0:9092|' config/server.properties
-              sed -i "s|#advertised.listeners=PLAINTEXT://your.host.name:9092|advertised.listeners=PLAINTEXT://$PUBLIC_IP:9092|" config/server.properties
-              
-              nohup bin/zookeeper-server-start.sh config/zookeeper.properties > zookeeper.log 2>&1 &
-              sleep 30  # Ensure Zookeeper is up and running
-              
-              nohup bin/kafka-server-start.sh config/server.properties > kafka.log 2>&1 &
-              sleep 30  # Ensure Kafka is up and running
-              
-              bin/kafka-topics.sh --create --topic event_topic --bootstrap-server $PUBLIC_IP:9092 --partitions 8
-
-            EOF
+  ami                         = data.aws_ami.amazon_linux_2.id
+  instance_type               = var.instance_type
+  security_groups             = [aws_security_group.kafka_sg.name]
+  associate_public_ip_address = false
 
   tags = {
-    Name = "Kafka EC2 Instance"
+    Name = local.instance_name
   }
+
+  user_data = file("${path.module}/user_data.sh")
+}
+
+resource "aws_security_group_rule" "kafka_ip_ingress" {
+  type              = "ingress"
+  from_port         = 9092
+  to_port           = 9092
+  protocol          = "tcp"
+  security_group_id = aws_security_group.kafka_sg.id
+  cidr_blocks       = ["${aws_eip.kafka_ip.public_ip}/32"]
+}
+
+resource "aws_security_group_rule" "kafka_ip_ingress_2181" {
+  type              = "ingress"
+  from_port         = 2181
+  to_port           = 2181
+  protocol          = "tcp"
+  security_group_id = aws_security_group.kafka_sg.id
+  cidr_blocks       = ["${aws_eip.kafka_ip.public_ip}/32"]
 }
 
 
 output "ec2_public_ip" {
   description = "The public IP address of the EC2 instance"
-  value       = aws_instance.kafka_ec2.public_ip
+  value       = aws_eip.kafka_ip.public_ip
 }

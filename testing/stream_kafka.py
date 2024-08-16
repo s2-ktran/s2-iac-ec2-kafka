@@ -3,13 +3,31 @@ import uuid
 import random
 import datetime
 import os
-from confluent_kafka import Producer
-from decimal import Decimal
+from confluent_kafka import Producer, KafkaException, KafkaError
+from confluent_kafka.admin import AdminClient, NewTopic
 
 EC2_PUBLIC_IP = os.environ["EC2_PUBLIC_IP"]
 
 # Initialize Kafka producer
 producer = Producer({"bootstrap.servers": f"{EC2_PUBLIC_IP}:9092"})
+admin_client = AdminClient({"bootstrap.servers": f"{EC2_PUBLIC_IP}:9092"})
+
+
+# Function to create Kafka topic if it doesn't exist
+def create_kafka_topic(topic_name, num_partitions=1, replication_factor=1):
+    topic_list = [NewTopic(topic_name, num_partitions, replication_factor)]
+    fs = admin_client.create_topics(topic_list)
+
+    for topic, f in fs.items():
+        try:
+            f.result()  # The result itself is None
+            print(f"Topic '{topic_name}' created successfully.")
+        except KafkaException as e:
+            if e.args[0].code() == KafkaError.TOPIC_ALREADY_EXISTS:
+                print(f"Topic '{topic_name}' already exists.")
+            else:
+                print(f"Failed to create topic '{topic_name}': {e}")
+                raise
 
 
 # Function to generate event logs
@@ -61,5 +79,6 @@ def produce_event_logs_to_kafka(num_records, topic_name):
 # Example usage
 if __name__ == "__main__":
     num_records = 10  # Number of event logs to generate
-    topic_name = "event_topic"  # Kafka topic to send the logs to
+    topic_name = "vehicle_topic"  # Kafka topic to send the logs to
+    create_kafka_topic(topic_name)
     produce_event_logs_to_kafka(num_records, topic_name)

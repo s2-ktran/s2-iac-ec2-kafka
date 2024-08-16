@@ -28,31 +28,32 @@ echo $SINGLE_STORE_IPS_LIST
 # Prompt for the AWS region
 read -p "Enter the AWS region (e.g., us-east-1): " AWS_REGION
 
-# Validate the region
 if [[ -z "$AWS_REGION" ]]; then
   echo "Region cannot be empty."
   exit 1
 fi
+
+# Pull AWS profile_name
+export AWS_PROFILE=$(aws sts get-caller-identity --query UserId --output text | awk -F':' '{print $2}' | awk -F'@' '{print $1}')
 
 # Prompt for the EC2 instance type
 read -p "Enter the EC2 instance type (default is t2.large): " INSTANCE_TYPE
 INSTANCE_TYPE=${INSTANCE_TYPE:-t2.large}
 
 # Initialize Terraform with the specified region
-terraform init -var "region=${AWS_REGION}" -var "instance_type=${INSTANCE_TYPE}"
+terraform init \
+  -var "region=${AWS_REGION}" \
+  -var "instance_type=${INSTANCE_TYPE}" \
+  -var "aws_profile_name=${AWS_PROFILE}"
 
 # Apply Terraform configuration to create resources
-terraform apply -var "my_ip=${MY_IP}/32" -var "single_store_ips=${SINGLE_STORE_IPS_LIST}" -var "region=${AWS_REGION}" -var "instance_type=${INSTANCE_TYPE}" -auto-approve
-
-# Apply Terraform configuration again to update the EC2 public IP in Kafka configuration
-terraform apply -var "my_ip=${MY_IP}/32" -var "single_store_ips=${SINGLE_STORE_IPS_LIST}" -var "region=${AWS_REGION}" -var "instance_type=${INSTANCE_TYPE}" -auto-approve
+terraform apply \
+  -var "my_ip=${MY_IP}/32" \
+  -var "single_store_ips=${SINGLE_STORE_IPS_LIST}" \
+  -var "region=${AWS_REGION}" \
+  -var "instance_type=${INSTANCE_TYPE}" \
+  -var "aws_profile_name=${AWS_PROFILE}" \
+  -auto-approve
 
 # Capture the Terraform output
 EC2_PUBLIC_IP=$(terraform output -raw ec2_public_ip)
-
-# Export the EC2 public IP as an environment variable
-export EC2_PUBLIC_IP
-
-# Print the public IP for verification
-echo "EC2 Public IP: $EC2_PUBLIC_IP"
-

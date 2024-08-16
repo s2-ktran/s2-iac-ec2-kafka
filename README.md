@@ -15,7 +15,7 @@ Using terraform to provision an EC2 kafka instance that is running.
 
 ### Deployment
 
-Run the following command to build and deploy the application. Be sure to setup your AWS account using `aws configure`.
+Retrieve the 4 output IP addresses from your SingleStore workspace cluster. Run the following command to build and deploy the application. Be sure to setup your AWS account using `aws configure`.
 
 ```bash
 ./scripts/deploy.sh
@@ -26,7 +26,10 @@ Run the following command to build and deploy the application. Be sure to setup 
 Run the following commands:
 
 ```bash
-./testing/test.sh
+. scripts/test.sh
+. env/bin/active
+export EC2_PUBLIC_IP="outputted public IP"
+./scripts/test.sh
 ```
 
 ### Teardown
