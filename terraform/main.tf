@@ -87,7 +87,9 @@ resource "aws_instance" "kafka_ec2" {
   security_groups             = [aws_security_group.kafka_sg.name]
   associate_public_ip_address = false
   tags = {
-    Name = local.instance_name
+    Name      = local.instance_name,
+    Owner     = var.aws_profile_name,
+    Terraform = "iac-ec2-kafka",
   }
 
   user_data = file("${path.module}/user_data.sh")
