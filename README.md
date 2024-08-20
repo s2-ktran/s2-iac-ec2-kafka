@@ -1,6 +1,6 @@
 # Provisioning EC2 + Kafka using Infrastructure as Code
 
-Using terraform to provision an EC2 kafka instance that is running.
+Deploy an EC2 kafka instance programmatically using terraform. The EC2 instance includes kafka capabilities for both a SingleStore workspace group and your local environment.
 
 ## Launch Configurations
 

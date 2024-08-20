@@ -45,8 +45,6 @@ variable "single_store_ips" {
   type        = list(string)
 }
 
-
-
 resource "aws_eip" "kafka_ip" {
   instance = aws_instance.kafka_ec2.id
 }
