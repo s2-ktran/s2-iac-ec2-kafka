@@ -14,6 +14,7 @@ crash.log
 
 # Terraform workspace files
 .terraform-env/
+terraform/outputs.json
 
 # Local override files (usually used for local development)
 override.tf

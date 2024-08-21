@@ -59,6 +59,8 @@ terraform apply \
 EC2_PUBLIC_IP=$(terraform output -raw ec2_public_ip)
 INSTANCE_ID=$(terraform output -raw ec2_instance_id)
 
+terraform output -json > outputs.json
+
 # Wait until the instance is running
 echo "Waiting until $INSTANCE_ID is fully running..."
 aws ec2 wait instance-running --instance-ids $INSTANCE_ID
