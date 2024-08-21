@@ -7,6 +7,9 @@ from confluent_kafka import Producer, KafkaException, KafkaError
 from confluent_kafka.admin import AdminClient, NewTopic
 
 EC2_PUBLIC_IP = os.environ["EC2_PUBLIC_IP"]
+KAFKA_TOPIC = os.environ["KAFKA_TOPIC"]
+ENTRY_COUNT = os.environ["ENTRY_COUNT"]
+
 
 # Initialize Kafka producer
 producer = Producer({"bootstrap.servers": f"{EC2_PUBLIC_IP}:9092"})
@@ -70,7 +73,7 @@ def produce_event_logs_to_kafka(num_records, topic_name):
 
     for log in event_logs:
         producer.produce(topic_name, value=json.dumps(log))
-        print(f"Sent: {log}")
+        # print(f"Sent: {log}")
 
     # Wait up to 5 seconds for messages to be sent
     producer.flush(timeout=5)
@@ -78,7 +81,7 @@ def produce_event_logs_to_kafka(num_records, topic_name):
 
 # Example usage
 if __name__ == "__main__":
-    num_records = 10  # Number of event logs to generate
-    topic_name = "event_topic"  # Kafka topic to send the logs to
+    num_records = int(ENTRY_COUNT)
+    topic_name = KAFKA_TOPIC
     create_kafka_topic(topic_name)
     produce_event_logs_to_kafka(num_records, topic_name)

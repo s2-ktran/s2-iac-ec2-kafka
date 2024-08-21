@@ -20,3 +20,4 @@ override.tf
 override.tf.json
 
 env
+.DS_Store
