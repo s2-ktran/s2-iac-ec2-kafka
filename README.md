@@ -39,7 +39,7 @@ Run the commands and replace the IP address and topic:
 ```sql
 -- Create pipelines for Kafka
 CREATE OR REPLACE PIPELINE event_logs_kafka AS
-LOAD DATA KAFKA '<IP_ADDRESS>/<TOPIC>'
+LOAD DATA KAFKA '<KAFKA_EC2_IP>/<TOPIC_NAME>'
 INTO TABLE event_log
 (
     event_id <- event_id,
@@ -54,7 +54,7 @@ FORMAT JSON;
 
 ### Teardown
 
-Once you are finished using the project, use the following command to delete the associated resources.
+Once you are finished using the project, delete the notebook and the associated workspace group and databases. Use the following command to delete the associated EC2 resources.
 
 ```bash
 ./scripts/teardown.sh
