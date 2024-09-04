@@ -45,6 +45,21 @@ variable "single_store_ips" {
   type        = list(string)
 }
 
+# Variable for existing AWS key pair
+variable "key_name" {
+  description = "The AWS Key Pair name to use for EC2 instances"
+  type        = string
+}
+
+# Variable for Kafka topics
+variable "kafka_topics" {
+  description = "List of Kafka topics to create"
+  type        = list(object({
+    name       = string
+    partitions = number
+  }))
+}
+
 resource "aws_eip" "kafka_ip" {
   instance = aws_instance.kafka_ec2.id
 }
@@ -84,6 +99,7 @@ resource "aws_security_group" "kafka_sg" {
 resource "aws_instance" "kafka_ec2" {
   ami                         = data.aws_ami.amazon_linux_2.id
   instance_type               = var.instance_type
+  key_name                    = var.key_name  # Use the parameterized key name
   security_groups             = [aws_security_group.kafka_sg.name]
   associate_public_ip_address = false
   tags = {
@@ -92,7 +108,12 @@ resource "aws_instance" "kafka_ec2" {
     Terraform = "iac-ec2-kafka",
   }
 
-  user_data = file("${path.module}/user_data.sh")
+  user_data = <<-EOF
+    #!/bin/bash
+    export KAFKA_TOPICS="${join(",", [for topic in var.kafka_topics : "${topic.name}:${topic.partitions}"])}"
+    $(cat ${path.module}/user_data.sh)
+  EOF
+
 }
 
 resource "aws_security_group_rule" "kafka_ip_ingress" {
@@ -113,6 +134,12 @@ resource "aws_security_group_rule" "kafka_ip_ingress_2181" {
   cidr_blocks       = ["${aws_eip.kafka_ip.public_ip}/32"]
 }
 
+# Resource to create Kafka topics
+resource "null_resource" "create_kafka_topics" {
+  count = length(var.kafka_topics)
+
+  depends_on = [aws_instance.kafka_ec2]
+}
 
 output "ec2_public_ip" {
   description = "The public IP address of the EC2 instance"
@@ -124,3 +151,7 @@ output "ec2_instance_id" {
   description = "The ID of the Kafka EC2 instance."
 }
 
+output "ec2_name" {
+  description = "The name of the Kafka EC2 instance"
+  value       = aws_instance.kafka_ec2.tags["Name"]
+}

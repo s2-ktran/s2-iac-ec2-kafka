@@ -11,11 +11,28 @@ cd $SCRIPT_DIR/../terraform/
 MY_IP=$(curl -s https://api.ipify.org)
 echo "Current IP Address: $MY_IP"
 
-# Enter in dbEndpoint, username, and password
-read -p "Enter the first SingleStore endpoint: " IP_1
-read -p "Enter the second SingleStore endpoint: " IP_2
-read -p "Enter the third SingleStore endpoint: " IP_3
-read -p "Enter the fourth SingleStore endpoint: " IP_4
+# Enter IP addresses in a single input
+read -p "Enter the SingleStore endpoints (comma-separated): " SINGLE_STORE_IPS_INPUT
+
+# Remove spaces and validate input
+SINGLE_STORE_IPS_INPUT=$(echo $SINGLE_STORE_IPS_INPUT | tr -d ' ')
+
+if [[ -z "$SINGLE_STORE_IPS_INPUT" ]]; then
+  echo "You must enter at least one IP address."
+  exit 1
+fi
+
+IFS=',' read -r -a IP_ARRAY <<< "$SINGLE_STORE_IPS_INPUT"
+
+if [[ ${#IP_ARRAY[@]} -ne 4 ]]; then
+  echo "Please enter exactly 4 IP addresses."
+  exit 1
+fi
+
+IP_1=${IP_ARRAY[0]}
+IP_2=${IP_ARRAY[1]}
+IP_3=${IP_ARRAY[2]}
+IP_4=${IP_ARRAY[3]}
 
 # Export the variables
 echo "These 4 IP addresses you entered are: $IP_1, $IP_2, $IP_3, $IP_4"
@@ -40,11 +57,37 @@ export AWS_PROFILE_NAME=$(aws sts get-caller-identity --query UserId --output te
 read -p "Enter the EC2 instance type (default is t2.large): " INSTANCE_TYPE
 INSTANCE_TYPE=${INSTANCE_TYPE:-t2.large}
 
+# Prompt for the key pair name
+read -p "Enter the name of your existing EC2 key pair: " KEY_PAIR_NAME
+
+if [[ -z "$KEY_PAIR_NAME" ]]; then
+  echo "Key pair name cannot be empty."
+  exit 1
+fi
+
+# Collect Kafka topics information
+TOPICS=()
+while true; do
+  read -p "Enter a Kafka topic name: " TOPIC_NAME
+  read -p "Enter the number of partitions for this topic: " PARTITION_COUNT
+
+  # Add topic information to the list in the correct format
+  TOPICS+=("{\"name\": \"${TOPIC_NAME}\", \"partitions\": ${PARTITION_COUNT}}")
+
+  read -p "Do you want to add another topic? (y/n): " ADD_MORE
+  if [[ "$ADD_MORE" != "y" ]]; then
+    break
+  fi
+done
+
+# Convert TOPICS array to JSON format (no need to use jq as we are building JSON manually)
+TOPICS_JSON=$(printf "[%s]" "$(IFS=,; echo "${TOPICS[*]}")")
+
 # Initialize Terraform with the specified region
 terraform init \
   -var "region=${AWS_REGION}" \
   -var "instance_type=${INSTANCE_TYPE}" \
-  -var "aws_profile_name=${AWS_PROFILE}"
+  -var "aws_profile_name=${AWS_PROFILE_NAME}"
 
 # Apply Terraform configuration to create resources
 terraform apply \
@@ -53,15 +96,21 @@ terraform apply \
   -var "region=${AWS_REGION}" \
   -var "instance_type=${INSTANCE_TYPE}" \
   -var "aws_profile_name=${AWS_PROFILE_NAME}" \
+  -var "key_name=${KEY_PAIR_NAME}" \
+  -var "kafka_topics=${TOPICS_JSON}" \
   -auto-approve
 
 # Capture the Terraform outputs
 EC2_PUBLIC_IP=$(terraform output -raw ec2_public_ip)
 INSTANCE_ID=$(terraform output -raw ec2_instance_id)
+EC2_NAME=$(terraform output -raw ec2_name)
 
 # Wait until the instance is running
 echo "Waiting until $INSTANCE_ID is fully running..."
 aws ec2 wait instance-running --instance-ids $INSTANCE_ID
 echo "Instance $INSTANCE_ID is now running."
 
-
+echo "EC2 instance name: $EC2_NAME"
+echo "EC2 public IP: $EC2_PUBLIC_IP"
+echo "You can connect to your instance using:"
+echo "ssh -i /path/to/${KEY_PAIR_NAME}.pem ec2-user@${EC2_PUBLIC_IP}"
