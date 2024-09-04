@@ -6,6 +6,7 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 echo "Script directory: $SCRIPT_DIR"
 cd $SCRIPT_DIR/../terraform/
 
+<<<<<<< HEAD
 # Variables
 # read -p "Enter your SingleStore API Key: " TF_VAR_singlestore_api_key
 # if [ -z "$TF_VAR_singlestore_api_key" ]; then
@@ -76,6 +77,9 @@ if [[ -z "$KEY_PAIR_NAME" ]]; then
   echo "Key pair name cannot be empty."
   exit 1
 fi
+=======
+. $SCRIPT_DIR/output_vars.sh
+>>>>>>> 3343515 (feat: saving user inputs in own script and running with deploy and teardown)
 
 <<<<<<< HEAD
 <<<<<<< HEAD

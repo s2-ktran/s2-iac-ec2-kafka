@@ -5,7 +5,7 @@ terraform.tfstate.backup
 .terraform.lock.hcl
 .terraform.tfstate.lock.info
 terraform/darwin_arm64
-ec2_key.pem
+
 
 # Crash log files
 crash.log
@@ -23,4 +23,5 @@ override.tf.json
 
 env
 .DS_Store
+ec2_key.pem
 scripts/output_vars.sh
