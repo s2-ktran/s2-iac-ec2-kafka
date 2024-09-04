@@ -1,3 +1,16 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+    singlestoredb = {
+      source  = "singlestore-labs/singlestoredb"
+      version = "0.1.0-alpha.5"  # Use the latest version available
+    }
+  }
+}
+
 provider "aws" {
   region = var.region
 }
@@ -41,8 +54,8 @@ variable "my_ip" {
 }
 
 variable "single_store_ips" {
-  description = "List of SingleStore outbound IP addresses"
   type        = list(string)
+  description = "List of SingleStore outbound IP addresses"
 }
 
 resource "aws_eip" "kafka_ip" {
