@@ -65,6 +65,14 @@ export AWS_PROFILE_NAME=$(aws sts get-caller-identity --query UserId --output te
 read -p "Enter the EC2 instance type (default is t2.large): " INSTANCE_TYPE
 INSTANCE_TYPE=${INSTANCE_TYPE:-t2.large}
 
+# Prompt for the key pair name
+read -p "Enter the name of your existing EC2 key pair: " KEY_PAIR_NAME
+
+if [[ -z "$KEY_PAIR_NAME" ]]; then
+  echo "Key pair name cannot be empty."
+  exit 1
+fi
+
 # Initialize Terraform with the specified region
 terraform init \
   -var "region=${AWS_REGION}" \
@@ -78,11 +86,13 @@ terraform apply \
   -var "region=${AWS_REGION}" \
   -var "instance_type=${INSTANCE_TYPE}" \
   -var "aws_profile_name=${AWS_PROFILE_NAME}" \
+  -var "key_name=${KEY_PAIR_NAME}" \
   -auto-approve
 
 # Capture the Terraform outputs
 EC2_PUBLIC_IP=$(terraform output -raw ec2_public_ip)
 INSTANCE_ID=$(terraform output -raw ec2_instance_id)
+EC2_NAME=$(terraform output -raw ec2_name)
 
 terraform output -json > outputs.json
 
@@ -91,6 +101,9 @@ echo "Waiting until $INSTANCE_ID is fully running..."
 aws ec2 wait instance-running --instance-ids $INSTANCE_ID
 echo "Instance $INSTANCE_ID is now running."
 
+echo "EC2 instance name: $EC2_NAME"
+echo "EC2 public IP: $EC2_PUBLIC_IP"
+echo "You can connect to your instance using:"
 echo "SSH command: ssh -i \"ec2_key.pem\" ec2-user@ec2-$(echo $EC2_PUBLIC_IP | tr '.' '-').$AWS_REGION.compute.amazonaws.com"
 
 
