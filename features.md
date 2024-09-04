@@ -4,7 +4,6 @@ In Progress:
 - feat - vish: can add connection details into notebook and make it work from local
 - feat - vish: ability to create custom multiple topic with partition
 - feat - ryan: terraform for S2 deployment
-- feat - kevin: tf teardown can be automated by saving user inputs
 
 **Future scope:** 
 
