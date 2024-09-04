@@ -11,7 +11,6 @@ echo "Base directory: $BASE_DIR"
 SCRIPT_DIR="$BASE_DIR/scripts"
 echo "Script directory: $SCRIPT_DIR"
 
-<<<<<<< HEAD
 # Set the terraform directory path
 TERRAFORM_DIR="$BASE_DIR/terraform"
 echo "Terraform directory: $TERRAFORM_DIR"
@@ -29,7 +28,6 @@ echo "Instance Type: $INSTANCE_TYPE"
 echo "AWS Profile Name: $AWS_PROFILE_NAME"
 echo "Key Pair Name: $KEY_PAIR_NAME"
 echo "Kafka Topics and Partitions: $TOPICS_JSON"
-=======
 # Fetch your current public IP address
 MY_IP=$(curl -s https://api.ipify.org)
 
@@ -45,7 +43,6 @@ read -p "Enter the first SingleStore endpoint: " IP_1
 read -p "Enter the second SingleStore endpoint: " IP_2
 read -p "Enter the third SingleStore endpoint: " IP_3
 read -p "Enter the fourth SingleStore endpoint: " IP_4
->>>>>>> 09b1f3b (feat: Now creates a workspace cluster and workspace within the SingleStore portal using instanced several SingleStore variables in singlestore.tf, variables.tf, and main.tf.)
 
 # Removing PEM file
 echo "Removing PEM file"
@@ -60,12 +57,7 @@ terraform init \
   -var "kafka_topics=${TOPICS_JSON}" \
   -var "key_name=${KEY_PAIR_NAME}"
 
-<<<<<<< HEAD
 # Destroy Terraform-managed infrastructure
-=======
-# Destroy SingleStore resources first
-echo "Destroying SingleStore resources..."
->>>>>>> 09b1f3b (feat: Now creates a workspace cluster and workspace within the SingleStore portal using instanced several SingleStore variables in singlestore.tf, variables.tf, and main.tf.)
 terraform destroy \
   -target=singlestoredb_workspace.example \
   -target=singlestoredb_workspace_group.example \

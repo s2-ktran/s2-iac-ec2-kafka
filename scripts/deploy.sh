@@ -90,6 +90,7 @@ if [[ -z "$KEY_PAIR_NAME" ]]; then
   exit 1
 fi
 
+<<<<<<< HEAD
 # Collect Kafka topics information
 TOPICS=()
 while true; do
@@ -108,6 +109,8 @@ done
 # Convert TOPICS array to JSON format (no need to use jq as we are building JSON manually)
 TOPICS_JSON=$(printf "[%s]" "$(IFS=,; echo "${TOPICS[*]}")")
 
+=======
+>>>>>>> 837aa7b (refact: ec2_key_name)
 # Initialize Terraform with the specified region
 terraform init \
   -var "region=${AWS_REGION}" \
@@ -122,7 +125,10 @@ terraform apply \
   -var "instance_type=${INSTANCE_TYPE}" \
   -var "aws_profile_name=${AWS_PROFILE_NAME}" \
   -var "key_name=${KEY_PAIR_NAME}" \
+<<<<<<< HEAD
   -var "kafka_topics=${TOPICS_JSON}" \
+=======
+>>>>>>> 837aa7b (refact: ec2_key_name)
   -auto-approve
 
 # Capture the Terraform outputs
@@ -138,12 +144,18 @@ aws ec2 wait instance-running --instance-ids $INSTANCE_ID
 echo "Instance $INSTANCE_ID is now running."
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 echo "EC2 instance name: $EC2_NAME"
 echo "EC2 public IP: $EC2_PUBLIC_IP"
 echo "You can connect to your instance using:"
 echo "ssh -i /path/to/${KEY_PAIR_NAME}.pem ec2-user@${EC2_PUBLIC_IP}"
 echo "Kafka topics and partitions: ${TOPICS_JSON}"
 =======
+=======
+echo "EC2 instance name: $EC2_NAME"
+echo "EC2 public IP: $EC2_PUBLIC_IP"
+echo "You can connect to your instance using:"
+>>>>>>> 837aa7b (refact: ec2_key_name)
 echo "SSH command: ssh -i \"ec2_key.pem\" ec2-user@ec2-$(echo $EC2_PUBLIC_IP | tr '.' '-').$AWS_REGION.compute.amazonaws.com"
 
 >>>>>>> 1e09b10 (feat: save pem file after ec2 is created)

@@ -53,6 +53,12 @@ variable "my_ip" {
   type        = string
 }
 
+# Variable for existing AWS key pair
+variable "key_name" {
+  description = "The AWS Key Pair name to use for EC2 instances"
+  type        = string
+}
+
 variable "single_store_ips" {
   type        = list(string)
   description = "List of SingleStore outbound IP addresses"
@@ -123,12 +129,12 @@ resource "tls_private_key" "ec2_key" {
 
 resource "local_file" "private_key_pem" {
   content         = tls_private_key.ec2_key.private_key_pem
-  filename        = "${path.module}/../ec2_key.pem"
+  filename        = "${path.module}/../${var.key_name}.pem"
   file_permission = "0600"
 }
 
 resource "aws_key_pair" "deployer" {
-  key_name   = "ec2_key"
+  key_name   = var.key_name
   public_key = tls_private_key.ec2_key.public_key_openssh
 }
 
@@ -190,5 +196,6 @@ output "ec2_instance_id" {
 
 output "ec2_name" {
   description = "The name of the Kafka EC2 instance"
-  value       = aws_instance.kafka_ec2.tags["Name"]
+  value       = "${local.instance_name_prefix}-${var.aws_profile_name}"
 }
+
