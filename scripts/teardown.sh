@@ -1,11 +1,10 @@
 #!/bin/bash
 
-# Ensure the script exits if any command fails
+# Script presetup
 set -e
-
-# Determine the base directory of the project (iac-ec2-kafka)
-BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
-echo "Base directory: $BASE_DIR"
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+echo "Script directory: $SCRIPT_DIR"
+cd $SCRIPT_DIR/../terraform/
 
 # Set the script directory to where the script is located
 SCRIPT_DIR="$BASE_DIR/scripts"
@@ -32,13 +31,8 @@ echo "Kafka Topics and Partitions: $TOPICS_JSON"
 MY_IP=$(curl -s https://api.ipify.org)
 
 # Enter SingleStore API key
-read -sp "Enter your SingleStore API key: " SINGLESTORE_API_KEY
-echo
-
-# Export the SingleStore API key
-export TF_VAR_singlestore_api_key="$SINGLESTORE_API_KEY"
-
-# Enter in SingleStore endpoints
+# read -sp "Enter your SingleStore API key: " SINGLESTORE_API_KEY
+# export TF_VAR_singlestore_api_key="$SINGLESTORE_API_KEY"
 read -p "Enter the first SingleStore endpoint: " IP_1
 read -p "Enter the second SingleStore endpoint: " IP_2
 read -p "Enter the third SingleStore endpoint: " IP_3
@@ -49,7 +43,7 @@ echo "Removing PEM file"
 rm $SCRIPT_DIR/../ec2_key.pem
 echo "Successfully removed PEM file."
 
-# Initialize Terraform with the specified region
+# Terraform
 terraform init \
   -var "region=${AWS_REGION}" \
   -var "aws_profile_name=${AWS_PROFILE_NAME}" \
@@ -57,25 +51,24 @@ terraform init \
   -var "kafka_topics=${TOPICS_JSON}" \
   -var "key_name=${KEY_PAIR_NAME}"
 
-# Destroy Terraform-managed infrastructure
-terraform destroy \
-  -target=singlestoredb_workspace.example \
-  -target=singlestoredb_workspace_group.example \
-  -var "single_store_ips=${SINGLE_STORE_IPS_LIST}" \
-  -var "region=${AWS_REGION}" \
-  -var "aws_profile_name=${AWS_PROFILE_NAME}" \
-  -var "my_ip=${MY_IP}/32" \
-  -var "kafka_topics=${TOPICS_JSON}" \
-  -var "key_name=${KEY_PAIR_NAME}" \
-  -auto-approve
+# Destroy SingleStore resources first
+# echo "Destroying SingleStore resources..."
+# terraform destroy \
+#   -target=singlestoredb_workspace.example \
+#   -target=singlestoredb_workspace_group.example \
+#   -var "single_store_ips=${SINGLE_STORE_IPS_LIST}" \
+#   -var "region=${AWS_REGION}" \
+#   -var "aws_profile_name=${AWS_PROFILE_NAME}" \
+#   -var "my_ip=${MY_IP}/32" \
+#   -auto-approve
 
-# Destroy remaining AWS infrastructure
 echo "Destroying remaining AWS infrastructure..."
 terraform destroy \
   -var "single_store_ips=${SINGLE_STORE_IPS_LIST}" \
   -var "region=${AWS_REGION}" \
   -var "aws_profile_name=${AWS_PROFILE_NAME}" \
   -var "my_ip=${MY_IP}/32" \
+  -var "key_name=${KEY_PAIR_NAME}" \
   -auto-approve
 
 echo "All infrastructure, including SingleStore resources, destroyed successfully."

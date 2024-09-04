@@ -6,7 +6,7 @@ terraform {
     }
     singlestoredb = {
       source  = "singlestore-labs/singlestoredb"
-      version = "0.1.0-alpha.5"  # Use the latest version available
+      version = "0.1.0-alpha.5" # Use the latest version available
     }
   }
 }
@@ -14,6 +14,12 @@ terraform {
 provider "aws" {
   region = var.region
 }
+
+# provider "singlestoredb" {
+#   api_key = var.singlestore_api_key
+# }
+
+# data "singlestoredb_regions" "all" {}
 
 data "aws_ami" "amazon_linux_2" {
   most_recent = true
@@ -29,6 +35,11 @@ locals {
   instance_name_prefix = "kafka-instance"
   instance_name        = "${local.instance_name_prefix}-${var.aws_profile_name}"
 }
+
+# variable "singlestore_api_key" {
+#   type        = string
+#   description = "SingleStore API Key"
+# }
 
 variable "aws_profile_name" {
   description = "The AWS profile name to use for naming resources"
@@ -183,6 +194,24 @@ resource "null_resource" "create_kafka_topics" {
 
   depends_on = [aws_instance.kafka_ec2]
 }
+
+
+# resource "singlestoredb_workspace_group" "example" {
+#   name            = "example-workspace-group"
+#   region_id       = data.singlestoredb_regions.all.regions.0.id
+#   firewall_ranges = var.single_store_ips
+# }
+
+# resource "singlestoredb_workspace" "example" {
+#   name               = "example-workspace"
+#   workspace_group_id = singlestoredb_workspace_group.example.id
+#   size               = "S-0"
+# }
+
+# output "workspace_endpoints" {
+#   value = singlestoredb_workspace.example.endpoint
+# }
+
 
 output "ec2_public_ip" {
   description = "The public IP address of the EC2 instance"
