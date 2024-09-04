@@ -73,7 +73,7 @@ def produce_event_logs_to_kafka(num_records, topic_name):
 
     for log in event_logs:
         producer.produce(topic_name, value=json.dumps(log))
-        # print(f"Sent: {log}")
+        print(f"Sent: {log}")
 
     # Wait up to 5 seconds for messages to be sent
     producer.flush(timeout=5)
