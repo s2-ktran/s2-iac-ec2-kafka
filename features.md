@@ -4,7 +4,6 @@
 * Feat: Customizable schema
 * Feat: Customizable notebook to ingest into SingleStore so don't have to do manually
 * Feat: recording down amount of times deployed and utilized for record keeping
-- feat: save pem file after ec2 is created
 - bug: logs for showing data ingested in kafka
 - feat - vish: can add connection details into notebook and make it work from local
 - feat: ability to create custom multiple topic with partition

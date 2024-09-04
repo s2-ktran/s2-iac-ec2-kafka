@@ -112,11 +112,16 @@ echo "Waiting until $INSTANCE_ID is fully running..."
 aws ec2 wait instance-running --instance-ids $INSTANCE_ID
 echo "Instance $INSTANCE_ID is now running."
 
+<<<<<<< HEAD
 echo "EC2 instance name: $EC2_NAME"
 echo "EC2 public IP: $EC2_PUBLIC_IP"
 echo "You can connect to your instance using:"
 echo "ssh -i /path/to/${KEY_PAIR_NAME}.pem ec2-user@${EC2_PUBLIC_IP}"
 echo "Kafka topics and partitions: ${TOPICS_JSON}"
+=======
+echo "SSH command: ssh -i \"ec2_key.pem\" ec2-user@ec2-$(echo $EC2_PUBLIC_IP | tr '.' '-').$AWS_REGION.compute.amazonaws.com"
+
+>>>>>>> 1e09b10 (feat: save pem file after ec2 is created)
 
 # Save all necessary information to a file for teardown
 echo "MY_IP=${MY_IP}" > teardown_details.txt

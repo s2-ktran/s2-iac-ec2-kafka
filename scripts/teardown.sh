@@ -29,6 +29,11 @@ echo "AWS Profile Name: $AWS_PROFILE_NAME"
 echo "Key Pair Name: $KEY_PAIR_NAME"
 echo "Kafka Topics and Partitions: $TOPICS_JSON"
 
+# Removing PEM file
+echo "Removing PEM file"
+rm $SCRIPT_DIR/../ec2_key.pem
+echo "Successfully removed PEM file."
+
 # Initialize Terraform with the specified region
 terraform init \
   -var "region=${AWS_REGION}" \

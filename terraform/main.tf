@@ -88,6 +88,13 @@ resource "aws_security_group" "kafka_sg" {
     cidr_blocks = concat([var.my_ip], var.single_store_ips)
   }
 
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = [var.my_ip]
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
@@ -96,12 +103,29 @@ resource "aws_security_group" "kafka_sg" {
   }
 }
 
+resource "tls_private_key" "ec2_key" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
+resource "local_file" "private_key_pem" {
+  content         = tls_private_key.ec2_key.private_key_pem
+  filename        = "${path.module}/../ec2_key.pem"
+  file_permission = "0600"
+}
+
+resource "aws_key_pair" "deployer" {
+  key_name   = "ec2_key"
+  public_key = tls_private_key.ec2_key.public_key_openssh
+}
+
 resource "aws_instance" "kafka_ec2" {
   ami                         = data.aws_ami.amazon_linux_2.id
   instance_type               = var.instance_type
   key_name                    = var.key_name  # Use the parameterized key name
   security_groups             = [aws_security_group.kafka_sg.name]
   associate_public_ip_address = false
+  key_name                    = aws_key_pair.deployer.key_name
   tags = {
     Name      = local.instance_name,
     Owner     = var.aws_profile_name,
