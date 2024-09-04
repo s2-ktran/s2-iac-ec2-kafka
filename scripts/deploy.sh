@@ -3,6 +3,31 @@
 # Ensure the script exits if any command fails
 set -e
 
+# Check if the API key is provided
+if [ -z "$TF_VAR_singlestore_api_key" ]; then
+    echo "Please set the TF_VAR_singlestore_api_key environment variable"
+    exit 1
+fi
+
+# Set default region if not provided
+TF_VAR_region=${TF_VAR_region:-"us-east-1"}
+
+# Change to the terraform directory
+cd "$(dirname "$0")/../terraform" || exit
+
+# Initialize Terraform
+terraform init
+
+# Plan and apply Terraform changes
+terraform plan -var "region=$TF_VAR_region"
+terraform apply -var "region=$TF_VAR_region" -auto-approve
+
+# Extract SingleStore endpoints
+endpoints=$(terraform output -json workspace_endpoints | jq -r '.[]')
+
+echo "SingleStore Workspace Endpoints:"
+echo "$endpoints"
+
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 echo "Script directory: $SCRIPT_DIR"
 cd $SCRIPT_DIR/../terraform/
