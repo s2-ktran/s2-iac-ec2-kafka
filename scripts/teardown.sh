@@ -33,6 +33,11 @@ fi
 
 export AWS_PROFILE_NAME=$(aws sts get-caller-identity --query UserId --output text | awk -F':' '{print $2}' | awk -F'@' '{print $1}')
 
+# Removing PEM file
+echo "Removing PEM file"
+rm $SCRIPT_DIR/../ec2_key.pem
+echo "Successfully removed PEM file."
+
 # Initialize Terraform with the specified region
 terraform init \
   -var "region=${AWS_REGION}" \

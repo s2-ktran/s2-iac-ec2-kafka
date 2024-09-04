@@ -66,4 +66,6 @@ echo "Waiting until $INSTANCE_ID is fully running..."
 aws ec2 wait instance-running --instance-ids $INSTANCE_ID
 echo "Instance $INSTANCE_ID is now running."
 
+echo "SSH command: ssh -i \"ec2_key.pem\" ec2-user@ec2-$(echo $EC2_PUBLIC_IP | tr '.' '-').$AWS_REGION.compute.amazonaws.com"
+
 
