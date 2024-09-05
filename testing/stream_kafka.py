@@ -83,5 +83,5 @@ def produce_event_logs_to_kafka(num_records, topic_name):
 if __name__ == "__main__":
     num_records = int(ENTRY_COUNT)
     topic_name = KAFKA_TOPIC
-    create_kafka_topic(topic_name)
+    # create_kafka_topic(topic_name)
     produce_event_logs_to_kafka(num_records, topic_name)

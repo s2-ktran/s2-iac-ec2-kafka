@@ -4,22 +4,12 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
-    singlestoredb = {
-      source  = "singlestore-labs/singlestoredb"
-      version = "0.1.0-alpha.5" # Use the latest version available
-    }
   }
 }
 
 provider "aws" {
   region = var.region
 }
-
-# provider "singlestoredb" {
-#   api_key = var.singlestore_api_key
-# }
-
-# data "singlestoredb_regions" "all" {}
 
 data "aws_ami" "amazon_linux_2" {
   most_recent = true
@@ -35,11 +25,6 @@ locals {
   instance_name_prefix = "kafka-instance"
   instance_name        = "${local.instance_name_prefix}-${var.aws_profile_name}"
 }
-
-# variable "singlestore_api_key" {
-#   type        = string
-#   description = "SingleStore API Key"
-# }
 
 variable "aws_profile_name" {
   description = "The AWS profile name to use for naming resources"
@@ -73,6 +58,15 @@ variable "key_name" {
 variable "single_store_ips" {
   type        = list(string)
   description = "List of SingleStore outbound IP addresses"
+}
+
+# Variable for Kafka topics
+variable "kafka_topics" {
+  description = "List of Kafka topics to create"
+  type = list(object({
+    name       = string
+    partitions = number
+  }))
 }
 
 resource "aws_eip" "kafka_ip" {
@@ -137,9 +131,9 @@ resource "aws_key_pair" "deployer" {
 resource "aws_instance" "kafka_ec2" {
   ami                         = data.aws_ami.amazon_linux_2.id
   instance_type               = var.instance_type
+  key_name                    = var.key_name # Use the parameterized key name
   security_groups             = [aws_security_group.kafka_sg.name]
   associate_public_ip_address = false
-  key_name                    = aws_key_pair.deployer.key_name
   tags = {
     Name      = local.instance_name,
     Owner     = var.aws_profile_name,
@@ -147,6 +141,7 @@ resource "aws_instance" "kafka_ec2" {
   }
 
   user_data = file("${path.module}/user_data.sh")
+
 }
 
 resource "aws_security_group_rule" "kafka_ip_ingress" {
@@ -167,24 +162,12 @@ resource "aws_security_group_rule" "kafka_ip_ingress_2181" {
   cidr_blocks       = ["${aws_eip.kafka_ip.public_ip}/32"]
 }
 
+# Resource to create Kafka topics
+resource "null_resource" "create_kafka_topics" {
+  count = length(var.kafka_topics)
 
-
-# resource "singlestoredb_workspace_group" "example" {
-#   name            = "example-workspace-group"
-#   region_id       = data.singlestoredb_regions.all.regions.0.id
-#   firewall_ranges = var.single_store_ips
-# }
-
-# resource "singlestoredb_workspace" "example" {
-#   name               = "example-workspace"
-#   workspace_group_id = singlestoredb_workspace_group.example.id
-#   size               = "S-0"
-# }
-
-# output "workspace_endpoints" {
-#   value = singlestoredb_workspace.example.endpoint
-# }
-
+  depends_on = [aws_instance.kafka_ec2]
+}
 
 output "ec2_public_ip" {
   description = "The public IP address of the EC2 instance"

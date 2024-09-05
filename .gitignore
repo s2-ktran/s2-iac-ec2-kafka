@@ -23,6 +23,6 @@ override.tf.json
 
 env
 .DS_Store
-
 ec2_key.pem
 scripts/output_vars.sh
+terraform/teardown_details.txt

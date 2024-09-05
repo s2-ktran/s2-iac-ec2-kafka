@@ -20,7 +20,7 @@ Deploy an EC2 kafka instance programmatically using terraform. The EC2 instance 
 Set your AWS account using `aws configure`. Retrieve the 4 output IP addresses from your SingleStore workspace cluster.
 
 ```bash
-./scripts/input_script.sh
+./scripts/var_gen.sh
 ```
 
 The outputs are stored in `/scripts/output_vars.sh`.

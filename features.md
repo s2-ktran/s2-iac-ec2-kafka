@@ -2,8 +2,6 @@
 
 In Progress:
 - feat - vish: can add connection details into notebook and make it work from local
-- feat - vish: ability to create custom multiple topic with partition
-- feat - ryan: terraform for S2 deployment
 
 **Future scope:** 
 
