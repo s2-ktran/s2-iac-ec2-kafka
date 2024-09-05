@@ -32,4 +32,4 @@ terraform destroy \
   -var "kafka_topics=${TOPICS_JSON}" \
   -auto-approve
 
-echo "All infrastructure, including SingleStore resources, destroyed successfully."
+echo "All infrastructure destroyed successfully."
