@@ -37,11 +37,10 @@ terraform apply \
   -var "single_store_ips=${SINGLE_STORE_IPS_LIST}" \
   -var "region=${AWS_REGION}" \
   -var "instance_type=${INSTANCE_TYPE}" \
-  -var "aws_profile_name=${AWS_PROFILE}" \
+  -var "aws_profile_name=${AWS_PROFILE_NAME}" \
   -var "key_name=${KEY_PAIR_NAME}" \
   -var "kafka_topics=${TOPICS_JSON}" \
   -auto-approve
-  # -var "singlestore_api_key=${TF_VAR_singlestore_api_key}" \
 
 # Capture the Terraform outputs
 EC2_PUBLIC_IP=$(terraform output -raw ec2_public_ip)

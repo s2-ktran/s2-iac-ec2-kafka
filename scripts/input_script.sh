@@ -4,12 +4,6 @@ set -e
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 echo "Script directory: $SCRIPT_DIR"
 
-# read -p "Enter your SingleStore API Key: " TF_VAR_singlestore_api_key
-# if [ -z "$TF_VAR_singlestore_api_key" ]; then
-#     echo "Please set the TF_VAR_singlestore_api_key environment variable"
-#     exit 1
-# fi
-
 read -p "Enter the AWS region (e.g., us-east-1): " AWS_REGION
 if [[ -z "$AWS_REGION" ]]; then
   echo "Region cannot be empty."
