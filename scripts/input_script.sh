@@ -16,6 +16,7 @@ if [[ -z "$AWS_REGION" ]]; then
   exit 1
 fi
 
+
 read -p "Enter the SingleStore endpoints (comma-separated): " SINGLE_STORE_IPS_INPUT
 SINGLE_STORE_IPS_INPUT=$(echo $SINGLE_STORE_IPS_INPUT | tr -d ' ')
 if [[ -z "$SINGLE_STORE_IPS_INPUT" ]]; then

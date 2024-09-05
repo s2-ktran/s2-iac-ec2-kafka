@@ -73,7 +73,6 @@ variable "key_name" {
 variable "single_store_ips" {
   type        = list(string)
   description = "List of SingleStore outbound IP addresses"
-}
 
 # Variable for Kafka topics
 variable "kafka_topics" {
@@ -149,6 +148,7 @@ resource "aws_instance" "kafka_ec2" {
   key_name                    = var.key_name # Use the parameterized key name
   security_groups             = [aws_security_group.kafka_sg.name]
   associate_public_ip_address = false
+  key_name                    = aws_key_pair.deployer.key_name
   tags = {
     Name      = local.instance_name,
     Owner     = var.aws_profile_name,
@@ -187,6 +187,24 @@ resource "null_resource" "create_kafka_topics" {
 
   depends_on = [aws_instance.kafka_ec2]
 }
+
+
+# resource "singlestoredb_workspace_group" "example" {
+#   name            = "example-workspace-group"
+#   region_id       = data.singlestoredb_regions.all.regions.0.id
+#   firewall_ranges = var.single_store_ips
+# }
+
+# resource "singlestoredb_workspace" "example" {
+#   name               = "example-workspace"
+#   workspace_group_id = singlestoredb_workspace_group.example.id
+#   size               = "S-0"
+# }
+
+# output "workspace_endpoints" {
+#   value = singlestoredb_workspace.example.endpoint
+# }
+
 
 
 # resource "singlestoredb_workspace_group" "example" {
