@@ -19,17 +19,20 @@ if [[ -z "$SINGLE_STORE_IPS_INPUT" ]]; then
 fi
 
 IFS=',' read -r -a IP_ARRAY <<< "$SINGLE_STORE_IPS_INPUT"
-if [[ ${#IP_ARRAY[@]} -ne 4 ]]; then
-  echo "Please enter exactly 4 IP addresses."
+if [[ ${#IP_ARRAY[@]} -ne 3 && ${#IP_ARRAY[@]} -ne 4 ]]; then
+  echo "Please enter exactly 3 or 4 IP addresses."
   exit 1
 fi
 
 IP_1=${IP_ARRAY[0]}
 IP_2=${IP_ARRAY[1]}
 IP_3=${IP_ARRAY[2]}
-IP_4=${IP_ARRAY[3]}
-echo "These 4 IP addresses you entered are: $IP_1, $IP_2, $IP_3, $IP_4"
-SINGLE_STORE_IPS="$IP_1/32,$IP_2/32,$IP_3/32,$IP_4/32"
+IP_4=${IP_ARRAY[3]:-""}  # Set IP_4 to an empty string if not provided
+echo "These IP addresses you entered are: $IP_1, $IP_2, $IP_3${IP_4:+, $IP_4}"
+SINGLE_STORE_IPS="$IP_1/32,$IP_2/32,$IP_3/32"
+if [[ -n "$IP_4" ]]; then
+  SINGLE_STORE_IPS="$SINGLE_STORE_IPS,$IP_4/32"
+fi
 SINGLE_STORE_IPS_LIST=$(echo $SINGLE_STORE_IPS | sed 's/,/","/g' | sed 's/^/["/' | sed 's/$/"]/')
 echo $SINGLE_STORE_IPS_LIST
 
