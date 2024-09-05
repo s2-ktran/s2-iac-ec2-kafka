@@ -114,3 +114,13 @@ echo "EC2 instance name: $EC2_NAME"
 echo "EC2 public IP: $EC2_PUBLIC_IP"
 echo "You can connect to your instance using:"
 echo "ssh -i /path/to/${KEY_PAIR_NAME}.pem ec2-user@${EC2_PUBLIC_IP}"
+echo "Kafka topics and partitions: ${TOPICS_JSON}"
+
+# Save all necessary information to a file for teardown
+echo "MY_IP=${MY_IP}" > teardown_details.txt
+echo "SINGLE_STORE_IPS_LIST='${SINGLE_STORE_IPS_LIST}'" >> teardown_details.txt
+echo "AWS_REGION=${AWS_REGION}" >> teardown_details.txt
+echo "INSTANCE_TYPE=${INSTANCE_TYPE}" >> teardown_details.txt
+echo "AWS_PROFILE_NAME=${AWS_PROFILE_NAME}" >> teardown_details.txt
+echo "KEY_PAIR_NAME=${KEY_PAIR_NAME}" >> teardown_details.txt
+echo "TOPICS_JSON='${TOPICS_JSON}'" >> teardown_details.txt
