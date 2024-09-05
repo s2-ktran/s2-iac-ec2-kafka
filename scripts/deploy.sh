@@ -8,24 +8,6 @@ cd $SCRIPT_DIR/../terraform/
 
 . $SCRIPT_DIR/output_vars.sh
 
-# Collect Kafka topics information
-TOPICS=()
-while true; do
-  read -p "Enter a Kafka topic name: " TOPIC_NAME
-  read -p "Enter the number of partitions for this topic: " PARTITION_COUNT
-
-  # Add topic information to the list in the correct format
-  TOPICS+=("{\"name\": \"${TOPIC_NAME}\", \"partitions\": ${PARTITION_COUNT}}")
-
-  read -p "Do you want to add another topic? (y/n): " ADD_MORE
-  if [[ "$ADD_MORE" != "y" ]]; then
-    break
-  fi
-done
-
-# Convert TOPICS array to JSON format (no need to use jq as we are building JSON manually)
-TOPICS_JSON=$(printf "[%s]" "$(IFS=,; echo "${TOPICS[*]}")")
-
 # Initialize Terraform with the specified region
 terraform init \
   -var "region=${AWS_REGION}" \
@@ -39,8 +21,8 @@ terraform apply \
   -var "instance_type=${INSTANCE_TYPE}" \
   -var "aws_profile_name=${AWS_PROFILE_NAME}" \
   -var "key_name=${KEY_PAIR_NAME}" \
-  -var "kafka_topics=${TOPICS_JSON}" \
   -auto-approve
+  # -var "kafka_topics=${TOPICS_JSON}" \
 
 # Capture the Terraform outputs
 EC2_PUBLIC_IP=$(terraform output -raw ec2_public_ip)

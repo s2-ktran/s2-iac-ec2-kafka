@@ -62,6 +62,7 @@ variable "key_name" {
 variable "single_store_ips" {
   type        = list(string)
   description = "List of SingleStore outbound IP addresses"
+<<<<<<< HEAD
 }
 # Variable for Kafka topics
 variable "kafka_topics" {
@@ -70,7 +71,17 @@ variable "kafka_topics" {
     name       = string
     partitions = number
   }))
+=======
+>>>>>>> 3321f18 (chore: stable state)
 }
+# Variable for Kafka topics
+# variable "kafka_topics" {
+#   description = "List of Kafka topics to create"
+#   type = list(object({
+#     name       = string
+#     partitions = number
+#   }))
+# }
 
 resource "aws_eip" "kafka_ip" {
   instance = aws_instance.kafka_ec2.id

@@ -29,7 +29,7 @@ terraform destroy \
   -var "aws_profile_name=${AWS_PROFILE_NAME}" \
   -var "my_ip=${MY_IP}/32" \
   -var "key_name=${KEY_PAIR_NAME}" \
-  -var "kafka_topics=${TOPICS_JSON}" \
   -auto-approve
+  # -var "kafka_topics=${TOPICS_JSON}" \
 
 echo "All infrastructure, including SingleStore resources, destroyed successfully."
