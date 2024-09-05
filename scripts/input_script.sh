@@ -16,12 +16,29 @@ if [[ -z "$AWS_REGION" ]]; then
   exit 1
 fi
 
-read -p "Enter the first SingleStore endpoint: " IP_1
-read -p "Enter the second SingleStore endpoint: " IP_2
-read -p "Enter the third SingleStore endpoint: " IP_3
-read -p "Enter the fourth SingleStore endpoint: " IP_4
+read -p "Enter the SingleStore endpoints (comma-separated): " SINGLE_STORE_IPS_INPUT
+SINGLE_STORE_IPS_INPUT=$(echo $SINGLE_STORE_IPS_INPUT | tr -d ' ')
+if [[ -z "$SINGLE_STORE_IPS_INPUT" ]]; then
+  echo "You must enter at least one IP address."
+  exit 1
+fi
+
+IFS=',' read -r -a IP_ARRAY <<< "$SINGLE_STORE_IPS_INPUT"
+if [[ ${#IP_ARRAY[@]} -ne 4 ]]; then
+  echo "Please enter exactly 4 IP addresses."
+  exit 1
+fi
+
+IP_1=${IP_ARRAY[0]}
+IP_2=${IP_ARRAY[1]}
+IP_3=${IP_ARRAY[2]}
+IP_4=${IP_ARRAY[3]}
+
+# Export the variables
 echo "These 4 IP addresses you entered are: $IP_1, $IP_2, $IP_3, $IP_4"
 SINGLE_STORE_IPS="$IP_1/32,$IP_2/32,$IP_3/32,$IP_4/32"
+
+# Convert the comma-separated IP addresses to a format acceptable by Terraform
 SINGLE_STORE_IPS_LIST=$(echo $SINGLE_STORE_IPS | sed 's/,/","/g' | sed 's/^/["/' | sed 's/$/"]/')
 echo $SINGLE_STORE_IPS_LIST
 

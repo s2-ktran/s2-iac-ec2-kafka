@@ -75,16 +75,10 @@ variable "single_store_ips" {
   description = "List of SingleStore outbound IP addresses"
 }
 
-# Variable for existing AWS key pair
-variable "key_name" {
-  description = "The AWS Key Pair name to use for EC2 instances"
-  type        = string
-}
-
 # Variable for Kafka topics
 variable "kafka_topics" {
   description = "List of Kafka topics to create"
-  type        = list(object({
+  type = list(object({
     name       = string
     partitions = number
   }))
@@ -152,10 +146,9 @@ resource "aws_key_pair" "deployer" {
 resource "aws_instance" "kafka_ec2" {
   ami                         = data.aws_ami.amazon_linux_2.id
   instance_type               = var.instance_type
-  key_name                    = var.key_name  # Use the parameterized key name
+  key_name                    = var.key_name # Use the parameterized key name
   security_groups             = [aws_security_group.kafka_sg.name]
   associate_public_ip_address = false
-  key_name                    = aws_key_pair.deployer.key_name
   tags = {
     Name      = local.instance_name,
     Owner     = var.aws_profile_name,

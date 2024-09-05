@@ -1,7 +1,7 @@
-MY_IP=103.197.74.109
-SINGLE_STORE_IPS_LIST='["3.229.100.208/32","54.159.203.162/32","44.194.237.189/32","44.208.103.245/32"]'
-AWS_REGION=us-east-1
+MY_IP=50.106.20.221
+SINGLE_STORE_IPS_LIST='["52.39.174.38/32","44.230.94.214/32","35.81.56.251/32","52.35.160.52/32"]'
+AWS_REGION=us-west-2
 INSTANCE_TYPE=t2.large
-AWS_PROFILE_NAME=vdabholkar
-KEY_PAIR_NAME=Vishwajeet_Virginia
-TOPICS_JSON='[{"name": "test_topic1", "partitions": 8},{"name": "test_topic2", "partitions": 8}]'
+AWS_PROFILE_NAME=
+KEY_PAIR_NAME=ec2_key
+TOPICS_JSON='[{"name": "test-topic", "partitions": 8}]'

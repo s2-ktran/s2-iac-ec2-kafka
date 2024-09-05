@@ -7,6 +7,7 @@ echo "Script directory: $SCRIPT_DIR"
 cd $SCRIPT_DIR/../terraform/
 
 . $SCRIPT_DIR/output_vars.sh
+. $SCRIPT_DIR/../terraform/teardown_details.txt
 
 # Removing PEM file
 echo "Removing PEM file"
@@ -39,6 +40,7 @@ terraform destroy \
   -var "aws_profile_name=${AWS_PROFILE_NAME}" \
   -var "my_ip=${MY_IP}/32" \
   -var "key_name=${KEY_PAIR_NAME}" \
+  -var "kafka_topics=${TOPICS_JSON}" \
   -auto-approve
 
 echo "All infrastructure, including SingleStore resources, destroyed successfully."
