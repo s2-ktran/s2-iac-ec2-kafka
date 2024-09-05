@@ -34,20 +34,20 @@ SINGLE_STORE_IPS_LIST=$(echo $SINGLE_STORE_IPS | sed 's/,/","/g' | sed 's/^/["/'
 echo $SINGLE_STORE_IPS_LIST
 
 # Collect Kafka topics information
-# TOPICS=()
-# while true; do
-#   read -p "Enter a Kafka topic name: " TOPIC_NAME
-#   read -p "Enter the number of partitions for this topic: " PARTITION_COUNT
-#   # Add topic information to the list in the correct format
-#   TOPICS+=("{\"name\": \"${TOPIC_NAME}\", \"partitions\": ${PARTITION_COUNT}}")
-#   read -p "Do you want to add another topic? (y/n): " ADD_MORE
-#   if [[ "$ADD_MORE" != "y" ]]; then
-#     break
-#   fi
-# done
+TOPICS=()
+while true; do
+  read -p "Enter a Kafka topic name: " TOPIC_NAME
+  read -p "Enter the number of partitions for this topic: " PARTITION_COUNT
+  # Add topic information to the list in the correct format
+  TOPICS+=("{\"name\": \"${TOPIC_NAME}\", \"partitions\": ${PARTITION_COUNT}}")
+  read -p "Do you want to add another topic? (y/n): " ADD_MORE
+  if [[ "$ADD_MORE" != "y" ]]; then
+    break
+  fi
+done
 
 # Convert TOPICS array to JSON format (no need to use jq as we are building JSON manually)
-# TOPICS_JSON=$(printf "[%s]" "$(IFS=,; echo "${TOPICS[*]}")")
+TOPICS_JSON=$(printf "[%s]" "$(IFS=,; echo "${TOPICS[*]}")")
 
 MY_IP=$(curl -s https://api.ipify.org)
 echo "Current IP Address: $MY_IP"
@@ -73,7 +73,7 @@ export MY_IP="$MY_IP"
 export AWS_PROFILE_NAME="$AWS_PROFILE_NAME"
 export INSTANCE_TYPE="$INSTANCE_TYPE"
 export KEY_PAIR_NAME="$KEY_PAIR_NAME"
-# export TOPICS_JSON="$TOPICS_JSON"
+export TOPICS_JSON='$TOPICS_JSON'
 EOF
 
 echo "Variables have been saved to $SCRIPT_DIR/output_vars.sh"

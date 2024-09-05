@@ -1,5 +1,4 @@
 #!/bin/bash
-# export KAFKA_TOPICS="${join(",", [for topic in var.kafka_topics : "${topic.name}:${topic.partitions}"])}"
 set -x  # Enable debugging
 exec > /var/log/user-data.log 2>&1
 
@@ -27,10 +26,11 @@ nohup bin/kafka-server-start.sh config/server.properties > kafka.log 2>&1 &
 sleep 30  # Ensure Kafka is up and running
 
 # Create Kafka topics
-# IFS=',' read -ra TOPICS <<< "${KAFKA_TOPICS}"
-# for TOPIC_INFO in "${TOPICS[@]}"; do
-#   IFS=':' read -ra TOPIC <<< "$TOPIC_INFO"
-#   TOPIC_NAME=${TOPIC[0]}
-#   PARTITIONS=${TOPIC[1]}
-#   bin/kafka-topics.sh --create --topic "$TOPIC_NAME" --partitions "$PARTITIONS" --replication-factor 1 --bootstrap-server localhost:9092
-# done
+export KAFKA_TOPICS="${join(",", [for topic in var.kafka_topics : "${topic.name}:${topic.partitions}"])}"
+IFS=',' read -ra TOPICS <<< "${KAFKA_TOPICS}"
+for TOPIC_INFO in "${TOPICS[@]}"; do
+  IFS=':' read -ra TOPIC <<< "$TOPIC_INFO"
+  TOPIC_NAME=${TOPIC[0]}
+  PARTITIONS=${TOPIC[1]}
+  bin/kafka-topics.sh --create --topic "$TOPIC_NAME" --partitions "$PARTITIONS" --replication-factor 1 --bootstrap-server localhost:9092
+done

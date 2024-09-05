@@ -21,8 +21,8 @@ terraform apply \
   -var "instance_type=${INSTANCE_TYPE}" \
   -var "aws_profile_name=${AWS_PROFILE_NAME}" \
   -var "key_name=${KEY_PAIR_NAME}" \
+  -var "kafka_topics=${TOPICS_JSON}" \
   -auto-approve
-  # -var "kafka_topics=${TOPICS_JSON}" \
 
 # Capture the Terraform outputs
 EC2_PUBLIC_IP=$(terraform output -raw ec2_public_ip)
@@ -51,3 +51,13 @@ echo "INSTANCE_TYPE=${INSTANCE_TYPE}" >> teardown_details.txt
 echo "AWS_PROFILE_NAME=${AWS_PROFILE_NAME}" >> teardown_details.txt
 echo "KEY_PAIR_NAME=${KEY_PAIR_NAME}" >> teardown_details.txt
 echo "TOPICS_JSON='${TOPICS_JSON}'" >> teardown_details.txt
+
+# Wait for instance to be running
+echo "Waiting for the instance to be running..."
+aws ec2 wait instance-running --instance-ids $INSTANCE_ID
+echo "Instance is running."
+
+# Wait for the system status to be OK
+echo "Waiting for the system status to be OK..."
+aws ec2 wait system-status-ok --instance-ids $INSTANCE_ID
+echo "System status is OK."

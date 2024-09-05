@@ -4,10 +4,6 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
-    singlestoredb = {
-      source  = "singlestore-labs/singlestoredb"
-      version = "0.1.0-alpha.5" # Use the latest version available
-    }
   }
 }
 
@@ -62,8 +58,8 @@ variable "key_name" {
 variable "single_store_ips" {
   type        = list(string)
   description = "List of SingleStore outbound IP addresses"
-<<<<<<< HEAD
 }
+
 # Variable for Kafka topics
 variable "kafka_topics" {
   description = "List of Kafka topics to create"
@@ -71,17 +67,7 @@ variable "kafka_topics" {
     name       = string
     partitions = number
   }))
-=======
->>>>>>> 3321f18 (chore: stable state)
 }
-# Variable for Kafka topics
-# variable "kafka_topics" {
-#   description = "List of Kafka topics to create"
-#   type = list(object({
-#     name       = string
-#     partitions = number
-#   }))
-# }
 
 resource "aws_eip" "kafka_ip" {
   instance = aws_instance.kafka_ec2.id
@@ -177,11 +163,11 @@ resource "aws_security_group_rule" "kafka_ip_ingress_2181" {
 }
 
 # Resource to create Kafka topics
-# resource "null_resource" "create_kafka_topics" {
-#   count = length(var.kafka_topics)
+resource "null_resource" "create_kafka_topics" {
+  count = length(var.kafka_topics)
 
-#   depends_on = [aws_instance.kafka_ec2]
-# }
+  depends_on = [aws_instance.kafka_ec2]
+}
 
 output "ec2_public_ip" {
   description = "The public IP address of the EC2 instance"
