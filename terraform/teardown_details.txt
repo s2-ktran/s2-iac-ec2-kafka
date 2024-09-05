@@ -1,7 +1,0 @@
-MY_IP=50.106.20.221
-SINGLE_STORE_IPS_LIST='["52.39.174.38/32","44.230.94.214/32","35.81.56.251/32","52.35.160.52/32"]'
-AWS_REGION=us-west-2
-INSTANCE_TYPE=t2.large
-AWS_PROFILE_NAME=
-KEY_PAIR_NAME=ec2_key
-TOPICS_JSON='[{"name": "test-topic", "partitions": 8}]'
