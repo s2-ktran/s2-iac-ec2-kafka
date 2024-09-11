@@ -20,7 +20,7 @@ Deploy an EC2 kafka instance programmatically using terraform. The EC2 instance 
 Set your AWS account using `aws configure`. Retrieve the 4 output IP addresses from your SingleStore workspace cluster.
 
 ```bash
-./scripts/var_gen.sh
+bash scripts/var_gen.sh
 ```
 
 The outputs are stored in `/scripts/output_vars.sh`.
@@ -30,7 +30,7 @@ The outputs are stored in `/scripts/output_vars.sh`.
 Run the following command to build and deploy the application. This script takes a few minutes to run due to the restart cycles of the instance for zookeeper and kafka.
 
 ```bash
-./scripts/deploy.sh
+bash scripts/deploy.sh
 ```
 
 ### Data Ingestion into Kafka
@@ -39,7 +39,7 @@ Run the following commands to load data into the Kafka EC2 instance. The script 
 
 ```bash
 export EC2_PUBLIC_IP="<outputted public IP>"
-./scripts/load_kafka.sh
+bash scripts/load_kafka.sh
 ```
 
 ### SingleStore Ingestion

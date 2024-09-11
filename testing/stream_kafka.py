@@ -5,9 +5,6 @@ from confluent_kafka.admin import AdminClient, NewTopic
 from data.generate_data import main_generation
 
 EC2_PUBLIC_IP = os.environ["EC2_PUBLIC_IP"]
-KAFKA_TOPIC = os.environ["KAFKA_TOPIC"]
-ENTRY_COUNT = os.environ["ENTRY_COUNT"]
-
 
 # Initialize Kafka producer
 producer = Producer({"bootstrap.servers": f"{EC2_PUBLIC_IP}:9092"})
@@ -33,7 +30,6 @@ def create_kafka_topic(topic_name, num_partitions=1, replication_factor=1):
 
 def produce_event_logs_to_kafka(num_records, topic_name):
     event_logs = main_generation(num_records)
-
     for log in event_logs:
         producer.produce(topic_name, value=json.dumps(log))
         print(f"Sent: {log}")
@@ -44,7 +40,10 @@ def produce_event_logs_to_kafka(num_records, topic_name):
 
 # Example usage
 if __name__ == "__main__":
-    num_records = int(ENTRY_COUNT)
-    topic_name = KAFKA_TOPIC
-    # create_kafka_topic(topic_name)
-    produce_event_logs_to_kafka(num_records, topic_name)
+    continue_loading = "Y"
+    while continue_loading == "Y":
+        topic_name = input("What kafka topic would you like to preload? ")
+        num_records = int(input("How many entries would you like to create? "))
+        # create_kafka_topic(topic_name)
+        produce_event_logs_to_kafka(num_records, topic_name)
+        continue_loading = input("Would you like to continue loading data (Y/N)? ")

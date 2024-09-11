@@ -1,17 +1,23 @@
 #!/bin/bash
 
+# Get the directory where the script is located
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 echo "Script directory: $SCRIPT_DIR"
 
+# Change to the parent directory of the script directory
+cd "$SCRIPT_DIR/../"
+
 # Set up Python virtual environment and install dependencies
-python -m venv env
+if [ ! -d "env" ]; then
+    python3 -m venv env
+    source env/bin/activate
+    pip install confluent-kafka pyyaml
+    echo "'env' directory created and dependencies installed."
+else
+    echo "'env' directory already exists."
+fi
+
+# Activate the virtual environment and run your Python script
 source env/bin/activate
-pip install confluent-kafka
+python3 "$SCRIPT_DIR/../testing/stream_kafka.py"
 
-# Run your Python script (make sure to adjust the path to your script if needed)
-read -p "What kafka topic would you like to preload? " KAFKA_TOPIC
-read -p "How many entries would you like to create? " ENTRY_COUNT
-
-export ENTRY_COUNT=$ENTRY_COUNT
-export KAFKA_TOPIC=$KAFKA_TOPIC
-python3 $SCRIPT_DIR/../testing/stream_kafka.py
