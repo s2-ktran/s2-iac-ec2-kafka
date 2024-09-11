@@ -11,30 +11,24 @@ if [[ -z "$AWS_REGION" ]]; then
 fi
 
 
-read -p "Enter the SingleStore endpoints (comma-separated): " SINGLE_STORE_IPS_INPUT
-SINGLE_STORE_IPS_INPUT=$(echo $SINGLE_STORE_IPS_INPUT | tr -d ' ')
-if [[ -z "$SINGLE_STORE_IPS_INPUT" ]]; then
+read -p "Enter the IP addresses that you would like Kafka to connect with (comma-separated): " IPS_INPUT
+IPS_INPUT=$(echo $IPS_INPUT | tr -d ' ') 
+if [[ -z "$IPS_INPUT" ]]; then
   echo "You must enter at least one IP address."
   exit 1
 fi
 
-IFS=',' read -r -a IP_ARRAY <<< "$SINGLE_STORE_IPS_INPUT"
-if [[ ${#IP_ARRAY[@]} -ne 3 && ${#IP_ARRAY[@]} -ne 4 ]]; then
-  echo "Please enter exactly 3 or 4 IP addresses."
-  exit 1
-fi
+IFS=',' read -r -a IP_ARRAY <<< "$IPS_INPUT"
+IP_LIST=""
+for ip in "${IP_ARRAY[@]}"; do
+  if [[ -n "$ip" ]]; then
+    IP_LIST+="$ip/32,"
+  fi
+done
+IP_LIST="${IP_LIST%,}" # remove trailing comma
 
-IP_1=${IP_ARRAY[0]}
-IP_2=${IP_ARRAY[1]}
-IP_3=${IP_ARRAY[2]}
-IP_4=${IP_ARRAY[3]:-""}  # Set IP_4 to an empty string if not provided
-echo "These IP addresses you entered are: $IP_1, $IP_2, $IP_3${IP_4:+, $IP_4}"
-SINGLE_STORE_IPS="$IP_1/32,$IP_2/32,$IP_3/32"
-if [[ -n "$IP_4" ]]; then
-  SINGLE_STORE_IPS="$SINGLE_STORE_IPS,$IP_4/32"
-fi
-SINGLE_STORE_IPS_LIST=$(echo $SINGLE_STORE_IPS | sed 's/,/","/g' | sed 's/^/["/' | sed 's/$/"]/')
-echo $SINGLE_STORE_IPS_LIST
+IP_LIST=$(echo "$IP_LIST" | sed 's/,/","/g' | sed 's/^/["/' | sed 's/$/"]/')
+echo $IP_LIST
 
 # Collect Kafka topics information
 TOPICS=()
@@ -71,7 +65,7 @@ cat <<EOF > $SCRIPT_DIR/output_vars.sh
 #!/bin/bash
 export TF_VAR_singlestore_api_key="$TF_VAR_singlestore_api_key"
 export AWS_REGION="$AWS_REGION"
-export SINGLE_STORE_IPS_LIST='$SINGLE_STORE_IPS_LIST'
+export IP_LIST='$IP_LIST'
 export MY_IP="$MY_IP"
 export AWS_PROFILE_NAME="$AWS_PROFILE_NAME"
 export INSTANCE_TYPE="$INSTANCE_TYPE"

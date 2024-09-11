@@ -55,9 +55,9 @@ variable "key_name" {
   type        = string
 }
 
-variable "single_store_ips" {
+variable "ip_list" {
   type        = list(string)
-  description = "List of SingleStore outbound IP addresses"
+  description = "List of outbound IP addresses"
 }
 
 # Variable for Kafka topics
@@ -87,14 +87,14 @@ resource "aws_security_group" "kafka_sg" {
     from_port   = 9092
     to_port     = 9092
     protocol    = "tcp"
-    cidr_blocks = concat([var.my_ip], var.single_store_ips)
+    cidr_blocks = concat([var.my_ip], var.ip_list)
   }
 
   ingress {
     from_port   = 2181
     to_port     = 2181
     protocol    = "tcp"
-    cidr_blocks = concat([var.my_ip], var.single_store_ips)
+    cidr_blocks = concat([var.my_ip], var.ip_list)
   }
 
   ingress {
