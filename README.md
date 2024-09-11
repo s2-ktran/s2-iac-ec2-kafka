@@ -27,7 +27,7 @@ The outputs are stored in `/scripts/output_vars.sh`.
 
 ### Terraform Deployment
 
-Run the following command to build and deploy the application.  This script takes a few minutes to run due to the restart cycles of the instance for zookeeper and kafka.
+Run the following command to build and deploy the application. This script takes a few minutes to run due to the restart cycles of the instance for zookeeper and kafka.
 
 ```bash
 ./scripts/deploy.sh
@@ -35,11 +35,11 @@ Run the following command to build and deploy the application.  This script take
 
 ### Data Ingestion into Kafka
 
-Run the following commands to load data into the Kafka EC2 instance:
+Run the following commands to load data into the Kafka EC2 instance. The script populates one of the kafka topics with a dataset listed in `testing/data/data.yaml`:
 
 ```bash
 export EC2_PUBLIC_IP="<outputted public IP>"
-./scripts/test.sh
+./scripts/load_kafka.sh
 ```
 
 ### SingleStore Ingestion
@@ -76,8 +76,8 @@ Once you are finished using the project, delete the notebook and the associated 
 
 ### Code Layout
 
-| Path                 | Description                                                    |
-| :------------------- | :------------------------------------------------------------- |
-| terraform/           | Terraform source code.                                         |
-| scripts/             | shell scripts to build, deploy, and interact with the project. |
-| testing/             | Example kafka ingestion.                                       |
+| Path       | Description                                                    |
+| :--------- | :------------------------------------------------------------- |
+| terraform/ | Terraform source code.                                         |
+| scripts/   | shell scripts to build, deploy, and interact with the project. |
+| testing/   | Example kafka ingestion.                                       |

@@ -1,0 +1,86 @@
+data:
+  vehicle_data:
+    event_id:
+      prefix: event_
+      type: uuid
+    timestamp:
+      type: timestamp
+    event_type:
+      type: choice
+      values:
+        - accident
+        - maintenance
+        - other
+    description:
+      type: choice
+      values:
+        - Minor accident
+        - Scheduled maintenance
+        - Unscheduled maintenance
+        - Other event
+    related_vehicle_id:
+      type: int
+      min: 1
+      max: 100
+      prefix: vehicle_
+    additional_info:
+      type: JSON
+      values:
+        info: "Additional event details"
+  log_data:
+    event_id:
+      type: uuid
+      prefix: event_
+    timestamp:
+      type: timestamp
+    event_type:
+      type: choice
+      values:
+        - button_click
+        - click
+        - scroll
+    page:
+      type: choice
+      values:
+        - Home
+        - About
+        - Contact Me
+        - SingleStore Portal
+        - Docs
+    browser:
+      type: choice
+      values:
+        - Firefox
+        - Chrome
+        - Internet Explore
+        - Microsoft Edge
+    metadata:
+      type: JSON
+      values:
+        utm_medium: email
+        utm_source: outreach
+        utm_term: s2
+  user_data:
+    user_id:
+      type: uuid
+      prefix: user_
+    sign_up:
+      type: timestamp
+    user_type:
+      type: choice
+      values:
+        - Admin
+        - User
+        - Moderator
+    email:
+      type: choice
+      values:
+        - example@gmail.com
+        - example@hotmail.com
+        - example@yahoo.com
+    phone_number:
+      type: choice
+      values:
+        - 415-XXX-XXXX
+        - 206-XXX-XXXX
+        - 212-XXX-XXXX
