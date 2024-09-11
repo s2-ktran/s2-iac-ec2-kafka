@@ -27,7 +27,7 @@ The outputs are stored in `/scripts/output_vars.sh`.
 
 ### Terraform Deployment
 
-Run the following command to build and deploy the application.  This script takes a few minutes to run due to the restart cycles of the instance for zookeeper and kafka.
+Run the following command to build and deploy the application. This script takes a few minutes to run due to the restart cycles of the instance for zookeeper and kafka.
 
 ```bash
 ./scripts/deploy.sh
@@ -76,8 +76,8 @@ Once you are finished using the project, delete the notebook and the associated 
 
 ### Code Layout
 
-| Path                 | Description                                                    |
-| :------------------- | :------------------------------------------------------------- |
-| terraform/           | Terraform source code.                                         |
-| scripts/             | shell scripts to build, deploy, and interact with the project. |
-| testing/             | Example kafka ingestion.                                       |
+| Path       | Description                                                    |
+| :--------- | :------------------------------------------------------------- |
+| terraform/ | Terraform source code.                                         |
+| scripts/   | shell scripts to build, deploy, and interact with the project. |
+| testing/   | Example kafka ingestion.                                       |
