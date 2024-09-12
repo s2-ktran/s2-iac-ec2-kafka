@@ -46,22 +46,10 @@ bash scripts/load_kafka.sh
 
 Load the notebook `testing/test-kafka.ipynb` into SingleStore Helios.
 
-Run the commands and replace the IP address and topic:
+Run the commands to create the pipelines. The **Pipeline Creation** section requires you to input your public IP once again.
 
 ```sql
--- Create pipelines for Kafka
-CREATE OR REPLACE PIPELINE event_logs_kafka AS
-LOAD DATA KAFKA '<KAFKA_EC2_IP>/<TOPIC_NAME>'
-INTO TABLE event_log
-(
-    event_id <- event_id,
-    timestamp <- timestamp,
-    type <- type,
-    description <- description,
-    related_vehicle_id <- related_vehicle_id,
-    additional_info <- additional_info
-)
-FORMAT JSON;
+SET @EC2_PUBLIC_IP := "<EC2_PUBLIC_IP>"
 ```
 
 ### Teardown
