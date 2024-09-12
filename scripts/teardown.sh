@@ -24,7 +24,7 @@ terraform init \
 
 echo "Destroying remaining AWS infrastructure..."
 terraform destroy \
-  -var "single_store_ips=${SINGLE_STORE_IPS_LIST}" \
+  -var "ip_list=${IP_LIST}" \
   -var "region=${AWS_REGION}" \
   -var "aws_profile_name=${AWS_PROFILE_NAME}" \
   -var "my_ip=${MY_IP}/32" \

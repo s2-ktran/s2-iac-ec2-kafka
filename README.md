@@ -2,6 +2,8 @@
 
 Deploy an EC2 kafka instance programmatically using terraform. The EC2 instance includes kafka capabilities for both a SingleStore workspace group and your local environment.
 
+![Diagram](https://github.com/s2-ktran/iac-ec2-kafka/diagram.png)
+
 ## Launch Configurations
 
 ### Prerequisites
@@ -27,7 +29,7 @@ The outputs are stored in `/scripts/output_vars.sh`.
 
 ### Terraform Deployment
 
-Run the following command to build and deploy the application.  This script takes a few minutes to run due to the restart cycles of the instance for zookeeper and kafka.
+Run the following command to build and deploy the application. This script takes a few minutes to run due to the restart cycles of the instance for zookeeper and kafka.
 
 ```bash
 ./scripts/deploy.sh
@@ -76,8 +78,8 @@ Once you are finished using the project, delete the notebook and the associated 
 
 ### Code Layout
 
-| Path                 | Description                                                    |
-| :------------------- | :------------------------------------------------------------- |
-| terraform/           | Terraform source code.                                         |
-| scripts/             | shell scripts to build, deploy, and interact with the project. |
-| testing/             | Example kafka ingestion.                                       |
+| Path       | Description                                                    |
+| :--------- | :------------------------------------------------------------- |
+| terraform/ | Terraform source code.                                         |
+| scripts/   | shell scripts to build, deploy, and interact with the project. |
+| testing/   | Example kafka ingestion.                                       |
