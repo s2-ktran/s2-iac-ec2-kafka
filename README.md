@@ -2,7 +2,7 @@
 
 Deploy an EC2 kafka instance programmatically using terraform. The EC2 instance includes kafka capabilities for both a SingleStore workspace group and your local environment.
 
-![Diagram](https://github.com/s2-ktran/iac-ec2-kafka/diagram.png)
+![Diagram](https://github.com/s2-ktran/iac-ec2-kafka/blob/main/diagram.png)
 
 ## Launch Configurations
 
