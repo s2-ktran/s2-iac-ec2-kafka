@@ -26,3 +26,5 @@ env
 *.pem
 scripts/output_vars.sh
 terraform/teardown_details.txt
+
+testing/data/__pycache__/*
