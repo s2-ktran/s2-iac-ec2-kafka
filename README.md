@@ -1,6 +1,6 @@
-# Provisioning EC2 + Kafka using Infrastructure as Code
+# Streaming Kafka Data Through Amazon EC2 into SingleStore
 
-Deploy an EC2 kafka instance programmatically using terraform. The EC2 instance includes kafka capabilities for both a SingleStore workspace group and your local environment.
+Deploy an EC2 kafka instance programmatically using terraform. The EC2 instance includes kafka capabilities for streaming data into SingleStore and any additional servers.
 
 ![Diagram](https://github.com/s2-ktran/iac-ec2-kafka/blob/main/diagram.png)
 
@@ -19,7 +19,7 @@ Deploy an EC2 kafka instance programmatically using terraform. The EC2 instance 
 
 ### Input Variables
 
-Set your AWS account using `aws configure`. Retrieve the output IP addresses from 1/ your provisioned SingleStore workspace cluster and 2/ any other IP addresses you would like Kafka to connect with.
+Set your AWS account using `aws configure`. Retrieve the output IP addresses from 1/ your provisioned SingleStore workspace cluster and 2/ any other IP addresses you would like Kafka to connect with. Run the following command to populate your environment variables:
 
 ```bash
 bash scripts/var_gen.sh
