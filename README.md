@@ -46,7 +46,7 @@ bash scripts/load_kafka.sh
 
 ### SingleStore Ingestion
 
-Load the notebook `testing/test-kafka.ipynb` into SingleStore Helios.
+Load the notebook `testing/ec2-kafka-s2-notebook.ipynb` into SingleStore Helios.
 
 Run the commands to create the pipelines. The **Pipeline Creation** section requires you to input your public IP once again.
 

@@ -40,10 +40,10 @@ def produce_event_logs_to_kafka(num_records, topic_name):
 
 # Example usage
 if __name__ == "__main__":
-    continue_loading = "Y"
-    while continue_loading == "Y":
+    continue_loading = "y"
+    while continue_loading == "y":
         topic_name = input("What kafka topic would you like to preload? ")
         num_records = int(input("How many entries would you like to create? "))
         # create_kafka_topic(topic_name)
         produce_event_logs_to_kafka(num_records, topic_name)
-        continue_loading = input("Would you like to continue loading data (Y/N)? ")
+        continue_loading = input("Would you like to continue loading data (y/n)? ")
