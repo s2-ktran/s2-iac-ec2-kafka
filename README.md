@@ -19,7 +19,7 @@ Deploy an EC2 kafka instance programmatically using terraform. The EC2 instance 
 
 ### Input Variables
 
-Set your AWS account using `aws configure`. Retrieve the 4 output IP addresses from your SingleStore workspace cluster.
+Set your AWS account using `aws configure`. Retrieve the output IP addresses from 1/ your provisioned SingleStore workspace cluster and 2/ any other IP addresses you would like Kafka to connect with.
 
 ```bash
 bash scripts/var_gen.sh
