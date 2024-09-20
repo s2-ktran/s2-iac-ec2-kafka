@@ -44,6 +44,21 @@ export EC2_PUBLIC_IP="<outputted public IP>"
 bash scripts/load_kafka.sh
 ```
 
+If you would like to automate the Kafka data loading, create a `data/testing_var.sh` with the following format:
+
+```yaml
+streaming:
+  - topic_name: "topic_2"
+    record_count: 1000
+    dataset: 1
+  - topic_name: "topic_2"
+    record_count: 500
+    dataset: 2
+  - topic_name: "topic_3"
+    record_count: 2000
+    dataset: 0
+```
+
 ### SingleStore Ingestion
 
 Load the notebook `testing/ec2-kafka-s2-notebook.ipynb` into SingleStore Helios.

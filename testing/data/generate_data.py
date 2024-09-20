@@ -6,9 +6,8 @@ import random
 
 # Get the directory where the script is located
 script_dir = os.path.dirname(os.path.abspath(__file__))
-yaml_file_path = os.path.join(script_dir, 'data.yaml')
 
-def read_yaml():
+def read_yaml(yaml_file_path):
     with open(yaml_file_path, 'r') as file:
         return yaml.safe_load(file)
     
@@ -53,14 +52,17 @@ def generate_data(data_format, amount):
 
 
 
-def main_generation(num_records):
-    data = read_yaml()['data']
+def main_generation(num_records, dataset_num):
+    data = read_yaml(os.path.join(script_dir, 'data.yaml'))['data']
     data_types = list(data.keys())
-    choice = prompt_options(data_types)
+    if dataset_num == -1:
+        choice = prompt_options(data_types)
+    else:
+        choice = dataset_num
     print(choice)
     data_format = data[choice]
     return generate_data(data_format, num_records)
 
 # Testing purposes
 if __name__ == "__main__":
-    print(main_generation(10))
+    print(main_generation(10, -1))

@@ -2,7 +2,7 @@ import json
 import os
 from confluent_kafka import Producer, KafkaException, KafkaError
 from confluent_kafka.admin import AdminClient, NewTopic
-from data.generate_data import main_generation
+from data.generate_data import main_generation, read_yaml
 
 EC2_PUBLIC_IP = os.environ["EC2_PUBLIC_IP"]
 
@@ -28,22 +28,30 @@ def create_kafka_topic(topic_name, num_partitions=1, replication_factor=1):
                 raise
 
 
-def produce_event_logs_to_kafka(num_records, topic_name):
-    event_logs = main_generation(num_records)
+def produce_event_logs_to_kafka(num_records, topic_name, dataset_num):
+    event_logs = main_generation(num_records, dataset_num)
     for log in event_logs:
         producer.produce(topic_name, value=json.dumps(log))
         print(f"Sent: {log}")
-
     # Wait up to 5 seconds for messages to be sent
     producer.flush(timeout=5)
 
 
 # Example usage
 if __name__ == "__main__":
-    continue_loading = "y"
-    while continue_loading == "y":
-        topic_name = input("What kafka topic would you like to preload? ")
-        num_records = int(input("How many entries would you like to create? "))
-        # create_kafka_topic(topic_name)
-        produce_event_logs_to_kafka(num_records, topic_name)
-        continue_loading = input("Would you like to continue loading data (y/n)? ")
+    file_path = os.getcwd() + "/testing_var.yaml"
+    if os.path.exists(file_path):
+        streaming = read_yaml(file_path)['streaming']
+        for stream in streaming:
+            num_records = stream["record_count"]
+            topic_name = stream["topic_name"]
+            dataset_num = stream["dataset"]
+            produce_event_logs_to_kafka(num_records,topic_name,dataset_num)
+    else:
+        continue_loading = "y"
+        while continue_loading == "y":
+            topic_name = input("What kafka topic would you like to preload? ")
+            num_records = int(input("How many entries would you like to create? "))
+            # create_kafka_topic(topic_name)
+            produce_event_logs_to_kafka(num_records, topic_name, -1)
+            continue_loading = input("Would you like to continue loading data (y/n)? ")
