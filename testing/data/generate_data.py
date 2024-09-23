@@ -52,14 +52,13 @@ def generate_data(data_format, amount):
 
 
 
-def main_generation(num_records, dataset_num):
+def main_generation(num_records, dataset):
     data = read_yaml(os.path.join(script_dir, 'data.yaml'))['data']
     data_types = list(data.keys())
-    if dataset_num == -1:
+    if dataset == -1:
         choice = prompt_options(data_types)
     else:
-        choice = dataset_num
-    print(choice)
+        choice = dataset
     data_format = data[choice]
     return generate_data(data_format, num_records)
 
