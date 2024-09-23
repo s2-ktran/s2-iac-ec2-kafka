@@ -3,6 +3,7 @@ import os
 from confluent_kafka import Producer, KafkaException, KafkaError
 from confluent_kafka.admin import AdminClient, NewTopic
 from data.generate_data import main_generation, read_yaml
+import time
 
 EC2_PUBLIC_IP = os.environ["EC2_PUBLIC_IP"]
 
@@ -32,6 +33,9 @@ def produce_event_logs_to_kafka(num_records, topic_name, dataset_num):
     event_logs = main_generation(num_records, dataset_num)
     for log in event_logs:
         producer.produce(topic_name, value=json.dumps(log))
+        producer.poll(0)  # Polls the producer for message delivery events
+        # Optional: Sleep for a small amount of time to allow the queue to clear
+        time.sleep(0.01)  # Adjust this value as needed
         print(f"Sent: {log}")
     # Wait up to 5 seconds for messages to be sent
     producer.flush(timeout=5)
