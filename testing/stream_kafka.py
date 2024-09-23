@@ -35,7 +35,7 @@ def produce_event_logs_to_kafka(num_records, topic_name, dataset_num):
         producer.produce(topic_name, value=json.dumps(log))
         producer.poll(0)  # Polls the producer for message delivery events
         # Optional: Sleep for a small amount of time to allow the queue to clear
-        time.sleep(0.01)  # Adjust this value as needed
+        time.sleep(0.001)  # Adjust this value as needed
         print(f"Sent: {log}")
     # Wait up to 5 seconds for messages to be sent
     producer.flush(timeout=5)

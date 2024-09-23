@@ -1,86 +1,8646 @@
 data:
-  vehicle_data:
-    event_id:
-      prefix: event_
-      type: uuid
-    timestamp:
+  abmengagements:
+    abm_id:
+      max: 100
+      min: 1
+      type: int
+    created_at:
       type: timestamp
-    event_type:
+    engagement_id:
+      max: 100
+      min: 1
+      type: int
+    engagement_type:
       type: choice
       values:
-        - accident
-        - maintenance
-        - other
+      - choice 1
+      - choice 2
+      - choice 3
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+  academicadvising:
+    advising_date:
+      type: DATE,
+    advising_id:
+      max: 100
+      min: 1
+      type: int
+    advisor_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  academiccalendar:
+    end_date:
+      type: DATE,
+    semester:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    start_date:
+      type: DATE,
+    year:
+      max: 100
+      min: 1
+      type: int
+  academichonors:
+    criteria:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    honor_id:
+      max: 100
+      min: 1
+      type: int
+    honor_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  academicintegritypolicies:
     description:
       type: choice
       values:
-        - Minor accident
-        - Scheduled maintenance
-        - Unscheduled maintenance
-        - Other event
-    related_vehicle_id:
-      type: int
-      min: 1
+      - choice 1
+      - choice 2
+      - choice 3
+    policy_id:
       max: 100
-      prefix: vehicle_
-    additional_info:
-      type: JSON
+      min: 1
+      type: int
+    policy_name:
+      type: choice
       values:
-        info: "Additional event details"
-  log_data:
-    event_id:
-      type: uuid
-      prefix: event_
+      - choice 1
+      - choice 2
+      - choice 3
+  academicpolicies:
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    policy_id:
+      max: 100
+      min: 1
+      type: int
+    policy_title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  academicresources:
+    resource_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    resource_id:
+      max: 100
+      min: 1
+      type: int
+    resource_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  accountbasedmarketing:
+    abm_id:
+      max: 100
+      min: 1
+      type: int
+    account_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    target_audience:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  adcampaigns:
+    ad_campaign_id:
+      max: 100
+      min: 1
+      type: int
+    ad_content:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    ad_platform:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    budget:
+      max: 100
+      min: 1
+      type: int
+    campaign_id:
+      max: 100
+      min: 1
+      type: int
+    end_date:
+      type: DATE,
+    start_date:
+      type: DATE,
+  adperformance:
+    ad_campaign_id:
+      max: 100
+      min: 1
+      type: int
+    clicks:
+      type: INT,
+    conversions:
+      type: INT,
+    cost:
+      max: 100
+      min: 1
+      type: int
+    impressions:
+      type: INT,
+    performance_id:
+      max: 100
+      min: 1
+      type: int
+  adspendanalysis:
+    ad_campaign_id:
+      max: 100
+      min: 1
+      type: int
+    analysis_id:
+      max: 100
+      min: 1
+      type: int
+    conversions:
+      type: INT,
+    leads_generated:
+      type: INT,
+    total_spend:
+      max: 100
+      min: 1
+      type: int
+  affiliateprograms:
+    commission_rate:
+      max: 100
+      min: 1
+      type: int
+    created_at:
+      type: timestamp
+    program_id:
+      max: 100
+      min: 1
+      type: int
+    program_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  affiliates:
+    affiliate_id:
+      max: 100
+      min: 1
+      type: int
+    affiliate_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    contact_email:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    program_id:
+      max: 100
+      min: 1
+      type: int
+  affiliatesales:
+    affiliate_id:
+      max: 100
+      min: 1
+      type: int
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    sale_date:
+      type: timestamp
+    sale_id:
+      max: 100
+      min: 1
+      type: int
+    sale_value:
+      max: 100
+      min: 1
+      type: int
+  alumni:
+    alumni_id:
+      max: 100
+      min: 1
+      type: int
+    first_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    graduation_year:
+      type: INT,
+    last_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  alumniactivities:
+    activity_date:
+      type: DATE,
+    activity_id:
+      max: 100
+      min: 1
+      type: int
+    activity_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    alumni_id:
+      max: 100
+      min: 1
+      type: int
+  analytics:
+    analytics_id:
+      max: 100
+      min: 1
+      type: int
+    experiment_id:
+      max: 100
+      min: 1
+      type: int
+    metric_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    metric_value:
+      max: 100
+      min: 1
+      type: int
+    recorded_at:
+      type: timestamp
+  annotations:
+    annotation_id:
+      max: 100
+      min: 1
+      type: int
+    created_at:
+      type: timestamp
+    experiment_id:
+      max: 100
+      min: 1
+      type: int
+    note:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  apiendpoints:
+    endpoint_id:
+      max: 100
+      min: 1
+      type: int
+    endpoint_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    method:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  apikeys:
+    api_key_id:
+      max: 100
+      min: 1
+      type: int
+    created_at:
+      type: timestamp
+    key_value:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  apilogs:
+    endpoint_id:
+      max: 100
+      min: 1
+      type: int
+    log_id:
+      max: 100
+      min: 1
+      type: int
+    request_timestamp:
+      type: timestamp
+    response_status:
+      type: INT,
+  architecturereviews:
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    review_id:
+      max: 100
+      min: 1
+      type: int
+    reviewed_at:
+      type: timestamp
+  articlefeedback:
+    article_id:
+      max: 100
+      min: 1
+      type: int
+    feedback_id:
+      max: 100
+      min: 1
+      type: int
+    feedback_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    submitted_at:
+      type: timestamp
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  assetallocation:
+    allocation_date:
+      type: DATE,
+    allocation_id:
+      max: 100
+      min: 1
+      type: int
+    asset_id:
+      max: 100
+      min: 1
+      type: int
+    employee_id:
+      max: 100
+      min: 1
+      type: int
+  assignments:
+    assignment_id:
+      max: 100
+      min: 1
+      type: int
+    assignment_title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    class_id:
+      max: 100
+      min: 1
+      type: int
+    due_date:
+      type: DATE,
+  attendance:
+    attendance_date:
+      type: DATE,
+    attendance_id:
+      max: 100
+      min: 1
+      type: int
+    employee_id:
+      max: 100
+      min: 1
+      type: int
+    status:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  attendancevt:
+    AttendanceVT_date:
+      type: DATE,
+    AttendanceVT_id:
+      max: 100
+      min: 1
+      type: int
+    class_id:
+      max: 100
+      min: 1
+      type: int
+    status:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  audienceinsights:
+    created_at:
+      type: timestamp
+    insight_id:
+      max: 100
+      min: 1
+      type: int
+    insight_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    segment_id:
+      max: 100
+      min: 1
+      type: int
+  auditlogs:
+    action:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    employee_id:
+      max: 100
+      min: 1
+      type: int
+    log_id:
+      max: 100
+      min: 1
+      type: int
     timestamp:
+      type: DATETIME,
+  auditrecommendations:
+    audit_id:
+      max: 100
+      min: 1
+      type: int
+    recommendation_id:
+      max: 100
+      min: 1
+      type: int
+    recommendation_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  audittrails:
+    action:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    performed_at:
+      type: timestamp
+    performed_by:
+      max: 100
+      min: 1
+      type: int
+    trail_id:
+      max: 100
+      min: 1
+      type: int
+  automationactions:
+    action_details:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    action_id:
+      max: 100
+      min: 1
+      type: int
+    action_type:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    automation_id:
+      max: 100
+      min: 1
+      type: int
+  awards:
+    award_id:
+      max: 100
+      min: 1
+      type: int
+    award_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  backlogrefinements:
+    backlog_id:
+      max: 100
+      min: 1
+      type: int
+    refined_at:
+      type: timestamp
+    refinement_id:
+      max: 100
+      min: 1
+      type: int
+  backlogs:
+    backlog_id:
+      max: 100
+      min: 1
+      type: int
+    sprint_id:
+      max: 100
+      min: 1
+      type: int
+    task_id:
+      max: 100
+      min: 1
+      type: int
+  bookloans:
+    book_id:
+      max: 100
+      min: 1
+      type: int
+    loan_date:
+      type: DATE,
+    loan_id:
+      max: 100
+      min: 1
+      type: int
+    return_date:
+      type: DATE,
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  brandawareness:
+    awareness_id:
+      max: 100
+      min: 1
+      type: int
+    awareness_level:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    campaign_id:
+      max: 100
+      min: 1
+      type: int
+    created_at:
+      type: timestamp
+  brandguidelines:
+    content:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    guideline_id:
+      max: 100
+      min: 1
+      type: int
+    guideline_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  brandperception:
+    created_at:
+      type: timestamp
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    perception_id:
+      max: 100
+      min: 1
+      type: int
+    perception_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  budgetallocations:
+    allocated_amount:
+      max: 100
+      min: 1
+      type: int
+    allocation_id:
+      max: 100
+      min: 1
+      type: int
+    campaign_id:
+      max: 100
+      min: 1
+      type: int
+  businesscontinuityplans:
+    created_date:
+      type: DATE,
+    plan_id:
+      max: 100
+      min: 1
+      type: int
+    plan_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  businessgoals:
+    goal_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    goal_id:
+      max: 100
+      min: 1
+      type: int
+    target_date:
+      type: DATE,
+  businessunits:
+    unit_id:
+      max: 100
+      min: 1
+      type: int
+    unit_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  campaignchannels:
+    campaign_id:
+      max: 100
+      min: 1
+      type: int
+    channel_id:
+      max: 100
+      min: 1
+      type: int
+    channel_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  campaignperformance:
+    campaign_id:
+      max: 100
+      min: 1
+      type: int
+    performance_id:
+      max: 100
+      min: 1
+      type: int
+    performance_metric:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    value:
+      max: 100
+      min: 1
+      type: int
+  campaigns:
+    budget:
+      max: 100
+      min: 1
+      type: int
+    campaign_id:
+      max: 100
+      min: 1
+      type: int
+    campaign_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    end_date:
+      type: DATE,
+    start_date:
+      type: DATE,
+  campaigntrends:
+    campaign_id:
+      max: 100
+      min: 1
+      type: int
+    created_at:
+      type: timestamp
+    trend_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    trend_id:
+      max: 100
+      min: 1
+      type: int
+  campusfacilities:
+    facility_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    facility_id:
+      max: 100
+      min: 1
+      type: int
+    facility_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  campusnews:
+    content:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    news_id:
+      max: 100
+      min: 1
+      type: int
+    published_date:
+      type: DATE,
+    title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  campusorganizations:
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    organization_id:
+      max: 100
+      min: 1
+      type: int
+    organization_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  campussurveys:
+    created_date:
+      type: DATE,
+    survey_id:
+      max: 100
+      min: 1
+      type: int
+    survey_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  campusvtevents:
+    campus_event_id:
+      max: 100
+      min: 1
+      type: int
+    event_date:
+      type: DATE,
+    event_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  careerappointments:
+    appointment_date:
+      type: DATE,
+    appointment_id:
+      max: 100
+      min: 1
+      type: int
+    service_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  careerservices:
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    service_id:
+      max: 100
+      min: 1
+      type: int
+    service_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  changerequestapprovals:
+    approval_id:
+      max: 100
+      min: 1
+      type: int
+    approved_at:
+      type: timestamp
+    approved_by:
+      max: 100
+      min: 1
+      type: int
+    request_id:
+      max: 100
+      min: 1
+      type: int
+  changerequests:
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    request_id:
+      max: 100
+      min: 1
+      type: int
+    requested_at:
+      type: timestamp
+    status:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  checklistitems:
+    checklist_id:
+      max: 100
+      min: 1
+      type: int
+    completed:
+      type: choice
+      values:
+      - 'True'
+      - 'False'
+    item_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    item_id:
+      max: 100
+      min: 1
+      type: int
+  churnanalysis:
+    churn_id:
+      max: 100
+      min: 1
+      type: int
+    churn_reason:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+  classes:
+    class_id:
+      max: 100
+      min: 1
+      type: int
+    course_id:
+      max: 100
+      min: 1
+      type: int
+    instructor_id:
+      max: 100
+      min: 1
+      type: int
+    semester:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    year:
+      type: INT,
+  classroomresources:
+    class_id:
+      max: 100
+      min: 1
+      type: int
+    resource_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    resource_id:
+      max: 100
+      min: 1
+      type: int
+    resource_type:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  clicks:
+    click_id:
+      max: 100
+      min: 1
+      type: int
+    click_time:
+      type: timestamp
+    event_id:
+      max: 100
+      min: 1
+      type: int
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  clients:
+    client_id:
+      max: 100
+      min: 1
+      type: int
+    client_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    contact_person:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    email:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    phone:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  codereviews:
+    review_date:
+      type: timestamp
+    review_id:
+      max: 100
+      min: 1
+      type: int
+    reviewer_id:
+      max: 100
+      min: 1
+      type: int
+    status:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    task_id:
+      max: 100
+      min: 1
+      type: int
+  codeusage:
+    code_id:
+      max: 100
+      min: 1
+      type: int
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    usage_id:
+      max: 100
+      min: 1
+      type: int
+    used_at:
+      type: timestamp
+  cohortmembers:
+    cohort_id:
+      max: 100
+      min: 1
+      type: int
+    joined_at:
+      type: timestamp
+    member_id:
+      max: 100
+      min: 1
+      type: int
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  cohorts:
+    cohort_id:
+      max: 100
+      min: 1
+      type: int
+    cohort_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+  collaborationnotes:
+    collaboration_id:
+      max: 100
+      min: 1
+      type: int
+    created_at:
+      type: timestamp
+    note_id:
+      max: 100
+      min: 1
+      type: int
+    note_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  collaborationtools:
+    tool_id:
+      max: 100
+      min: 1
+      type: int
+    tool_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  collateralusage:
+    campaign_id:
+      max: 100
+      min: 1
+      type: int
+    collateral_id:
+      max: 100
+      min: 1
+      type: int
+    usage_id:
+      max: 100
+      min: 1
+      type: int
+  communicationlogs:
+    communication_type:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    log_date:
+      type: timestamp
+    log_id:
+      max: 100
+      min: 1
+      type: int
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  communityengagement:
+    engagement_date:
+      type: DATE,
+    engagement_id:
+      max: 100
+      min: 1
+      type: int
+    engagement_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  communityservice:
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    service_id:
+      max: 100
+      min: 1
+      type: int
+    service_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  companyassets:
+    asset_id:
+      max: 100
+      min: 1
+      type: int
+    asset_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    purchase_date:
+      type: DATE,
+    value:
+      max: 100
+      min: 1
+      type: int
+  companyeventsvt:
+    event_date:
+      type: DATE,
+    event_id:
+      max: 100
+      min: 1
+      type: int
+    event_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  companypolicies:
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    policy_id:
+      max: 100
+      min: 1
+      type: int
+    policy_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  companyvehicles:
+    purchase_date:
+      type: DATE,
+    value:
+      max: 100
+      min: 1
+      type: int
+    vehicle_id:
+      max: 100
+      min: 1
+      type: int
+    vehicle_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  competitoractions:
+    action_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    action_id:
+      max: 100
+      min: 1
+      type: int
+    tracking_id:
+      max: 100
+      min: 1
+      type: int
+  competitoranalysis:
+    analysis_id:
+      max: 100
+      min: 1
+      type: int
+    competitor_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    strengths:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    weaknesses:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  competitortracking:
+    competitor_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    monitoring_date:
+      type: timestamp
+    tracking_id:
+      max: 100
+      min: 1
+      type: int
+  complianceaudits:
+    audit_date:
+      type: DATE,
+    audit_id:
+      max: 100
+      min: 1
+      type: int
+    findings:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  compliancechecklists:
+    checklist_id:
+      max: 100
+      min: 1
+      type: int
+    checklist_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  conferenceparticipation:
+    conference_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    date_of_conference:
+      type: DATE,
+    participation_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  contacts:
+    contact_date:
+      type: timestamp
+    contact_id:
+      max: 100
+      min: 1
+      type: int
+    contact_method:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    notes:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  contentcalendar:
+    calendar_id:
+      max: 100
+      min: 1
+      type: int
+    content_type:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    scheduled_date:
+      type: DATE,
+    title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  contentengagement:
+    engagement_date:
+      type: timestamp
+    engagement_id:
+      max: 100
+      min: 1
+      type: int
+    engagement_type:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    piece_id:
+      max: 100
+      min: 1
+      type: int
+  contentperformance:
+    created_at:
+      type: timestamp
+    metrics:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    performance_id:
+      max: 100
+      min: 1
+      type: int
+    piece_id:
+      max: 100
+      min: 1
+      type: int
+  contentpieces:
+    calendar_id:
+      max: 100
+      min: 1
+      type: int
+    content_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    piece_id:
+      max: 100
+      min: 1
+      type: int
+  contracts:
+    client_id:
+      max: 100
+      min: 1
+      type: int
+    contract_id:
+      max: 100
+      min: 1
+      type: int
+    contract_value:
+      max: 100
+      min: 1
+      type: int
+    end_date:
+      type: DATE,
+    start_date:
+      type: DATE,
+  conversionrates:
+    campaign_id:
+      max: 100
+      min: 1
+      type: int
+    conversion_rate:
+      max: 100
+      min: 1
+      type: int
+    created_at:
+      type: timestamp
+    rate_id:
+      max: 100
+      min: 1
+      type: int
+  counselingservices:
+    counseling_service_id:
+      max: 100
+      min: 1
+      type: int
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    service_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  counselingsessions:
+    counselor_id:
+      max: 100
+      min: 1
+      type: int
+    notes:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    session_date:
+      type: DATE,
+    session_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  courseannouncements:
+    announcement_date:
+      type: DATE,
+    announcement_id:
+      max: 100
+      min: 1
+      type: int
+    announcement_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    course_id:
+      max: 100
+      min: 1
+      type: int
+  courseevaluations:
+    comments:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    course_id:
+      max: 100
+      min: 1
+      type: int
+    evaluation_id:
+      max: 100
+      min: 1
+      type: int
+    rating:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  coursefeedback:
+    course_feedback_id:
+      max: 100
+      min: 1
+      type: int
+    course_id:
+      max: 100
+      min: 1
+      type: int
+    feedback_date:
+      type: DATE,
+    feedback_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  courseforums:
+    course_id:
+      max: 100
+      min: 1
+      type: int
+    created_date:
+      type: DATE,
+    forum_id:
+      max: 100
+      min: 1
+      type: int
+    title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  courselibraries:
+    course_id:
+      max: 100
+      min: 1
+      type: int
+    library_id:
+      max: 100
+      min: 1
+      type: int
+    resource_id:
+      max: 100
+      min: 1
+      type: int
+  coursematerials:
+    course_id:
+      max: 100
+      min: 1
+      type: int
+    material_id:
+      max: 100
+      min: 1
+      type: int
+    material_link:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    material_type:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  courseprerequisites:
+    course_id:
+      max: 100
+      min: 1
+      type: int
+    prerequisite_course_id:
+      max: 100
+      min: 1
+      type: int
+  courses:
+    course_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    course_id:
+      max: 100
+      min: 1
+      type: int
+    course_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    credits:
+      max: 100
+      min: 1
+      type: int
+  courseschedules:
+    class_id:
+      max: 100
+      min: 1
+      type: int
+    course_id:
+      max: 100
+      min: 1
+      type: int
+    end_time:
+      type: TIME,
+    schedule_date:
+      type: DATE,
+    schedule_id:
+      max: 100
+      min: 1
+      type: int
+    start_time:
+      type: TIME,
+  coursesubscriptions:
+    course_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+    subscription_date:
+      type: DATE,
+    subscription_id:
+      max: 100
+      min: 1
+      type: int
+  crisismanagement:
+    crisis_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    crisis_id:
+      max: 100
+      min: 1
+      type: int
+    response_plan:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  crisisresponse:
+    crisis_id:
+      max: 100
+      min: 1
+      type: int
+    response_date:
+      type: DATE,
+    response_id:
+      max: 100
+      min: 1
+      type: int
+  customeracquisition:
+    acquisition_date:
+      type: timestamp
+    acquisition_id:
+      max: 100
+      min: 1
+      type: int
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+  customerfeedback:
+    client_id:
+      max: 100
+      min: 1
+      type: int
+    feedback_date:
+      type: DATE,
+    feedback_id:
+      max: 100
+      min: 1
+      type: int
+    feedback_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  customerjourney:
+    created_at:
+      type: timestamp
+    journey_id:
+      max: 100
+      min: 1
+      type: int
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    touchpoints:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  customerloyaltyprograms:
+    created_at:
+      type: timestamp
+    points_required:
+      type: INT,
+    program_id:
+      max: 100
+      min: 1
+      type: int
+    program_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  customerretention:
+    created_at:
+      type: timestamp
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    retention_id:
+      max: 100
+      min: 1
+      type: int
+    retention_score:
+      max: 100
+      min: 1
+      type: int
+  customerretentionprograms:
+    created_at:
+      type: timestamp
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    program_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    retention_program_id:
+      max: 100
+      min: 1
+      type: int
+  customersegmentation:
+    created_at:
+      type: timestamp
+    criteria:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    segment_id:
+      max: 100
+      min: 1
+      type: int
+    segment_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  customersegmentationcriteria:
+    criteria_id:
+      max: 100
+      min: 1
+      type: int
+    criteria_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    segment_id:
+      max: 100
+      min: 1
+      type: int
+  customersuccessstories:
+    created_at:
+      type: timestamp
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    story_id:
+      max: 100
+      min: 1
+      type: int
+    success_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  dataprivacyagreements:
+    agreement_id:
+      max: 100
+      min: 1
+      type: int
+    agreement_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    signed_at:
+      type: timestamp
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  debtresolutions:
+    debt_id:
+      max: 100
+      min: 1
+      type: int
+    resolution_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    resolution_id:
+      max: 100
+      min: 1
+      type: int
+    resolved_at:
+      type: timestamp
+  departments:
+    department_id:
+      max: 100
+      min: 1
+      type: int
+    department_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    location:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  deploymentlogs:
+    deployment_date:
+      type: timestamp
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    log_id:
+      max: 100
+      min: 1
+      type: int
+  dept:
+    department_id:
+      max: 100
+      min: 1
+      type: int
+    department_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  developmenttasks:
+    assigned_to:
+      type: INT,
+    created_at:
+      type: timestamp
+    status:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    task_id:
+      max: 100
+      min: 1
+      type: int
+    task_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  digitalmarketingstrategy:
+    created_at:
+      type: timestamp
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    strategy_id:
+      max: 100
+      min: 1
+      type: int
+    strategy_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  disasterrecoveryplans:
+    created_date:
+      type: DATE,
+    plan_id:
+      max: 100
+      min: 1
+      type: int
+    plan_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  discounts:
+    discount_code:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    discount_id:
+      max: 100
+      min: 1
+      type: int
+    discount_percentage:
+      max: 100
+      min: 1
+      type: int
+    valid_until:
+      type: DATE,
+  discussionboards:
+    board_id:
+      max: 100
+      min: 1
+      type: int
+    course_id:
+      max: 100
+      min: 1
+      type: int
+    created_date:
+      type: DATE,
+    title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  discussionposts:
+    board_id:
+      max: 100
+      min: 1
+      type: int
+    content:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    post_date:
+      type: DATE,
+    post_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  documentation:
+    content:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    doc_id:
+      max: 100
+      min: 1
+      type: int
+    title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  documentmanagement:
+    document_id:
+      max: 100
+      min: 1
+      type: int
+    document_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    employee_id:
+      type: INT,
+    upload_date:
+      type: DATE,
+  emailcampaigns:
+    body:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    campaign_id:
+      max: 100
+      min: 1
+      type: int
+    email_campaign_id:
+      max: 100
+      min: 1
+      type: int
+    sent_at:
+      type: timestamp
+    subject:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  emailclicks:
+    click_id:
+      max: 100
+      min: 1
+      type: int
+    clicked_at:
+      type: timestamp
+    email_campaign_id:
+      max: 100
+      min: 1
+      type: int
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+  emailopens:
+    email_campaign_id:
+      max: 100
+      min: 1
+      type: int
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    open_id:
+      max: 100
+      min: 1
+      type: int
+    opened_at:
+      type: timestamp
+  emergencycontacts:
+    contact_id:
+      max: 100
+      min: 1
+      type: int
+    contact_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    contact_phone:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    relationship:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  employeebenefits:
+    benefit_id:
+      max: 100
+      min: 1
+      type: int
+    benefit_type:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    employee_id:
+      max: 100
+      min: 1
+      type: int
+  employeecomplaints:
+    complaint_date:
+      type: DATE,
+    complaint_id:
+      max: 100
+      min: 1
+      type: int
+    complaint_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    employee_id:
+      max: 100
+      min: 1
+      type: int
+  employeedepartments:
+    department_id:
+      max: 100
+      min: 1
+      type: int
+    emp_dept_id:
+      max: 100
+      min: 1
+      type: int
+    employee_id:
+      max: 100
+      min: 1
+      type: int
+    end_date:
+      type: DATE,
+    start_date:
+      type: DATE,
+  employeeoffboarding:
+    employee_id:
+      max: 100
+      min: 1
+      type: int
+    offboarding_date:
+      type: DATE,
+    offboarding_id:
+      max: 100
+      min: 1
+      type: int
+  employeeonboarding:
+    employee_id:
+      max: 100
+      min: 1
+      type: int
+    onboarding_date:
+      type: DATE,
+    onboarding_id:
+      max: 100
+      min: 1
+      type: int
+  employeerelocation:
+    employee_id:
+      max: 100
+      min: 1
+      type: int
+    new_location_id:
+      max: 100
+      min: 1
+      type: int
+    relocation_date:
+      type: DATE,
+    relocation_id:
+      max: 100
+      min: 1
+      type: int
+  employees:
+    email:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    employee_id:
+      max: 100
+      min: 1
+      type: int
+    first_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    hire_date:
+      type: DATE,
+    job_title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    last_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    phone:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    salary:
+      max: 100
+      min: 1
+      type: int
+  employeesurveys:
+    submission_date:
+      type: DATE,
+    survey_id:
+      max: 100
+      min: 1
+      type: int
+    survey_title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  employeetraining:
+    employee_id:
+      max: 100
+      min: 1
+      type: int
+    training_id:
+      max: 100
+      min: 1
+      type: int
+    training_participation_id:
+      max: 100
+      min: 1
+      type: int
+  enrollments:
+    course_id:
+      max: 100
+      min: 1
+      type: int
+    enrollment_date:
+      type: DATE,
+    enrollment_id:
+      max: 100
+      min: 1
+      type: int
+    grade:
+      type: FLOAT,
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  event_attendees:
+    attendee_id:
+      max: 100
+      min: 1
+      type: int
+    event_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  eventattendees:
+    attendee_id:
+      max: 100
+      min: 1
+      type: int
+    event_id:
+      max: 100
+      min: 1
+      type: int
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    registered_at:
+      type: timestamp
+  eventcoordination:
+    coordination_id:
+      max: 100
+      min: 1
+      type: int
+    employee_id:
+      max: 100
+      min: 1
+      type: int
+    event_id:
+      max: 100
+      min: 1
+      type: int
+  eventcoordinationtwo:
+    coordination_id:
+      max: 100
+      min: 1
+      type: int
+    event_id:
+      max: 100
+      min: 1
+      type: int
+    staff_id:
+      max: 100
+      min: 1
+      type: int
+  eventfeedback:
+    event_id:
+      max: 100
+      min: 1
+      type: int
+    feedback_id:
+      max: 100
+      min: 1
+      type: int
+    feedback_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    submitted_at:
+      type: timestamp
+  eventmarketing:
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    event_date:
+      type: DATE,
+    event_id:
+      max: 100
+      min: 1
+      type: int
+    event_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    location:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  eventparticipants:
+    employee_id:
+      max: 100
+      min: 1
+      type: int
+    event_id:
+      max: 100
+      min: 1
+      type: int
+    participant_id:
+      max: 100
+      min: 1
+      type: int
+  eventparticipation:
+    event_id:
+      max: 100
+      min: 1
+      type: int
+    participation_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  events:
+    event_id:
+      max: 100
+      min: 1
+      type: int
+    event_timestamp:
       type: timestamp
     event_type:
       type: choice
       values:
-        - button_click
-        - click
-        - scroll
-    page:
-      type: choice
-      values:
-        - Home
-        - About
-        - Contact Me
-        - SingleStore Portal
-        - Docs
-    browser:
-      type: choice
-      values:
-        - Firefox
-        - Chrome
-        - Internet Explore
-        - Microsoft Edge
-    metadata:
-      type: JSON
-      values:
-        utm_medium: email
-        utm_source: outreach
-        utm_term: s2
-  user_data:
+      - choice 1
+      - choice 2
+      - choice 3
+    experiment_id:
+      max: 100
+      min: 1
+      type: int
     user_id:
-      type: uuid
-      prefix: user_
-    sign_up:
-      type: timestamp
-    user_type:
+      max: 100
+      min: 1
+      type: int
+  eventsponsorships:
+    event_id:
+      max: 100
+      min: 1
+      type: int
+    sponsor_name:
       type: choice
       values:
-        - Admin
-        - User
-        - Moderator
+      - choice 1
+      - choice 2
+      - choice 3
+    sponsorship_amount:
+      max: 100
+      min: 1
+      type: int
+    sponsorship_id:
+      max: 100
+      min: 1
+      type: int
+  eventsvt:
+    event_date:
+      type: DATE,
+    event_id:
+      max: 100
+      min: 1
+      type: int
+    event_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    location:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  expenses:
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    employee_id:
+      max: 100
+      min: 1
+      type: int
+    expense_amount:
+      max: 100
+      min: 1
+      type: int
+    expense_date:
+      type: DATE,
+    expense_id:
+      max: 100
+      min: 1
+      type: int
+  experiments:
+    end_date:
+      type: DATE,
+    experiment_id:
+      max: 100
+      min: 1
+      type: int
+    experiment_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    start_date:
+      type: DATE,
+    status:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  externalcollaborations:
+    collaboration_id:
+      max: 100
+      min: 1
+      type: int
+    company_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    contact_person:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  extracurriculars:
+    activity_id:
+      max: 100
+      min: 1
+      type: int
+    activity_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  facilityreservations:
+    facility_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    reservation_date:
+      type: DATE,
+    reservation_id:
+      max: 100
+      min: 1
+      type: int
+    reserved_by:
+      max: 100
+      min: 1
+      type: int
+  facilityusage:
+    facility_id:
+      max: 100
+      min: 1
+      type: int
+    usage_date:
+      type: DATE,
+    usage_id:
+      max: 100
+      min: 1
+      type: int
+  facultymeetings:
+    agenda:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    meeting_date:
+      type: DATE,
+    meeting_id:
+      max: 100
+      min: 1
+      type: int
+  featureflags:
+    flag_id:
+      max: 100
+      min: 1
+      type: int
+    flag_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    is_active:
+      type: choice
+      values:
+      - 'True'
+      - 'False'
+  feedback:
+    experiment_id:
+      max: 100
+      min: 1
+      type: int
+    feedback_id:
+      max: 100
+      min: 1
+      type: int
+    feedback_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    submitted_at:
+      type: timestamp
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  feedback2:
+    feedback_date:
+      type: DATE,
+    feedback_id:
+      max: 100
+      min: 1
+      type: int
+    feedback_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  feedbackforms:
+    form_id:
+      max: 100
+      min: 1
+      type: int
+    form_title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    submission_date:
+      type: DATE,
+  feedbackresponses:
+    employee_id:
+      max: 100
+      min: 1
+      type: int
+    form_id:
+      max: 100
+      min: 1
+      type: int
+    response_id:
+      max: 100
+      min: 1
+      type: int
+    response_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  financialaidedu:
+    aid_amount:
+      max: 100
+      min: 1
+      type: int
+    aid_id:
+      max: 100
+      min: 1
+      type: int
+    aid_type:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    awarded_date:
+      type: DATE,
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  financialaidedutwo:
+    aid_amount:
+      max: 100
+      min: 1
+      type: int
+    aid_date:
+      type: DATE,
+    aid_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  financialreports:
+    net_profit:
+      max: 100
+      min: 1
+      type: int
+    report_date:
+      type: DATE,
+    report_id:
+      max: 100
+      min: 1
+      type: int
+    total_expenses:
+      max: 100
+      min: 1
+      type: int
+    total_revenue:
+      max: 100
+      min: 1
+      type: int
+  flagassignments:
+    assigned_at:
+      type: timestamp
+    assignment_id:
+      max: 100
+      min: 1
+      type: int
+    flag_id:
+      max: 100
+      min: 1
+      type: int
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  forumresponses:
+    content:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    forum_id:
+      max: 100
+      min: 1
+      type: int
+    response_date:
+      type: DATE,
+    response_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  gallery_images:
+    created_at:
+      type: timestamp
+    gallery_id:
+      max: 100
+      min: 1
+      type: int
+    image_id:
+      max: 100
+      min: 1
+      type: int
+    image_url:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  goalmetrics:
+    conversion_count:
+      type: INT,
+    goal_id:
+      max: 100
+      min: 1
+      type: int
+    metric_id:
+      max: 100
+      min: 1
+      type: int
+    variant_id:
+      max: 100
+      min: 1
+      type: int
+  goalprogress:
+    goal_id:
+      max: 100
+      min: 1
+      type: int
+    progress_id:
+      max: 100
+      min: 1
+      type: int
+    progress_percentage:
+      max: 100
+      min: 1
+      type: int
+  goals:
+    experiment_id:
+      max: 100
+      min: 1
+      type: int
+    goal_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    goal_id:
+      max: 100
+      min: 1
+      type: int
+  grades:
+    assignment_id:
+      max: 100
+      min: 1
+      type: int
+    enrollment_id:
+      max: 100
+      min: 1
+      type: int
+    grade_id:
+      max: 100
+      min: 1
+      type: int
+    score:
+      type: FLOAT,
+  groupmembers:
+    group_id:
+      max: 100
+      min: 1
+      type: int
+    group_member_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  groupmemberships:
+    group_id:
+      max: 100
+      min: 1
+      type: int
+    membership_id:
+      max: 100
+      min: 1
+      type: int
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  healthandsafety:
+    inspection_date:
+      type: DATE,
+    safety_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    safety_id:
+      max: 100
+      min: 1
+      type: int
+  healthrecords:
+    details:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    record_date:
+      type: DATE,
+    record_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  incidentreports:
+    incident_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    report_id:
+      max: 100
+      min: 1
+      type: int
+    reported_at:
+      type: timestamp
+  incidentresolutions:
+    report_id:
+      max: 100
+      min: 1
+      type: int
+    resolution_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    resolution_id:
+      max: 100
+      min: 1
+      type: int
+    resolved_at:
+      type: timestamp
+  increpo:
+    incident_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    report_date:
+      type: DATE,
+    report_id:
+      max: 100
+      min: 1
+      type: int
+  influencercollaborations:
+    campaign_id:
+      max: 100
+      min: 1
+      type: int
+    collaboration_id:
+      max: 100
+      min: 1
+      type: int
+    created_at:
+      type: timestamp
+    influencer_id:
+      max: 100
+      min: 1
+      type: int
+    terms:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  influencermarketing:
+    created_at:
+      type: timestamp
+    influencer_id:
+      max: 100
+      min: 1
+      type: int
+    influencer_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    platform:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  initiativeprogress:
+    initiative_id:
+      max: 100
+      min: 1
+      type: int
+    progress_id:
+      max: 100
+      min: 1
+      type: int
+    progress_percentage:
+      max: 100
+      min: 1
+      type: int
+  instructors:
     email:
       type: choice
       values:
-        - example@gmail.com
-        - example@hotmail.com
-        - example@yahoo.com
-    phone_number:
+      - choice 1
+      - choice 2
+      - choice 3
+    first_name:
       type: choice
       values:
-        - 415-XXX-XXXX
-        - 206-XXX-XXXX
-        - 212-XXX-XXXX
+      - choice 1
+      - choice 2
+      - choice 3
+    hire_date:
+      type: DATE,
+    instructor_id:
+      max: 100
+      min: 1
+      type: int
+    last_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  integrationresults:
+    executed_at:
+      type: timestamp
+    result_id:
+      max: 100
+      min: 1
+      type: int
+    status:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    test_id:
+      max: 100
+      min: 1
+      type: int
+  integrationtests:
+    expected_outcome:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    test_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    test_id:
+      max: 100
+      min: 1
+      type: int
+  integrityviolations:
+    policy_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+    violation_date:
+      type: DATE,
+    violation_id:
+      max: 100
+      min: 1
+      type: int
+  internationalstudents:
+    country_of_origin:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    international_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+    visa_status:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  internships:
+    application_deadline:
+      type: DATE,
+    company_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    internship_id:
+      max: 100
+      min: 1
+      type: int
+    position:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  inventory:
+    inventory_id:
+      max: 100
+      min: 1
+      type: int
+    last_updated:
+      type: DATE,
+    product_id:
+      max: 100
+      min: 1
+      type: int
+    stock_level:
+      type: INT,
+  invoices:
+    amount:
+      max: 100
+      min: 1
+      type: int
+    client_id:
+      max: 100
+      min: 1
+      type: int
+    invoice_date:
+      type: DATE,
+    invoice_id:
+      max: 100
+      min: 1
+      type: int
+    status:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  itassets:
+    asset_id:
+      max: 100
+      min: 1
+      type: int
+    asset_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    purchase_date:
+      type: DATE,
+    value:
+      max: 100
+      min: 1
+      type: int
+  itsupporttickets:
+    employee_id:
+      max: 100
+      min: 1
+      type: int
+    issue_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    status:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    submission_date:
+      type: DATE,
+    ticket_id:
+      max: 100
+      min: 1
+      type: int
+  knowledgebasearticles:
+    article_id:
+      max: 100
+      min: 1
+      type: int
+    content:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  kpitracking:
+    kpi_id:
+      max: 100
+      min: 1
+      type: int
+    tracked_date:
+      type: DATE,
+    tracking_id:
+      max: 100
+      min: 1
+      type: int
+    value:
+      max: 100
+      min: 1
+      type: int
+  laboratoryequipment:
+    available_units:
+      type: INT,
+    equipment_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    equipment_id:
+      max: 100
+      min: 1
+      type: int
+    equipment_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  labreservations:
+    equipment_id:
+      max: 100
+      min: 1
+      type: int
+    reservation_date:
+      type: DATE,
+    reservation_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  leadassignments:
+    assigned_at:
+      type: timestamp
+    assignment_id:
+      max: 100
+      min: 1
+      type: int
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  leads:
+    created_at:
+      type: timestamp
+    email:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    first_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    last_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    phone:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    source:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    status:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  leadscoring:
+    created_at:
+      type: timestamp
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    score:
+      type: INT,
+    score_id:
+      max: 100
+      min: 1
+      type: int
+  leadsources:
+    source_id:
+      max: 100
+      min: 1
+      type: int
+    source_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  legaldocuments:
+    document_id:
+      max: 100
+      min: 1
+      type: int
+    document_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    upload_date:
+      type: DATE,
+  library:
+    author:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    available_copies:
+      type: INT,
+    book_id:
+      max: 100
+      min: 1
+      type: int
+    published_year:
+      type: INT,
+    title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  lmsaccounts:
+    lms_account_id:
+      max: 100
+      min: 1
+      type: int
+    password_hash:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    student_id:
+      max: 100
+      min: 1
+      type: int
+    username:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  loadtestresults:
+    executed_at:
+      type: timestamp
+    load_test_id:
+      max: 100
+      min: 1
+      type: int
+    result_id:
+      max: 100
+      min: 1
+      type: int
+    status:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  loadtests:
+    expected_load:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    load_test_id:
+      max: 100
+      min: 1
+      type: int
+    test_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  loyaltyprogrammembers:
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    member_id:
+      max: 100
+      min: 1
+      type: int
+    points_earned:
+      max: 100
+      min: 1
+      type: int
+    program_id:
+      max: 100
+      min: 1
+      type: int
+  loyaltyredemptions:
+    member_id:
+      max: 100
+      min: 1
+      type: int
+    redeemed_points:
+      type: INT,
+    redemption_date:
+      type: timestamp
+    redemption_id:
+      max: 100
+      min: 1
+      type: int
+  markcustomerfeedback:
+    feedback_id:
+      max: 100
+      min: 1
+      type: int
+    feedback_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    submitted_at:
+      type: timestamp
+  marketinganalytics:
+    analysis_date:
+      type: DATE,
+    analytics_id:
+      max: 100
+      min: 1
+      type: int
+    campaign_id:
+      max: 100
+      min: 1
+      type: int
+    insights:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  marketingautomation:
+    automation_id:
+      max: 100
+      min: 1
+      type: int
+    created_at:
+      type: timestamp
+    name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    trigger_event:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  marketingbudgets:
+    allocated_amount:
+      max: 100
+      min: 1
+      type: int
+    budget_id:
+      max: 100
+      min: 1
+      type: int
+    campaign_id:
+      max: 100
+      min: 1
+      type: int
+    spent_amount:
+      max: 100
+      min: 1
+      type: int
+  marketingcampaigns:
+    budget:
+      max: 100
+      min: 1
+      type: int
+    campaign_id:
+      max: 100
+      min: 1
+      type: int
+    campaign_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    end_date:
+      type: DATE,
+    start_date:
+      type: DATE,
+  marketingcollateral:
+    collateral_id:
+      max: 100
+      min: 1
+      type: int
+    collateral_type:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  marketingevents:
+    created_at:
+      type: timestamp
+    event_date:
+      type: DATE,
+    event_id:
+      max: 100
+      min: 1
+      type: int
+    event_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    event_type:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  marketingeventsfeedback:
+    created_at:
+      type: timestamp
+    event_id:
+      max: 100
+      min: 1
+      type: int
+    feedback_id:
+      max: 100
+      min: 1
+      type: int
+    feedback_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+  marketinggoals:
+    actual_value:
+      max: 100
+      min: 1
+      type: int
+    created_at:
+      type: timestamp
+    goal_id:
+      max: 100
+      min: 1
+      type: int
+    goal_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    target_value:
+      max: 100
+      min: 1
+      type: int
+  marketingkpis:
+    actual_value:
+      max: 100
+      min: 1
+      type: int
+    created_at:
+      type: timestamp
+    kpi_id:
+      max: 100
+      min: 1
+      type: int
+    kpi_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    target_value:
+      max: 100
+      min: 1
+      type: int
+  marketingmaterials:
+    content:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    material_id:
+      max: 100
+      min: 1
+      type: int
+    material_type:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  marketingpartnerships:
+    collaboration_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    partner_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    partnership_id:
+      max: 100
+      min: 1
+      type: int
+  marketingperformance:
+    campaign_id:
+      max: 100
+      min: 1
+      type: int
+    conversions:
+      type: INT,
+    created_at:
+      type: timestamp
+    leads_generated:
+      type: INT,
+    performance_id:
+      max: 100
+      min: 1
+      type: int
+  marketingresearch:
+    created_at:
+      type: timestamp
+    findings:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    research_id:
+      max: 100
+      min: 1
+      type: int
+    topic:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  marketingtechstack:
+    created_at:
+      type: timestamp
+    tech_id:
+      max: 100
+      min: 1
+      type: int
+    tech_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    usage_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  marketingtraining:
+    created_at:
+      type: timestamp
+    training_date:
+      type: DATE,
+    training_id:
+      max: 100
+      min: 1
+      type: int
+    training_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  marketingworkshops:
+    created_at:
+      type: timestamp
+    date:
+      type: DATE,
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    workshop_id:
+      max: 100
+      min: 1
+      type: int
+    workshop_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  marketresearch:
+    findings:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    research_date:
+      type: DATE,
+    research_id:
+      max: 100
+      min: 1
+      type: int
+    research_topic:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  markmarketresearch:
+    created_at:
+      type: timestamp
+    findings:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    research_id:
+      max: 100
+      min: 1
+      type: int
+    research_topic:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  marksurveyresponses:
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    question_id:
+      max: 100
+      min: 1
+      type: int
+    response_id:
+      max: 100
+      min: 1
+      type: int
+    response_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    submitted_at:
+      type: timestamp
+  materialusage:
+    campaign_id:
+      max: 100
+      min: 1
+      type: int
+    material_id:
+      max: 100
+      min: 1
+      type: int
+    usage_id:
+      max: 100
+      min: 1
+      type: int
+  mediaeventsvt:
+    event_date:
+      type: DATE,
+    event_id:
+      max: 100
+      min: 1
+      type: int
+    event_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    media_id:
+      max: 100
+      min: 1
+      type: int
+  mediarelations:
+    contact_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    email:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    media_id:
+      max: 100
+      min: 1
+      type: int
+    phone:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  mediaspend:
+    amount:
+      max: 100
+      min: 1
+      type: int
+    campaign_id:
+      max: 100
+      min: 1
+      type: int
+    media_type:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    spend_date:
+      type: DATE,
+    spend_id:
+      max: 100
+      min: 1
+      type: int
+  meetingattendancevt:
+    AttendanceVT_id:
+      max: 100
+      min: 1
+      type: int
+    instructor_id:
+      max: 100
+      min: 1
+      type: int
+    meeting_id:
+      max: 100
+      min: 1
+      type: int
+  meetingnotes:
+    meeting_date:
+      type: TIMESTAMP,
+    note_id:
+      max: 100
+      min: 1
+      type: int
+    notes:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  meetingparticipants:
+    employee_id:
+      max: 100
+      min: 1
+      type: int
+    meeting_id:
+      max: 100
+      min: 1
+      type: int
+    participant_id:
+      max: 100
+      min: 1
+      type: int
+  meetings:
+    agenda:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    meeting_date:
+      type: DATE,
+    meeting_id:
+      max: 100
+      min: 1
+      type: int
+  mentormentee:
+    mentee_id:
+      max: 100
+      min: 1
+      type: int
+    mentor_id:
+      max: 100
+      min: 1
+      type: int
+    relationship_id:
+      max: 100
+      min: 1
+      type: int
+    start_date:
+      type: DATE,
+  metrics:
+    experiment_id:
+      max: 100
+      min: 1
+      type: int
+    metric_id:
+      max: 100
+      min: 1
+      type: int
+    metric_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    metric_value:
+      max: 100
+      min: 1
+      type: int
+    recorded_at:
+      type: timestamp
+  milestones:
+    milestone_date:
+      type: DATE,
+    milestone_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    milestone_id:
+      max: 100
+      min: 1
+      type: int
+    timeline_id:
+      max: 100
+      min: 1
+      type: int
+  notifications:
+    message:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    notification_id:
+      max: 100
+      min: 1
+      type: int
+    sent_at:
+      type: timestamp
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  notify:
+    message:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    notification_date:
+      type: DATE,
+    notification_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  officelocations:
+    address:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    city:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    location_id:
+      max: 100
+      min: 1
+      type: int
+    state:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    zip:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  officeresources:
+    location_id:
+      max: 100
+      min: 1
+      type: int
+    quantity:
+      type: INT,
+    resource_id:
+      max: 100
+      min: 1
+      type: int
+    resource_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  onlineresources:
+    course_id:
+      max: 100
+      min: 1
+      type: int
+    resource_id:
+      max: 100
+      min: 1
+      type: int
+    resource_link:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  operationalmetrics:
+    measurement_date:
+      type: DATE,
+    metric_id:
+      max: 100
+      min: 1
+      type: int
+    metric_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    value:
+      max: 100
+      min: 1
+      type: int
+  opportunities:
+    close_date:
+      type: DATE,
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    opportunity_id:
+      max: 100
+      min: 1
+      type: int
+    opportunity_value:
+      max: 100
+      min: 1
+      type: int
+    stage:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  organizationmembership:
+    membership_id:
+      max: 100
+      min: 1
+      type: int
+    organization_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  pageviews:
+    page_url:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    session_id:
+      max: 100
+      min: 1
+      type: int
+    user_id:
+      max: 100
+      min: 1
+      type: int
+    view_id:
+      max: 100
+      min: 1
+      type: int
+    view_time:
+      type: timestamp
+  parents:
+    email:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    first_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    last_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    parent_id:
+      max: 100
+      min: 1
+      type: int
+    phone:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  partnershipactivities:
+    activity_date:
+      type: timestamp
+    activity_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    activity_id:
+      max: 100
+      min: 1
+      type: int
+    partnership_id:
+      max: 100
+      min: 1
+      type: int
+  partnershipengagements:
+    created_at:
+      type: timestamp
+    engagement_id:
+      max: 100
+      min: 1
+      type: int
+    engagement_type:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    partnership_id:
+      max: 100
+      min: 1
+      type: int
+  partnerships:
+    end_date:
+      type: DATE,
+    partner_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    partnership_id:
+      max: 100
+      min: 1
+      type: int
+    partnership_type:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    start_date:
+      type: DATE,
+  passwordresets:
+    reset_date:
+      type: DATE,
+    reset_id:
+      max: 100
+      min: 1
+      type: int
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  paymentmethods:
+    method_id:
+      max: 100
+      min: 1
+      type: int
+    method_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  payments:
+    amount:
+      max: 100
+      min: 1
+      type: int
+    invoice_id:
+      max: 100
+      min: 1
+      type: int
+    payment_date:
+      type: DATE,
+    payment_id:
+      max: 100
+      min: 1
+      type: int
+  paymentsvt:
+    amount:
+      max: 100
+      min: 1
+      type: int
+    payment_date:
+      type: timestamp
+    payment_id:
+      max: 100
+      min: 1
+      type: int
+    session_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  paymenttransactions:
+    amount:
+      max: 100
+      min: 1
+      type: int
+    method_id:
+      max: 100
+      min: 1
+      type: int
+    transaction_date:
+      type: DATE,
+    transaction_id:
+      max: 100
+      min: 1
+      type: int
+  performancemetrics:
+    campaign_id:
+      max: 100
+      min: 1
+      type: int
+    conversions:
+      type: INT,
+    leads_generated:
+      type: INT,
+    metric_id:
+      max: 100
+      min: 1
+      type: int
+    revenue:
+      max: 100
+      min: 1
+      type: int
+  performanceresults:
+    executed_at:
+      type: timestamp
+    performance_test_id:
+      max: 100
+      min: 1
+      type: int
+    result_id:
+      max: 100
+      min: 1
+      type: int
+    status:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  performancereviews:
+    comments:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    employee_id:
+      max: 100
+      min: 1
+      type: int
+    review_date:
+      type: DATE,
+    review_id:
+      max: 100
+      min: 1
+      type: int
+    score:
+      max: 100
+      min: 1
+      type: int
+  performancereviews2:
+    comments:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    review_id:
+      max: 100
+      min: 1
+      type: int
+    review_period:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  performancetests:
+    expected_performance:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    performance_test_id:
+      max: 100
+      min: 1
+      type: int
+    test_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  planimplementation:
+    implementation_date:
+      type: DATE,
+    implementation_id:
+      max: 100
+      min: 1
+      type: int
+    plan_id:
+      max: 100
+      min: 1
+      type: int
+  plantesting:
+    plan_id:
+      max: 100
+      min: 1
+      type: int
+    results:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    test_date:
+      type: DATE,
+    test_id:
+      max: 100
+      min: 1
+      type: int
+  policies:
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    policy_id:
+      max: 100
+      min: 1
+      type: int
+    policy_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  policyacknowledgments:
+    acknowledgment_date:
+      type: DATE,
+    acknowledgment_id:
+      max: 100
+      min: 1
+      type: int
+    employee_id:
+      max: 100
+      min: 1
+      type: int
+    policy_id:
+      max: 100
+      min: 1
+      type: int
+  policyupdates:
+    policy_id:
+      max: 100
+      min: 1
+      type: int
+    update_date:
+      type: DATE,
+    update_id:
+      max: 100
+      min: 1
+      type: int
+  procurement:
+    procurement_date:
+      type: DATE,
+    procurement_id:
+      max: 100
+      min: 1
+      type: int
+    supplier_id:
+      max: 100
+      min: 1
+      type: int
+    total_amount:
+      max: 100
+      min: 1
+      type: int
+  productbacklog:
+    backlog_id:
+      max: 100
+      min: 1
+      type: int
+    created_at:
+      type: timestamp
+    item_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    priority:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  productroadmaps:
+    created_at:
+      type: timestamp
+    roadmap_id:
+      max: 100
+      min: 1
+      type: int
+    title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  products:
+    price:
+      max: 100
+      min: 1
+      type: int
+    product_id:
+      max: 100
+      min: 1
+      type: int
+    product_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    quantity:
+      max: 100
+      min: 1
+      type: int
+  projectassignments:
+    assignment_id:
+      max: 100
+      min: 1
+      type: int
+    employee_id:
+      max: 100
+      min: 1
+      type: int
+    project_id:
+      max: 100
+      min: 1
+      type: int
+    role:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  projectparticipants:
+    participant_id:
+      max: 100
+      min: 1
+      type: int
+    project_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  projects:
+    budget:
+      max: 100
+      min: 1
+      type: int
+    end_date:
+      type: DATE,
+    project_id:
+      max: 100
+      min: 1
+      type: int
+    project_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    start_date:
+      type: DATE,
+  projectstatus:
+    last_updated:
+      type: timestamp
+    project_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    status:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    status_id:
+      max: 100
+      min: 1
+      type: int
+  projecttimelines:
+    end_date:
+      type: DATE,
+    project_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    start_date:
+      type: DATE,
+    timeline_id:
+      max: 100
+      min: 1
+      type: int
+  promotionalcodes:
+    code_id:
+      max: 100
+      min: 1
+      type: int
+    code_value:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    discount:
+      max: 100
+      min: 1
+      type: int
+    expiration_date:
+      type: DATE,
+  purchaseorders:
+    order_date:
+      type: DATE,
+    order_id:
+      max: 100
+      min: 1
+      type: int
+    supplier_id:
+      max: 100
+      min: 1
+      type: int
+    total_amount:
+      max: 100
+      min: 1
+      type: int
+  purchases:
+    purchase_date:
+      type: DATE,
+    purchase_id:
+      max: 100
+      min: 1
+      type: int
+    supplier_id:
+      max: 100
+      min: 1
+      type: int
+    total_amount:
+      max: 100
+      min: 1
+      type: int
+  qaassignments:
+    qa_assignment_id:
+      max: 100
+      min: 1
+      type: int
+    qa_team_id:
+      max: 100
+      min: 1
+      type: int
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  qareports:
+    qa_assignment_id:
+      max: 100
+      min: 1
+      type: int
+    report_id:
+      max: 100
+      min: 1
+      type: int
+    report_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    submitted_at:
+      type: timestamp
+  qateams:
+    qa_team_id:
+      max: 100
+      min: 1
+      type: int
+    team_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  referralprograms:
+    created_at:
+      type: timestamp
+    program_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    referral_id:
+      max: 100
+      min: 1
+      type: int
+    reward_type:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  referrals:
+    referral_id:
+      max: 100
+      min: 1
+      type: int
+    referral_program_id:
+      max: 100
+      min: 1
+      type: int
+    referred_lead_id:
+      max: 100
+      min: 1
+      type: int
+    referrer_id:
+      max: 100
+      min: 1
+      type: int
+  releasenotes:
+    note:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    note_id:
+      max: 100
+      min: 1
+      type: int
+    release_id:
+      max: 100
+      min: 1
+      type: int
+  releases:
+    release_date:
+      type: DATE,
+    release_id:
+      max: 100
+      min: 1
+      type: int
+    version:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  researchcollaborations:
+    collaboration_id:
+      max: 100
+      min: 1
+      type: int
+    partner_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    research_id:
+      max: 100
+      min: 1
+      type: int
+  researchprojects:
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    faculty_id:
+      max: 100
+      min: 1
+      type: int
+    project_id:
+      max: 100
+      min: 1
+      type: int
+    project_title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  results:
+    conversion_rate:
+      max: 100
+      min: 1
+      type: int
+    experiment_id:
+      max: 100
+      min: 1
+      type: int
+    result_id:
+      max: 100
+      min: 1
+      type: int
+    total_users:
+      type: INT,
+    variant_id:
+      max: 100
+      min: 1
+      type: int
+  retentionprogramparticipation:
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    participation_id:
+      max: 100
+      min: 1
+      type: int
+    retention_program_id:
+      max: 100
+      min: 1
+      type: int
+  retrospectives:
+    created_at:
+      type: timestamp
+    notes:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    retrospective_id:
+      max: 100
+      min: 1
+      type: int
+    session_id:
+      max: 100
+      min: 1
+      type: int
+  riskassessments:
+    assessed_at:
+      type: timestamp
+    assessment_id:
+      max: 100
+      min: 1
+      type: int
+    mitigation_strategy:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    risk_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  riskmanagement:
+    assessment_date:
+      type: DATE,
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    risk_id:
+      max: 100
+      min: 1
+      type: int
+    risk_level:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  riskmitigation:
+    action_taken:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    implementation_date:
+      type: DATE,
+    mitigation_id:
+      max: 100
+      min: 1
+      type: int
+    risk_id:
+      max: 100
+      min: 1
+      type: int
+  riskmitigationplans:
+    mitigation_strategy:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    plan_id:
+      max: 100
+      min: 1
+      type: int
+    risk_id:
+      max: 100
+      min: 1
+      type: int
+  roadmapfeedback:
+    feedback_id:
+      max: 100
+      min: 1
+      type: int
+    feedback_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    roadmap_id:
+      max: 100
+      min: 1
+      type: int
+    submitted_at:
+      type: timestamp
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  roadmapitems:
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    due_date:
+      type: DATE,
+    item_id:
+      max: 100
+      min: 1
+      type: int
+    roadmap_id:
+      max: 100
+      min: 1
+      type: int
+  roianalysis:
+    campaign_id:
+      max: 100
+      min: 1
+      type: int
+    investment:
+      max: 100
+      min: 1
+      type: int
+    roi_id:
+      max: 100
+      min: 1
+      type: int
+    roi_percentage:
+      max: 100
+      min: 1
+      type: int
+  roleassignments:
+    assignment_id:
+      max: 100
+      min: 1
+      type: int
+    role_id:
+      max: 100
+      min: 1
+      type: int
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  rollouts:
+    feature_id:
+      max: 100
+      min: 1
+      type: int
+    rollout_date:
+      type: DATE,
+    rollout_id:
+      max: 100
+      min: 1
+      type: int
+    rollout_percentage:
+      max: 100
+      min: 1
+      type: int
+  salaries:
+    employee_id:
+      max: 100
+      min: 1
+      type: int
+    pay_date:
+      type: DATE,
+    salary_amount:
+      max: 100
+      min: 1
+      type: int
+    salary_id:
+      max: 100
+      min: 1
+      type: int
+  sales:
+    product_id:
+      max: 100
+      min: 1
+      type: int
+    quantity:
+      type: INT,
+    sale_date:
+      type: DATE,
+    sale_id:
+      max: 100
+      min: 1
+      type: int
+    total_amount:
+      max: 100
+      min: 1
+      type: int
+  salesreports:
+    report_date:
+      type: DATE,
+    report_id:
+      max: 100
+      min: 1
+      type: int
+    total_sales:
+      max: 100
+      min: 1
+      type: int
+  salesstrategies:
+    strategy_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    strategy_id:
+      max: 100
+      min: 1
+      type: int
+  scholarships:
+    amount:
+      max: 100
+      min: 1
+      type: int
+    eligibility_criteria:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    scholarship_id:
+      max: 100
+      min: 1
+      type: int
+    scholarship_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  scholarshipsoffered:
+    department_id:
+      max: 100
+      min: 1
+      type: int
+    scholarship_id:
+      max: 100
+      min: 1
+      type: int
+    scholarship_offered_id:
+      max: 100
+      min: 1
+      type: int
+  securityincidents:
+    incident_date:
+      type: DATE,
+    incident_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    incident_id:
+      max: 100
+      min: 1
+      type: int
+  securitytestresults:
+    executed_at:
+      type: timestamp
+    result_id:
+      max: 100
+      min: 1
+      type: int
+    security_test_id:
+      max: 100
+      min: 1
+      type: int
+    status:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  securitytests:
+    expected_outcome:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    security_test_id:
+      max: 100
+      min: 1
+      type: int
+    test_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  segmentmembers:
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    member_id:
+      max: 100
+      min: 1
+      type: int
+    segment_id:
+      max: 100
+      min: 1
+      type: int
+  segmentmemberships:
+    membership_id:
+      max: 100
+      min: 1
+      type: int
+    segment_id:
+      max: 100
+      min: 1
+      type: int
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  session_feedback:
+    comments:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    feedback_id:
+      max: 100
+      min: 1
+      type: int
+    rating:
+      max: 100
+      min: 1
+      type: int
+    session_id:
+      max: 100
+      min: 1
+      type: int
+  session_notes:
+    created_at:
+      type: timestamp
+    note_id:
+      max: 100
+      min: 1
+      type: int
+    note_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    session_id:
+      max: 100
+      min: 1
+      type: int
+  session_reschedule:
+    new_session_date:
+      type: TIMESTAMP,
+    reschedule_id:
+      max: 100
+      min: 1
+      type: int
+    session_id:
+      max: 100
+      min: 1
+      type: int
+  sessions:
+    end_time:
+      type: TIMESTAMP,
+    session_id:
+      max: 100
+      min: 1
+      type: int
+    start_time:
+      type: timestamp
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  socialmediaaccounts:
+    account_id:
+      max: 100
+      min: 1
+      type: int
+    handle:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    platform:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  socialmediaanalytics:
+    analytics_id:
+      max: 100
+      min: 1
+      type: int
+    campaign_id:
+      max: 100
+      min: 1
+      type: int
+    created_at:
+      type: timestamp
+    metrics:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    platform:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  socialmediacampaigns:
+    campaign_id:
+      max: 100
+      min: 1
+      type: int
+    platform:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    post_content:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    scheduled_at:
+      type: timestamp
+    sm_campaign_id:
+      max: 100
+      min: 1
+      type: int
+  socialmediaengagement:
+    engagement_date:
+      type: DATE,
+    engagement_id:
+      max: 100
+      min: 1
+      type: int
+    platform:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  socialmediaengagements:
+    engagement_date:
+      type: timestamp
+    engagement_id:
+      max: 100
+      min: 1
+      type: int
+    engagement_type:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    sm_campaign_id:
+      max: 100
+      min: 1
+      type: int
+  socialmediaposts:
+    account_id:
+      max: 100
+      min: 1
+      type: int
+    content:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    post_date:
+      type: DATE,
+    post_id:
+      max: 100
+      min: 1
+      type: int
+  sourcetracking:
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    source_id:
+      max: 100
+      min: 1
+      type: int
+    tracked_at:
+      type: timestamp
+    tracking_id:
+      max: 100
+      min: 1
+      type: int
+  sponsorships:
+    amount:
+      max: 100
+      min: 1
+      type: int
+    engagement_id:
+      max: 100
+      min: 1
+      type: int
+    sponsorship_id:
+      max: 100
+      min: 1
+      type: int
+  sprints:
+    end_date:
+      type: DATE,
+    sprint_id:
+      max: 100
+      min: 1
+      type: int
+    sprint_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    start_date:
+      type: DATE,
+  sprinttasks:
+    sprint_id:
+      max: 100
+      min: 1
+      type: int
+    sprint_task_id:
+      max: 100
+      min: 1
+      type: int
+    task_id:
+      max: 100
+      min: 1
+      type: int
+  stackcomponents:
+    component_id:
+      max: 100
+      min: 1
+      type: int
+    component_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    stack_id:
+      max: 100
+      min: 1
+      type: int
+  staff:
+    email:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    first_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    hire_date:
+      type: DATE,
+    last_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    staff_id:
+      max: 100
+      min: 1
+      type: int
+  staffassignments:
+    assigned_date:
+      type: DATE,
+    assignment_id:
+      max: 100
+      min: 1
+      type: int
+    role_id:
+      max: 100
+      min: 1
+      type: int
+    staff_id:
+      max: 100
+      min: 1
+      type: int
+  staffroles:
+    role_id:
+      max: 100
+      min: 1
+      type: int
+    role_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  stakeholderengagement:
+    engagement_date:
+      type: DATE,
+    engagement_id:
+      max: 100
+      min: 1
+      type: int
+    stakeholder_id:
+      max: 100
+      min: 1
+      type: int
+  stakeholderfeedback:
+    feedback_id:
+      max: 100
+      min: 1
+      type: int
+    feedback_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    stakeholder_id:
+      max: 100
+      min: 1
+      type: int
+    submitted_at:
+      type: timestamp
+  stakeholders:
+    email:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    stakeholder_id:
+      max: 100
+      min: 1
+      type: int
+  stakeholdersvt:
+    contact_person:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    email:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    phone:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    stakeholder_id:
+      max: 100
+      min: 1
+      type: int
+    stakeholder_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  storyassignments:
+    assignment_id:
+      max: 100
+      min: 1
+      type: int
+    story_id:
+      max: 100
+      min: 1
+      type: int
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  strategicinitiatives:
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    initiative_id:
+      max: 100
+      min: 1
+      type: int
+    initiative_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  strategyimplementation:
+    implementation_date:
+      type: DATE,
+    implementation_id:
+      max: 100
+      min: 1
+      type: int
+    strategy_id:
+      max: 100
+      min: 1
+      type: int
+  student_enrollments:
+    course_id:
+      max: 100
+      min: 1
+      type: int
+    enrollment_date:
+      type: timestamp
+    enrollment_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  studentactivities:
+    activity_id:
+      max: 100
+      min: 1
+      type: int
+    position:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    student_activity_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  studentawards:
+    award_id:
+      max: 100
+      min: 1
+      type: int
+    awarded_date:
+      type: DATE,
+    student_award_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  studentcommunityservice:
+    service_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+    student_service_id:
+      max: 100
+      min: 1
+      type: int
+  studentcounselingservices:
+    counseling_service_id:
+      max: 100
+      min: 1
+      type: int
+    student_counseling_service_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  studentfeedback:
+    feedback_date:
+      type: DATE,
+    feedback_id:
+      max: 100
+      min: 1
+      type: int
+    feedback_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  studentfinancialservices:
+    financial_service_id:
+      max: 100
+      min: 1
+      type: int
+    service_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    student_id:
+      max: 100
+      min: 1
+      type: int
+    visit_date:
+      type: DATE,
+  studenthealthservices:
+    health_service_id:
+      max: 100
+      min: 1
+      type: int
+    service_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    student_id:
+      max: 100
+      min: 1
+      type: int
+    visit_date:
+      type: DATE,
+  studenthonors:
+    awarded_date:
+      type: DATE,
+    honor_id:
+      max: 100
+      min: 1
+      type: int
+    student_honor_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  studentinternships:
+    internship_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+    student_internship_id:
+      max: 100
+      min: 1
+      type: int
+  studentjobopportunities:
+    application_date:
+      type: DATE,
+    job_opportunity_id:
+      max: 100
+      min: 1
+      type: int
+    job_title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  studentparents:
+    parent_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+    student_parent_id:
+      max: 100
+      min: 1
+      type: int
+  studentresourceusage:
+    resource_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+    usage_date:
+      type: DATE,
+    usage_id:
+      max: 100
+      min: 1
+      type: int
+  studentrights:
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    right_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  students:
+    date_of_birth:
+      type: DATE,
+    email:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    enrollment_date:
+      type: DATE,
+    first_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    last_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  studentscholarships:
+    awarded_date:
+      type: DATE,
+    scholarship_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+    student_scholarship_id:
+      max: 100
+      min: 1
+      type: int
+  studentsvt:
+    created_at:
+      type: timestamp
+    email:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    first_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    last_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    phone:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  studentvolunteers:
+    opportunity_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+    student_volunteer_id:
+      max: 100
+      min: 1
+      type: int
+  studygroups:
+    created_date:
+      type: DATE,
+    group_id:
+      max: 100
+      min: 1
+      type: int
+    group_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  subjects:
+    subject_id:
+      max: 100
+      min: 1
+      type: int
+    subject_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  suppliercontracts:
+    contract_id:
+      max: 100
+      min: 1
+      type: int
+    contract_value:
+      max: 100
+      min: 1
+      type: int
+    end_date:
+      type: DATE,
+    start_date:
+      type: DATE,
+    supplier_id:
+      max: 100
+      min: 1
+      type: int
+  supplierratings:
+    comments:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    rating:
+      max: 100
+      min: 1
+      type: int
+    rating_id:
+      max: 100
+      min: 1
+      type: int
+    supplier_id:
+      max: 100
+      min: 1
+      type: int
+  suppliers:
+    contact_person:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    email:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    phone:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    supplier_id:
+      max: 100
+      min: 1
+      type: int
+    supplier_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  surveyquestions:
+    question_id:
+      max: 100
+      min: 1
+      type: int
+    question_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    question_type:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    survey_id:
+      max: 100
+      min: 1
+      type: int
+  surveyres:
+    employee_id:
+      max: 100
+      min: 1
+      type: int
+    response_id:
+      max: 100
+      min: 1
+      type: int
+    response_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    survey_id:
+      max: 100
+      min: 1
+      type: int
+  surveyresponses:
+    response_id:
+      max: 100
+      min: 1
+      type: int
+    response_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    survey_id:
+      max: 100
+      min: 1
+      type: int
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  surveyresponsesedu:
+    response_id:
+      max: 100
+      min: 1
+      type: int
+    response_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    student_id:
+      max: 100
+      min: 1
+      type: int
+    survey_id:
+      max: 100
+      min: 1
+      type: int
+  surveys:
+    created_at:
+      type: timestamp
+    survey_id:
+      max: 100
+      min: 1
+      type: int
+    survey_title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  systemmetrics:
+    metric_id:
+      max: 100
+      min: 1
+      type: int
+    metric_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    metric_value:
+      max: 100
+      min: 1
+      type: int
+    recorded_at:
+      type: timestamp
+  targetaudiences:
+    audience_id:
+      max: 100
+      min: 1
+      type: int
+    campaign_id:
+      max: 100
+      min: 1
+      type: int
+    demographic_details:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  taskcomments:
+    comment_id:
+      max: 100
+      min: 1
+      type: int
+    comment_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    commented_at:
+      type: timestamp
+    task_id:
+      max: 100
+      min: 1
+      type: int
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  taxfilings:
+    amount:
+      max: 100
+      min: 1
+      type: int
+    filing_date:
+      type: DATE,
+    filing_id:
+      max: 100
+      min: 1
+      type: int
+    filing_year:
+      max: 100
+      min: 1
+      type: int
+  technicaldebt:
+    created_at:
+      type: timestamp
+    debt_id:
+      max: 100
+      min: 1
+      type: int
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  technicalspecifications:
+    created_at:
+      type: timestamp
+    project_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    spec_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    spec_id:
+      max: 100
+      min: 1
+      type: int
+  technologystack:
+    stack_id:
+      max: 100
+      min: 1
+      type: int
+    technology_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  technologyupdates:
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tech_id:
+      max: 100
+      min: 1
+      type: int
+    update_date:
+      type: DATE,
+    update_id:
+      max: 100
+      min: 1
+      type: int
+  technologyusage:
+    employee_id:
+      max: 100
+      min: 1
+      type: int
+    tech_id:
+      max: 100
+      min: 1
+      type: int
+    usage_date:
+      type: DATE,
+    usage_id:
+      max: 100
+      min: 1
+      type: int
+  techstack:
+    tech_id:
+      max: 100
+      min: 1
+      type: int
+    tech_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  techstackusage:
+    campaign_id:
+      max: 100
+      min: 1
+      type: int
+    tech_id:
+      max: 100
+      min: 1
+      type: int
+    usage_id:
+      max: 100
+      min: 1
+      type: int
+  testcases:
+    expected_result:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    task_id:
+      max: 100
+      min: 1
+      type: int
+    test_case_id:
+      max: 100
+      min: 1
+      type: int
+    test_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  testplans:
+    created_at:
+      type: timestamp
+    experiment_id:
+      max: 100
+      min: 1
+      type: int
+    plan_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    plan_id:
+      max: 100
+      min: 1
+      type: int
+  testresults:
+    executed_at:
+      type: timestamp
+    result_id:
+      max: 100
+      min: 1
+      type: int
+    status:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    test_case_id:
+      max: 100
+      min: 1
+      type: int
+  toolintegrations:
+    integration_id:
+      max: 100
+      min: 1
+      type: int
+    tool_id:
+      max: 100
+      min: 1
+      type: int
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  trainingattendance:
+    attendance_id:
+      max: 100
+      min: 1
+      type: int
+    attended:
+      type: choice
+      values:
+      - 'True'
+      - 'False'
+    session_id:
+      max: 100
+      min: 1
+      type: int
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  trainingprograms:
+    end_date:
+      type: DATE,
+    program_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    start_date:
+      type: DATE,
+    training_id:
+      max: 100
+      min: 1
+      type: int
+  trainingregistrations:
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    registered_at:
+      type: timestamp
+    registration_id:
+      max: 100
+      min: 1
+      type: int
+    training_id:
+      max: 100
+      min: 1
+      type: int
+  trainingsessions:
+    scheduled_at:
+      type: TIMESTAMP,
+    session_id:
+      max: 100
+      min: 1
+      type: int
+    topic:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  transportationservices:
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    service_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    transport_service_id:
+      max: 100
+      min: 1
+      type: int
+  transportationusage:
+    student_id:
+      max: 100
+      min: 1
+      type: int
+    transport_service_id:
+      max: 100
+      min: 1
+      type: int
+    usage_date:
+      type: DATE,
+    usage_id:
+      max: 100
+      min: 1
+      type: int
+  tuitionfees:
+    amount:
+      max: 100
+      min: 1
+      type: int
+    due_date:
+      type: DATE,
+    fee_id:
+      max: 100
+      min: 1
+      type: int
+    paid_date:
+      type: DATE,
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_admetrics:
+    ad_id:
+      max: 100
+      min: 1
+      type: int
+    clicks:
+      type: INT,
+    impressions:
+      type: INT,
+    metric_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_ads:
+    ad_content:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    ad_id:
+      max: 100
+      min: 1
+      type: int
+    ad_platform:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_answers:
+    answer_id:
+      max: 100
+      min: 1
+      type: int
+    answer_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    question_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_articles:
+    article_content:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    article_id:
+      max: 100
+      min: 1
+      type: int
+    article_title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_articles_comments:
+    article_id:
+      max: 100
+      min: 1
+      type: int
+    comment_id:
+      max: 100
+      min: 1
+      type: int
+    comment_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_articles_likes:
+    article_id:
+      max: 100
+      min: 1
+      type: int
+    like_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_articles_two:
+    article_content:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    article_id:
+      max: 100
+      min: 1
+      type: int
+    article_title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_audiolectures:
+    audio_id:
+      max: 100
+      min: 1
+      type: int
+    audio_title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    audio_url:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_availability:
+    availability_id:
+      max: 100
+      min: 1
+      type: int
+    available:
+      type: choice
+      values:
+      - 'True'
+      - 'False'
+    date:
+      type: DATE,
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_awards:
+    award_id:
+      max: 100
+      min: 1
+      type: int
+    award_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    award_year:
+      type: INT,
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_awards_comments:
+    award_id:
+      max: 100
+      min: 1
+      type: int
+    comment_id:
+      max: 100
+      min: 1
+      type: int
+    comment_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_banners:
+    banner_id:
+      max: 100
+      min: 1
+      type: int
+    banner_image:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_blog:
+    blog_content:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    blog_id:
+      max: 100
+      min: 1
+      type: int
+    blog_title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_blog_comments:
+    blog_id:
+      max: 100
+      min: 1
+      type: int
+    comment_id:
+      max: 100
+      min: 1
+      type: int
+    comment_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_blog_likes:
+    blog_id:
+      max: 100
+      min: 1
+      type: int
+    like_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_bookrecommendations:
+    author:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    book_title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    recommendation_id:
+      max: 100
+      min: 1
+      type: int
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_categories:
+    category_id:
+      max: 100
+      min: 1
+      type: int
+    category_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  tutor_category_assignment:
+    assignment_id:
+      max: 100
+      min: 1
+      type: int
+    category_id:
+      max: 100
+      min: 1
+      type: int
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_certifications:
+    certification_id:
+      max: 100
+      min: 1
+      type: int
+    certification_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    expiration_date:
+      type: DATE,
+    issued_date:
+      type: DATE,
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_certifications_comments:
+    certification_id:
+      max: 100
+      min: 1
+      type: int
+    comment_id:
+      max: 100
+      min: 1
+      type: int
+    comment_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_certifications_two:
+    certification_id:
+      max: 100
+      min: 1
+      type: int
+    certification_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    issuing_organization:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+    year_obtained:
+      type: INT,
+  tutor_collaborations:
+    collaboration_id:
+      max: 100
+      min: 1
+      type: int
+    project_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    project_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_competitions:
+    competition_date:
+      type: DATE,
+    competition_id:
+      max: 100
+      min: 1
+      type: int
+    competition_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_conferences:
+    conference_date:
+      type: DATE,
+    conference_id:
+      max: 100
+      min: 1
+      type: int
+    conference_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_connections:
+    connection_date:
+      type: timestamp
+    connection_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_event_comments:
+    comment_id:
+      max: 100
+      min: 1
+      type: int
+    comment_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    event_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_eventparticipation:
+    event_date:
+      type: DATE,
+    event_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    participation_id:
+      max: 100
+      min: 1
+      type: int
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_events:
+    event_id:
+      max: 100
+      min: 1
+      type: int
+    tutor_event_id:
+      max: 100
+      min: 1
+      type: int
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_experience:
+    experience_id:
+      max: 100
+      min: 1
+      type: int
+    position:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    previous_employer:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+    years_worked:
+      type: INT,
+  tutor_feedback:
+    created_at:
+      type: timestamp
+    feedback_id:
+      max: 100
+      min: 1
+      type: int
+    feedback_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_feedbackresponses:
+    created_at:
+      type: timestamp
+    feedback_id:
+      max: 100
+      min: 1
+      type: int
+    response_id:
+      max: 100
+      min: 1
+      type: int
+    response_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  tutor_feedbacksurveys:
+    created_at:
+      type: timestamp
+    survey_id:
+      max: 100
+      min: 1
+      type: int
+    survey_title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_financials:
+    created_at:
+      type: timestamp
+    expenses:
+      max: 100
+      min: 1
+      type: int
+    financial_id:
+      max: 100
+      min: 1
+      type: int
+    income:
+      max: 100
+      min: 1
+      type: int
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_forum:
+    created_at:
+      type: timestamp
+    forum_content:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    forum_id:
+      max: 100
+      min: 1
+      type: int
+    forum_topic:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_forum_comments:
+    comment_id:
+      max: 100
+      min: 1
+      type: int
+    comment_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    forum_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_galleries:
+    created_at:
+      type: timestamp
+    gallery_id:
+      max: 100
+      min: 1
+      type: int
+    gallery_title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_galleries_comments:
+    comment_id:
+      max: 100
+      min: 1
+      type: int
+    comment_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    gallery_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_goals:
+    goal_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    goal_id:
+      max: 100
+      min: 1
+      type: int
+    target_date:
+      type: DATE,
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_industryconnections:
+    connection_id:
+      max: 100
+      min: 1
+      type: int
+    contact_info:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    contact_person:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    organization_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_interactions:
+    interaction_date:
+      type: TIMESTAMP,
+    interaction_id:
+      max: 100
+      min: 1
+      type: int
+    interaction_type:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    student_id:
+      max: 100
+      min: 1
+      type: int
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_languages:
+    language_id:
+      max: 100
+      min: 1
+      type: int
+    language_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_languages_spoken:
+    language_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    spoken_id:
+      max: 100
+      min: 1
+      type: int
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_media:
+    created_at:
+      type: timestamp
+    media_id:
+      max: 100
+      min: 1
+      type: int
+    media_type:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    media_url:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_media_comments:
+    comment_id:
+      max: 100
+      min: 1
+      type: int
+    comment_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    media_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_meeting:
+    meeting_date:
+      type: TIMESTAMP,
+    meeting_duration:
+      type: INT,
+    meeting_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_meeting_notes:
+    created_at:
+      type: timestamp
+    meeting_id:
+      max: 100
+      min: 1
+      type: int
+    meeting_note_id:
+      max: 100
+      min: 1
+      type: int
+    note_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  tutor_mentorships:
+    end_date:
+      type: DATE,
+    mentee_id:
+      max: 100
+      min: 1
+      type: int
+    mentorship_id:
+      max: 100
+      min: 1
+      type: int
+    start_date:
+      type: DATE,
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_networks:
+    network_id:
+      max: 100
+      min: 1
+      type: int
+    network_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_notes:
+    created_at:
+      type: timestamp
+    note_id:
+      max: 100
+      min: 1
+      type: int
+    note_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_partnerships:
+    partner_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    partnership_date:
+      type: TIMESTAMP,
+    partnership_id:
+      max: 100
+      min: 1
+      type: int
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_podcasts:
+    created_at:
+      type: timestamp
+    podcast_id:
+      max: 100
+      min: 1
+      type: int
+    podcast_title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    podcast_url:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_policies:
+    created_at:
+      type: timestamp
+    policy_id:
+      max: 100
+      min: 1
+      type: int
+    policy_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_projects:
+    created_at:
+      type: timestamp
+    project_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    project_id:
+      max: 100
+      min: 1
+      type: int
+    project_title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_projects_comments:
+    comment_id:
+      max: 100
+      min: 1
+      type: int
+    comment_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    project_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_projects_likes:
+    like_id:
+      max: 100
+      min: 1
+      type: int
+    project_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_qualifications:
+    institution:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    qualification_id:
+      max: 100
+      min: 1
+      type: int
+    qualification_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+    year_obtained:
+      type: INT,
+  tutor_questions:
+    created_at:
+      type: timestamp
+    question_id:
+      max: 100
+      min: 1
+      type: int
+    question_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_ratings:
+    comments:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    rating:
+      max: 100
+      min: 1
+      type: int
+    rating_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_referrals:
+    referral_date:
+      type: timestamp
+    referral_id:
+      max: 100
+      min: 1
+      type: int
+    referred_student_id:
+      max: 100
+      min: 1
+      type: int
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_reports:
+    created_at:
+      type: timestamp
+    report_id:
+      max: 100
+      min: 1
+      type: int
+    report_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_resources:
+    created_at:
+      type: timestamp
+    resource_id:
+      max: 100
+      min: 1
+      type: int
+    resource_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    resource_url:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_resources_comments:
+    comment_id:
+      max: 100
+      min: 1
+      type: int
+    comment_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    resource_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_resources_two:
+    created_at:
+      type: timestamp
+    resource_id:
+      max: 100
+      min: 1
+      type: int
+    resource_title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    resource_url:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_reviews:
+    created_at:
+      type: timestamp
+    review_id:
+      max: 100
+      min: 1
+      type: int
+    review_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_schedules:
+    available_day:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    available_time:
+      type: TIME,
+    schedule_id:
+      max: 100
+      min: 1
+      type: int
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_session_tags:
+    session_id:
+      max: 100
+      min: 1
+      type: int
+    tag_id:
+      max: 100
+      min: 1
+      type: int
+    tag_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  tutor_skills:
+    skill_id:
+      max: 100
+      min: 1
+      type: int
+    skill_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_socialmedia:
+    platform:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    profile_url:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    social_media_id:
+      max: 100
+      min: 1
+      type: int
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_socialmedia_likes:
+    like_id:
+      max: 100
+      min: 1
+      type: int
+    social_media_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_socialmediametrics:
+    created_at:
+      type: timestamp
+    engagement_rate:
+      max: 100
+      min: 1
+      type: int
+    followers_count:
+      type: INT,
+    metric_id:
+      max: 100
+      min: 1
+      type: int
+    platform:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_specialties:
+    specialty_id:
+      max: 100
+      min: 1
+      type: int
+    specialty_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_statistics:
+    created_at:
+      type: timestamp
+    feedback_count:
+      type: INT,
+    session_count:
+      type: INT,
+    statistic_id:
+      max: 100
+      min: 1
+      type: int
+    success_rate:
+      max: 100
+      min: 1
+      type: int
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_subjects:
+    subject_id:
+      max: 100
+      min: 1
+      type: int
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+    tutor_subject_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_successmetrics:
+    created_at:
+      type: timestamp
+    metric_id:
+      max: 100
+      min: 1
+      type: int
+    metric_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    metric_value:
+      max: 100
+      min: 1
+      type: int
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_successstories:
+    created_at:
+      type: timestamp
+    story_id:
+      max: 100
+      min: 1
+      type: int
+    story_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    student_id:
+      max: 100
+      min: 1
+      type: int
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_timings:
+    timing_end:
+      type: TIME,
+    timing_id:
+      max: 100
+      min: 1
+      type: int
+    timing_start:
+      type: TIME,
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_trainingprograms:
+    created_at:
+      type: timestamp
+    program_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    program_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    training_id:
+      max: 100
+      min: 1
+      type: int
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_trainingsessions:
+    session_date:
+      type: TIMESTAMP,
+    session_id:
+      max: 100
+      min: 1
+      type: int
+    session_topic:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_video_sessions:
+    session_date:
+      type: TIMESTAMP,
+    student_id:
+      max: 100
+      min: 1
+      type: int
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+    video_session_id:
+      max: 100
+      min: 1
+      type: int
+  tutor_videos:
+    created_at:
+      type: timestamp
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+    video_id:
+      max: 100
+      min: 1
+      type: int
+    video_title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    video_url:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  tutor_videos_two:
+    created_at:
+      type: timestamp
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+    video_id:
+      max: 100
+      min: 1
+      type: int
+    video_title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    video_url:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  tutor_webinars:
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+    webinar_date:
+      type: TIMESTAMP,
+    webinar_id:
+      max: 100
+      min: 1
+      type: int
+    webinar_title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  tutor_websites:
+    created_at:
+      type: timestamp
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+    website_id:
+      max: 100
+      min: 1
+      type: int
+    website_url:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  tutor_workshops:
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+    workshop_date:
+      type: TIMESTAMP,
+    workshop_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    workshop_id:
+      max: 100
+      min: 1
+      type: int
+    workshop_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  tutoringevents:
+    event_date:
+      type: DATE,
+    event_id:
+      max: 100
+      min: 1
+      type: int
+    event_location:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    event_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  tutoringnotify:
+    created_at:
+      type: timestamp
+    is_read:
+      type: choice
+      values:
+      - 'True'
+      - 'False'
+    notification_id:
+      max: 100
+      min: 1
+      type: int
+    notification_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  tutoringsessions:
+    session_date:
+      type: DATE,
+    session_id:
+      max: 100
+      min: 1
+      type: int
+    session_time:
+      type: TIME,
+    student_id:
+      max: 100
+      min: 1
+      type: int
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutoringsessionstwo:
+    course_id:
+      max: 100
+      min: 1
+      type: int
+    session_date:
+      type: TIMESTAMP,
+    session_duration:
+      type: INT,
+    session_id:
+      max: 100
+      min: 1
+      type: int
+    student_id:
+      max: 100
+      min: 1
+      type: int
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutorprofiles:
+    bio:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    profile_id:
+      max: 100
+      min: 1
+      type: int
+    profile_picture:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  tutors:
+    created_at:
+      type: timestamp
+    email:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    experience_years:
+      type: INT,
+    first_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    last_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    phone:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    subject_specialty:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    tutor_id:
+      max: 100
+      min: 1
+      type: int
+  unitbudgets:
+    budget_amount:
+      max: 100
+      min: 1
+      type: int
+    budget_id:
+      max: 100
+      min: 1
+      type: int
+    unit_id:
+      max: 100
+      min: 1
+      type: int
+  useraccounts:
+    employee_id:
+      type: INT,
+    password_hash:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    user_id:
+      max: 100
+      min: 1
+      type: int
+    username:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  userassignments:
+    assigned_at:
+      type: timestamp
+    assignment_id:
+      max: 100
+      min: 1
+      type: int
+    user_id:
+      max: 100
+      min: 1
+      type: int
+    variant_id:
+      max: 100
+      min: 1
+      type: int
+  userengagements:
+    engagement_date:
+      type: timestamp
+    engagement_id:
+      max: 100
+      min: 1
+      type: int
+    engagement_type:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  usergroups:
+    group_id:
+      max: 100
+      min: 1
+      type: int
+    group_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  usernotifications:
+    notification_id:
+      max: 100
+      min: 1
+      type: int
+    notification_text:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    sent_at:
+      type: timestamp
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  userpersonas:
+    behaviors:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    demographics:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    persona_id:
+      max: 100
+      min: 1
+      type: int
+    persona_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    primary_goal:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  userpreferences:
+    preference_id:
+      max: 100
+      min: 1
+      type: int
+    preference_key:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    preference_value:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  userroleassignments:
+    assigned_at:
+      type: timestamp
+    assignment_id:
+      max: 100
+      min: 1
+      type: int
+    role_id:
+      max: 100
+      min: 1
+      type: int
+    user_id:
+      max: 100
+      min: 1
+      type: int
+  userroles:
+    role_id:
+      max: 100
+      min: 1
+      type: int
+    role_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  userrolesvt:
+    role_id:
+      max: 100
+      min: 1
+      type: int
+    role_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  users:
+    created_at:
+      type: timestamp
+    email:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    user_id:
+      max: 100
+      min: 1
+      type: int
+    username:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  usersatisfactionsurveys:
+    submission_date:
+      type: timestamp
+    survey_id:
+      max: 100
+      min: 1
+      type: int
+    survey_title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  usersegments:
+    criteria:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    segment_id:
+      max: 100
+      min: 1
+      type: int
+    segment_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  userstories:
+    acceptance_criteria:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    created_at:
+      type: timestamp
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    story_id:
+      max: 100
+      min: 1
+      type: int
+  variants:
+    experiment_id:
+      max: 100
+      min: 1
+      type: int
+    variant_id:
+      max: 100
+      min: 1
+      type: int
+    variant_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  vehiclemaintenance:
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    maintenance_date:
+      type: DATE,
+    maintenance_id:
+      max: 100
+      min: 1
+      type: int
+    vehicle_id:
+      max: 100
+      min: 1
+      type: int
+  vendormanagement:
+    contact_person:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    email:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    phone:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    vendor_id:
+      max: 100
+      min: 1
+      type: int
+    vendor_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  volunteeropportunities:
+    description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    opportunity_id:
+      max: 100
+      min: 1
+      type: int
+    opportunity_title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  vtcourses2:
+    course_description:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    course_id:
+      max: 100
+      min: 1
+      type: int
+    course_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  vtevents:
+    event_date:
+      type: DATE,
+    event_id:
+      max: 100
+      min: 1
+      type: int
+    event_name:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    location:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+  vtstratimplement:
+    end_date:
+      type: DATE,
+    implementation_id:
+      max: 100
+      min: 1
+      type: int
+    start_date:
+      type: DATE,
+    strategy_id:
+      max: 100
+      min: 1
+      type: int
+  webinarregistrations:
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    registered_at:
+      type: timestamp
+    registration_id:
+      max: 100
+      min: 1
+      type: int
+    webinar_id:
+      max: 100
+      min: 1
+      type: int
+  webinars:
+    scheduled_at:
+      type: timestamp
+    title:
+      type: choice
+      values:
+      - choice 1
+      - choice 2
+      - choice 3
+    webinar_id:
+      max: 100
+      min: 1
+      type: int
+  workshopregistrations:
+    lead_id:
+      max: 100
+      min: 1
+      type: int
+    registered_at:
+      type: timestamp
+    registration_id:
+      max: 100
+      min: 1
+      type: int
+    workshop_id:
+      max: 100
+      min: 1
+      type: int

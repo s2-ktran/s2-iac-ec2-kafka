@@ -78,7 +78,7 @@ if __name__ == "__main__":
     for name in table_names:
         streaming_list.append({
             "topic_name": name + "_topic",
-            "record_count": 1000,
+            "record_count": 100,
             "dataset": name,
         })
     write_yaml({"streaming": streaming_list}, testing_var_file_path)
