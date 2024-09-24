@@ -8,7 +8,12 @@ import time
 EC2_PUBLIC_IP = os.environ["EC2_PUBLIC_IP"]
 
 # Initialize Kafka producer
-producer = Producer({"bootstrap.servers": f"{EC2_PUBLIC_IP}:9092"})
+producer = Producer({
+    "bootstrap.servers": f"{EC2_PUBLIC_IP}:9092",
+    "queue.buffering.max.messages": 1000000,       # Increase the maximum number of messages in the queue
+    "queue.buffering.max.kbytes": 1048576,         # Increase the buffer size in KB
+    "linger.ms": 50,                               # Add a small delay to batch messages
+})
 admin_client = AdminClient({"bootstrap.servers": f"{EC2_PUBLIC_IP}:9092"})
 
 
