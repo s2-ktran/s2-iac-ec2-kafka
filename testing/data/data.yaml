@@ -22,7 +22,7 @@ data:
       type: int
   academicadvising:
     advising_date:
-      type: DATE,
+      type: date
     advising_id:
       max: 100
       min: 1
@@ -37,7 +37,7 @@ data:
       type: int
   academiccalendar:
     end_date:
-      type: DATE,
+      type: date
     semester:
       type: choice
       values:
@@ -45,7 +45,7 @@ data:
       - choice 2
       - choice 3
     start_date:
-      type: DATE,
+      type: date
     year:
       max: 100
       min: 1
@@ -163,24 +163,30 @@ data:
       min: 1
       type: int
     end_date:
-      type: DATE,
+      type: date
     start_date:
-      type: DATE,
+      type: date
   adperformance:
     ad_campaign_id:
       max: 100
       min: 1
       type: int
     clicks:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     conversions:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     cost:
       max: 100
       min: 1
       type: int
     impressions:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     performance_id:
       max: 100
       min: 1
@@ -195,9 +201,13 @@ data:
       min: 1
       type: int
     conversions:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     leads_generated:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     total_spend:
       max: 100
       min: 1
@@ -271,7 +281,9 @@ data:
       - choice 2
       - choice 3
     graduation_year:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     last_name:
       type: choice
       values:
@@ -280,7 +292,7 @@ data:
       - choice 3
   alumniactivities:
     activity_date:
-      type: DATE,
+      type: date
     activity_id:
       max: 100
       min: 1
@@ -379,7 +391,9 @@ data:
     request_timestamp:
       type: timestamp
     response_status:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
   architecturereviews:
     description:
       type: choice
@@ -416,7 +430,7 @@ data:
       type: int
   assetallocation:
     allocation_date:
-      type: DATE,
+      type: date
     allocation_id:
       max: 100
       min: 1
@@ -445,10 +459,10 @@ data:
       min: 1
       type: int
     due_date:
-      type: DATE,
+      type: date
   attendance:
     attendance_date:
-      type: DATE,
+      type: date
     attendance_id:
       max: 100
       min: 1
@@ -465,7 +479,7 @@ data:
       - choice 3
   attendancevt:
     AttendanceVT_date:
-      type: DATE,
+      type: date
     AttendanceVT_id:
       max: 100
       min: 1
@@ -517,7 +531,7 @@ data:
       min: 1
       type: int
     timestamp:
-      type: DATETIME,
+      type: date
   auditrecommendations:
     audit_id:
       max: 100
@@ -618,13 +632,13 @@ data:
       min: 1
       type: int
     loan_date:
-      type: DATE,
+      type: date
     loan_id:
       max: 100
       min: 1
       type: int
     return_date:
-      type: DATE,
+      type: date
     student_id:
       max: 100
       min: 1
@@ -697,7 +711,7 @@ data:
       type: int
   businesscontinuityplans:
     created_date:
-      type: DATE,
+      type: date
     plan_id:
       max: 100
       min: 1
@@ -720,7 +734,7 @@ data:
       min: 1
       type: int
     target_date:
-      type: DATE,
+      type: date
   businessunits:
     unit_id:
       max: 100
@@ -782,9 +796,9 @@ data:
       - choice 2
       - choice 3
     end_date:
-      type: DATE,
+      type: date
     start_date:
-      type: DATE,
+      type: date
   campaigntrends:
     campaign_id:
       max: 100
@@ -831,7 +845,7 @@ data:
       min: 1
       type: int
     published_date:
-      type: DATE,
+      type: date
     title:
       type: choice
       values:
@@ -857,7 +871,7 @@ data:
       - choice 3
   campussurveys:
     created_date:
-      type: DATE,
+      type: date
     survey_id:
       max: 100
       min: 1
@@ -874,7 +888,7 @@ data:
       min: 1
       type: int
     event_date:
-      type: DATE,
+      type: date
     event_name:
       type: choice
       values:
@@ -883,7 +897,7 @@ data:
       - choice 3
   careerappointments:
     appointment_date:
-      type: DATE,
+      type: date
     appointment_id:
       max: 100
       min: 1
@@ -953,10 +967,9 @@ data:
       min: 1
       type: int
     completed:
-      type: choice
-      values:
-      - 'True'
-      - 'False'
+      max: 1
+      min: 0
+      type: int
     item_description:
       type: choice
       values:
@@ -1004,7 +1017,9 @@ data:
       - choice 2
       - choice 3
     year:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
   classroomresources:
     class_id:
       max: 100
@@ -1194,7 +1209,7 @@ data:
       type: int
   communityengagement:
     engagement_date:
-      type: DATE,
+      type: date
     engagement_id:
       max: 100
       min: 1
@@ -1234,14 +1249,14 @@ data:
       - choice 2
       - choice 3
     purchase_date:
-      type: DATE,
+      type: date
     value:
       max: 100
       min: 1
       type: int
   companyeventsvt:
     event_date:
-      type: DATE,
+      type: date
     event_id:
       max: 100
       min: 1
@@ -1271,7 +1286,7 @@ data:
       - choice 3
   companyvehicles:
     purchase_date:
-      type: DATE,
+      type: date
     value:
       max: 100
       min: 1
@@ -1341,7 +1356,7 @@ data:
       type: int
   complianceaudits:
     audit_date:
-      type: DATE,
+      type: date
     audit_id:
       max: 100
       min: 1
@@ -1371,7 +1386,7 @@ data:
       - choice 2
       - choice 3
     date_of_conference:
-      type: DATE,
+      type: date
     participation_id:
       max: 100
       min: 1
@@ -1417,7 +1432,7 @@ data:
     created_at:
       type: timestamp
     scheduled_date:
-      type: DATE,
+      type: date
     title:
       type: choice
       values:
@@ -1491,9 +1506,9 @@ data:
       min: 1
       type: int
     end_date:
-      type: DATE,
+      type: date
     start_date:
-      type: DATE,
+      type: date
   conversionrates:
     campaign_id:
       max: 100
@@ -1538,7 +1553,7 @@ data:
       - choice 2
       - choice 3
     session_date:
-      type: DATE,
+      type: date
     session_id:
       max: 100
       min: 1
@@ -1549,7 +1564,7 @@ data:
       type: int
   courseannouncements:
     announcement_date:
-      type: DATE,
+      type: date
     announcement_id:
       max: 100
       min: 1
@@ -1597,7 +1612,7 @@ data:
       min: 1
       type: int
     feedback_date:
-      type: DATE,
+      type: date
     feedback_text:
       type: choice
       values:
@@ -1614,7 +1629,7 @@ data:
       min: 1
       type: int
     created_date:
-      type: DATE,
+      type: date
     forum_id:
       max: 100
       min: 1
@@ -1699,15 +1714,15 @@ data:
       min: 1
       type: int
     end_time:
-      type: TIME,
+      type: timestamp
     schedule_date:
-      type: DATE,
+      type: date
     schedule_id:
       max: 100
       min: 1
       type: int
     start_time:
-      type: TIME,
+      type: timestamp
   coursesubscriptions:
     course_id:
       max: 100
@@ -1718,7 +1733,7 @@ data:
       min: 1
       type: int
     subscription_date:
-      type: DATE,
+      type: date
     subscription_id:
       max: 100
       min: 1
@@ -1746,7 +1761,7 @@ data:
       min: 1
       type: int
     response_date:
-      type: DATE,
+      type: date
     response_id:
       max: 100
       min: 1
@@ -1768,7 +1783,7 @@ data:
       min: 1
       type: int
     feedback_date:
-      type: DATE,
+      type: date
     feedback_id:
       max: 100
       min: 1
@@ -1800,7 +1815,9 @@ data:
     created_at:
       type: timestamp
     points_required:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     program_id:
       max: 100
       min: 1
@@ -1973,7 +1990,9 @@ data:
       - choice 3
   developmenttasks:
     assigned_to:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     created_at:
       type: timestamp
     status:
@@ -2013,7 +2032,7 @@ data:
       - choice 3
   disasterrecoveryplans:
     created_date:
-      type: DATE,
+      type: date
     plan_id:
       max: 100
       min: 1
@@ -2040,7 +2059,7 @@ data:
       min: 1
       type: int
     valid_until:
-      type: DATE,
+      type: date
   discussionboards:
     board_id:
       max: 100
@@ -2051,7 +2070,7 @@ data:
       min: 1
       type: int
     created_date:
-      type: DATE,
+      type: date
     title:
       type: choice
       values:
@@ -2070,7 +2089,7 @@ data:
       - choice 2
       - choice 3
     post_date:
-      type: DATE,
+      type: date
     post_id:
       max: 100
       min: 1
@@ -2110,9 +2129,11 @@ data:
       - choice 2
       - choice 3
     employee_id:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     upload_date:
-      type: DATE,
+      type: date
   emailcampaigns:
     body:
       type: choice
@@ -2210,7 +2231,7 @@ data:
       type: int
   employeecomplaints:
     complaint_date:
-      type: DATE,
+      type: date
     complaint_id:
       max: 100
       min: 1
@@ -2239,16 +2260,16 @@ data:
       min: 1
       type: int
     end_date:
-      type: DATE,
+      type: date
     start_date:
-      type: DATE,
+      type: date
   employeeoffboarding:
     employee_id:
       max: 100
       min: 1
       type: int
     offboarding_date:
-      type: DATE,
+      type: date
     offboarding_id:
       max: 100
       min: 1
@@ -2259,7 +2280,7 @@ data:
       min: 1
       type: int
     onboarding_date:
-      type: DATE,
+      type: date
     onboarding_id:
       max: 100
       min: 1
@@ -2274,7 +2295,7 @@ data:
       min: 1
       type: int
     relocation_date:
-      type: DATE,
+      type: date
     relocation_id:
       max: 100
       min: 1
@@ -2297,7 +2318,7 @@ data:
       - choice 2
       - choice 3
     hire_date:
-      type: DATE,
+      type: date
     job_title:
       type: choice
       values:
@@ -2322,7 +2343,7 @@ data:
       type: int
   employeesurveys:
     submission_date:
-      type: DATE,
+      type: date
     survey_id:
       max: 100
       min: 1
@@ -2352,13 +2373,15 @@ data:
       min: 1
       type: int
     enrollment_date:
-      type: DATE,
+      type: date
     enrollment_id:
       max: 100
       min: 1
       type: int
     grade:
-      type: FLOAT,
+      max: 100
+      min: 1
+      type: int
     student_id:
       max: 100
       min: 1
@@ -2446,7 +2469,7 @@ data:
       - choice 2
       - choice 3
     event_date:
-      type: DATE,
+      type: date
     event_id:
       max: 100
       min: 1
@@ -2531,7 +2554,7 @@ data:
       type: int
   eventsvt:
     event_date:
-      type: DATE,
+      type: date
     event_id:
       max: 100
       min: 1
@@ -2564,14 +2587,14 @@ data:
       min: 1
       type: int
     expense_date:
-      type: DATE,
+      type: date
     expense_id:
       max: 100
       min: 1
       type: int
   experiments:
     end_date:
-      type: DATE,
+      type: date
     experiment_id:
       max: 100
       min: 1
@@ -2583,7 +2606,7 @@ data:
       - choice 2
       - choice 3
     start_date:
-      type: DATE,
+      type: date
     status:
       type: choice
       values:
@@ -2632,7 +2655,7 @@ data:
       - choice 2
       - choice 3
     reservation_date:
-      type: DATE,
+      type: date
     reservation_id:
       max: 100
       min: 1
@@ -2647,7 +2670,7 @@ data:
       min: 1
       type: int
     usage_date:
-      type: DATE,
+      type: date
     usage_id:
       max: 100
       min: 1
@@ -2660,7 +2683,7 @@ data:
       - choice 2
       - choice 3
     meeting_date:
-      type: DATE,
+      type: date
     meeting_id:
       max: 100
       min: 1
@@ -2677,10 +2700,9 @@ data:
       - choice 2
       - choice 3
     is_active:
-      type: choice
-      values:
-      - 'True'
-      - 'False'
+      max: 1
+      min: 0
+      type: int
   feedback:
     experiment_id:
       max: 100
@@ -2704,7 +2726,7 @@ data:
       type: int
   feedback2:
     feedback_date:
-      type: DATE,
+      type: date
     feedback_id:
       max: 100
       min: 1
@@ -2731,7 +2753,7 @@ data:
       - choice 2
       - choice 3
     submission_date:
-      type: DATE,
+      type: date
   feedbackresponses:
     employee_id:
       max: 100
@@ -2767,7 +2789,7 @@ data:
       - choice 2
       - choice 3
     awarded_date:
-      type: DATE,
+      type: date
     student_id:
       max: 100
       min: 1
@@ -2778,7 +2800,7 @@ data:
       min: 1
       type: int
     aid_date:
-      type: DATE,
+      type: date
     aid_id:
       max: 100
       min: 1
@@ -2793,7 +2815,7 @@ data:
       min: 1
       type: int
     report_date:
-      type: DATE,
+      type: date
     report_id:
       max: 100
       min: 1
@@ -2833,7 +2855,7 @@ data:
       min: 1
       type: int
     response_date:
-      type: DATE,
+      type: date
     response_id:
       max: 100
       min: 1
@@ -2861,7 +2883,9 @@ data:
       - choice 3
   goalmetrics:
     conversion_count:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     goal_id:
       max: 100
       min: 1
@@ -2916,7 +2940,9 @@ data:
       min: 1
       type: int
     score:
-      type: FLOAT,
+      max: 100
+      min: 1
+      type: int
   groupmembers:
     group_id:
       max: 100
@@ -2945,7 +2971,7 @@ data:
       type: int
   healthandsafety:
     inspection_date:
-      type: DATE,
+      type: date
     safety_description:
       type: choice
       values:
@@ -2964,7 +2990,7 @@ data:
       - choice 2
       - choice 3
     record_date:
-      type: DATE,
+      type: date
     record_id:
       max: 100
       min: 1
@@ -3011,7 +3037,7 @@ data:
       - choice 2
       - choice 3
     report_date:
-      type: DATE,
+      type: date
     report_id:
       max: 100
       min: 1
@@ -3083,7 +3109,7 @@ data:
       - choice 2
       - choice 3
     hire_date:
-      type: DATE,
+      type: date
     instructor_id:
       max: 100
       min: 1
@@ -3138,7 +3164,7 @@ data:
       min: 1
       type: int
     violation_date:
-      type: DATE,
+      type: date
     violation_id:
       max: 100
       min: 1
@@ -3166,7 +3192,7 @@ data:
       - choice 3
   internships:
     application_deadline:
-      type: DATE,
+      type: date
     company_name:
       type: choice
       values:
@@ -3189,13 +3215,15 @@ data:
       min: 1
       type: int
     last_updated:
-      type: DATE,
+      type: date
     product_id:
       max: 100
       min: 1
       type: int
     stock_level:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
   invoices:
     amount:
       max: 100
@@ -3206,7 +3234,7 @@ data:
       min: 1
       type: int
     invoice_date:
-      type: DATE,
+      type: date
     invoice_id:
       max: 100
       min: 1
@@ -3229,7 +3257,7 @@ data:
       - choice 2
       - choice 3
     purchase_date:
-      type: DATE,
+      type: date
     value:
       max: 100
       min: 1
@@ -3252,7 +3280,7 @@ data:
       - choice 2
       - choice 3
     submission_date:
-      type: DATE,
+      type: date
     ticket_id:
       max: 100
       min: 1
@@ -3282,7 +3310,7 @@ data:
       min: 1
       type: int
     tracked_date:
-      type: DATE,
+      type: date
     tracking_id:
       max: 100
       min: 1
@@ -3293,7 +3321,9 @@ data:
       type: int
   laboratoryequipment:
     available_units:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     equipment_description:
       type: choice
       values:
@@ -3316,7 +3346,7 @@ data:
       min: 1
       type: int
     reservation_date:
-      type: DATE,
+      type: date
     reservation_id:
       max: 100
       min: 1
@@ -3391,7 +3421,9 @@ data:
       min: 1
       type: int
     score:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     score_id:
       max: 100
       min: 1
@@ -3419,7 +3451,7 @@ data:
       - choice 2
       - choice 3
     upload_date:
-      type: DATE,
+      type: date
   library:
     author:
       type: choice
@@ -3428,13 +3460,17 @@ data:
       - choice 2
       - choice 3
     available_copies:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     book_id:
       max: 100
       min: 1
       type: int
     published_year:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     title:
       type: choice
       values:
@@ -3519,7 +3555,9 @@ data:
       min: 1
       type: int
     redeemed_points:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     redemption_date:
       type: timestamp
     redemption_id:
@@ -3545,7 +3583,7 @@ data:
       type: timestamp
   marketinganalytics:
     analysis_date:
-      type: DATE,
+      type: date
     analytics_id:
       max: 100
       min: 1
@@ -3612,9 +3650,9 @@ data:
       - choice 2
       - choice 3
     end_date:
-      type: DATE,
+      type: date
     start_date:
-      type: DATE,
+      type: date
   marketingcollateral:
     collateral_id:
       max: 100
@@ -3638,7 +3676,7 @@ data:
     created_at:
       type: timestamp
     event_date:
-      type: DATE,
+      type: date
     event_id:
       max: 100
       min: 1
@@ -3768,11 +3806,15 @@ data:
       min: 1
       type: int
     conversions:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     created_at:
       type: timestamp
     leads_generated:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     performance_id:
       max: 100
       min: 1
@@ -3819,7 +3861,7 @@ data:
     created_at:
       type: timestamp
     training_date:
-      type: DATE,
+      type: date
     training_id:
       max: 100
       min: 1
@@ -3834,7 +3876,7 @@ data:
     created_at:
       type: timestamp
     date:
-      type: DATE,
+      type: date
     description:
       type: choice
       values:
@@ -3859,7 +3901,7 @@ data:
       - choice 2
       - choice 3
     research_date:
-      type: DATE,
+      type: date
     research_id:
       max: 100
       min: 1
@@ -3925,7 +3967,7 @@ data:
       type: int
   mediaeventsvt:
     event_date:
-      type: DATE,
+      type: date
     event_id:
       max: 100
       min: 1
@@ -3979,7 +4021,7 @@ data:
       - choice 2
       - choice 3
     spend_date:
-      type: DATE,
+      type: date
     spend_id:
       max: 100
       min: 1
@@ -3999,7 +4041,7 @@ data:
       type: int
   meetingnotes:
     meeting_date:
-      type: TIMESTAMP,
+      type: timestamp
     note_id:
       max: 100
       min: 1
@@ -4031,7 +4073,7 @@ data:
       - choice 2
       - choice 3
     meeting_date:
-      type: DATE,
+      type: date
     meeting_id:
       max: 100
       min: 1
@@ -4050,7 +4092,7 @@ data:
       min: 1
       type: int
     start_date:
-      type: DATE,
+      type: date
   metrics:
     experiment_id:
       max: 100
@@ -4074,7 +4116,7 @@ data:
       type: timestamp
   milestones:
     milestone_date:
-      type: DATE,
+      type: date
     milestone_description:
       type: choice
       values:
@@ -4114,7 +4156,7 @@ data:
       - choice 2
       - choice 3
     notification_date:
-      type: DATE,
+      type: date
     notification_id:
       max: 100
       min: 1
@@ -4158,7 +4200,9 @@ data:
       min: 1
       type: int
     quantity:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     resource_id:
       max: 100
       min: 1
@@ -4186,7 +4230,7 @@ data:
       - choice 3
   operationalmetrics:
     measurement_date:
-      type: DATE,
+      type: date
     metric_id:
       max: 100
       min: 1
@@ -4203,7 +4247,7 @@ data:
       type: int
   opportunities:
     close_date:
-      type: DATE,
+      type: date
     lead_id:
       max: 100
       min: 1
@@ -4325,7 +4369,7 @@ data:
       type: int
   partnerships:
     end_date:
-      type: DATE,
+      type: date
     partner_name:
       type: choice
       values:
@@ -4343,10 +4387,10 @@ data:
       - choice 2
       - choice 3
     start_date:
-      type: DATE,
+      type: date
   passwordresets:
     reset_date:
-      type: DATE,
+      type: date
     reset_id:
       max: 100
       min: 1
@@ -4376,7 +4420,7 @@ data:
       min: 1
       type: int
     payment_date:
-      type: DATE,
+      type: date
     payment_id:
       max: 100
       min: 1
@@ -4410,7 +4454,7 @@ data:
       min: 1
       type: int
     transaction_date:
-      type: DATE,
+      type: date
     transaction_id:
       max: 100
       min: 1
@@ -4421,9 +4465,13 @@ data:
       min: 1
       type: int
     conversions:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     leads_generated:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     metric_id:
       max: 100
       min: 1
@@ -4461,7 +4509,7 @@ data:
       min: 1
       type: int
     review_date:
-      type: DATE,
+      type: date
     review_id:
       max: 100
       min: 1
@@ -4510,7 +4558,7 @@ data:
       - choice 3
   planimplementation:
     implementation_date:
-      type: DATE,
+      type: date
     implementation_id:
       max: 100
       min: 1
@@ -4531,7 +4579,7 @@ data:
       - choice 2
       - choice 3
     test_date:
-      type: DATE,
+      type: date
     test_id:
       max: 100
       min: 1
@@ -4555,7 +4603,7 @@ data:
       - choice 3
   policyacknowledgments:
     acknowledgment_date:
-      type: DATE,
+      type: date
     acknowledgment_id:
       max: 100
       min: 1
@@ -4574,14 +4622,14 @@ data:
       min: 1
       type: int
     update_date:
-      type: DATE,
+      type: date
     update_id:
       max: 100
       min: 1
       type: int
   procurement:
     procurement_date:
-      type: DATE,
+      type: date
     procurement_id:
       max: 100
       min: 1
@@ -4683,7 +4731,7 @@ data:
       min: 1
       type: int
     end_date:
-      type: DATE,
+      type: date
     project_id:
       max: 100
       min: 1
@@ -4695,7 +4743,7 @@ data:
       - choice 2
       - choice 3
     start_date:
-      type: DATE,
+      type: date
   projectstatus:
     last_updated:
       type: timestamp
@@ -4717,7 +4765,7 @@ data:
       type: int
   projecttimelines:
     end_date:
-      type: DATE,
+      type: date
     project_name:
       type: choice
       values:
@@ -4725,7 +4773,7 @@ data:
       - choice 2
       - choice 3
     start_date:
-      type: DATE,
+      type: date
     timeline_id:
       max: 100
       min: 1
@@ -4746,10 +4794,10 @@ data:
       min: 1
       type: int
     expiration_date:
-      type: DATE,
+      type: date
   purchaseorders:
     order_date:
-      type: DATE,
+      type: date
     order_id:
       max: 100
       min: 1
@@ -4764,7 +4812,7 @@ data:
       type: int
   purchases:
     purchase_date:
-      type: DATE,
+      type: date
     purchase_id:
       max: 100
       min: 1
@@ -4871,7 +4919,7 @@ data:
       type: int
   releases:
     release_date:
-      type: DATE,
+      type: date
     release_id:
       max: 100
       min: 1
@@ -4932,7 +4980,9 @@ data:
       min: 1
       type: int
     total_users:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     variant_id:
       max: 100
       min: 1
@@ -4988,7 +5038,7 @@ data:
       - choice 3
   riskmanagement:
     assessment_date:
-      type: DATE,
+      type: date
     description:
       type: choice
       values:
@@ -5013,7 +5063,7 @@ data:
       - choice 2
       - choice 3
     implementation_date:
-      type: DATE,
+      type: date
     mitigation_id:
       max: 100
       min: 1
@@ -5066,7 +5116,7 @@ data:
       - choice 2
       - choice 3
     due_date:
-      type: DATE,
+      type: date
     item_id:
       max: 100
       min: 1
@@ -5111,7 +5161,7 @@ data:
       min: 1
       type: int
     rollout_date:
-      type: DATE,
+      type: date
     rollout_id:
       max: 100
       min: 1
@@ -5126,7 +5176,7 @@ data:
       min: 1
       type: int
     pay_date:
-      type: DATE,
+      type: date
     salary_amount:
       max: 100
       min: 1
@@ -5141,9 +5191,11 @@ data:
       min: 1
       type: int
     quantity:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     sale_date:
-      type: DATE,
+      type: date
     sale_id:
       max: 100
       min: 1
@@ -5154,7 +5206,7 @@ data:
       type: int
   salesreports:
     report_date:
-      type: DATE,
+      type: date
     report_id:
       max: 100
       min: 1
@@ -5210,7 +5262,7 @@ data:
       type: int
   securityincidents:
     incident_date:
-      type: DATE,
+      type: date
     incident_description:
       type: choice
       values:
@@ -5319,7 +5371,7 @@ data:
       type: int
   session_reschedule:
     new_session_date:
-      type: TIMESTAMP,
+      type: timestamp
     reschedule_id:
       max: 100
       min: 1
@@ -5330,7 +5382,7 @@ data:
       type: int
   sessions:
     end_time:
-      type: TIMESTAMP,
+      type: timestamp
     session_id:
       max: 100
       min: 1
@@ -5406,7 +5458,7 @@ data:
       type: int
   socialmediaengagement:
     engagement_date:
-      type: DATE,
+      type: date
     engagement_id:
       max: 100
       min: 1
@@ -5450,7 +5502,7 @@ data:
       - choice 2
       - choice 3
     post_date:
-      type: DATE,
+      type: date
     post_id:
       max: 100
       min: 1
@@ -5485,7 +5537,7 @@ data:
       type: int
   sprints:
     end_date:
-      type: DATE,
+      type: date
     sprint_id:
       max: 100
       min: 1
@@ -5497,7 +5549,7 @@ data:
       - choice 2
       - choice 3
     start_date:
-      type: DATE,
+      type: date
   sprinttasks:
     sprint_id:
       max: 100
@@ -5540,7 +5592,7 @@ data:
       - choice 2
       - choice 3
     hire_date:
-      type: DATE,
+      type: date
     last_name:
       type: choice
       values:
@@ -5553,7 +5605,7 @@ data:
       type: int
   staffassignments:
     assigned_date:
-      type: DATE,
+      type: date
     assignment_id:
       max: 100
       min: 1
@@ -5579,7 +5631,7 @@ data:
       - choice 3
   stakeholderengagement:
     engagement_date:
-      type: DATE,
+      type: date
     engagement_id:
       max: 100
       min: 1
@@ -5683,7 +5735,7 @@ data:
       - choice 3
   strategyimplementation:
     implementation_date:
-      type: DATE,
+      type: date
     implementation_id:
       max: 100
       min: 1
@@ -5732,7 +5784,7 @@ data:
       min: 1
       type: int
     awarded_date:
-      type: DATE,
+      type: date
     student_award_id:
       max: 100
       min: 1
@@ -5769,7 +5821,7 @@ data:
       type: int
   studentfeedback:
     feedback_date:
-      type: DATE,
+      type: date
     feedback_id:
       max: 100
       min: 1
@@ -5800,7 +5852,7 @@ data:
       min: 1
       type: int
     visit_date:
-      type: DATE,
+      type: date
   studenthealthservices:
     health_service_id:
       max: 100
@@ -5817,10 +5869,10 @@ data:
       min: 1
       type: int
     visit_date:
-      type: DATE,
+      type: date
   studenthonors:
     awarded_date:
-      type: DATE,
+      type: date
     honor_id:
       max: 100
       min: 1
@@ -5848,7 +5900,7 @@ data:
       type: int
   studentjobopportunities:
     application_date:
-      type: DATE,
+      type: date
     job_opportunity_id:
       max: 100
       min: 1
@@ -5886,7 +5938,7 @@ data:
       min: 1
       type: int
     usage_date:
-      type: DATE,
+      type: date
     usage_id:
       max: 100
       min: 1
@@ -5908,7 +5960,7 @@ data:
       type: int
   students:
     date_of_birth:
-      type: DATE,
+      type: date
     email:
       type: choice
       values:
@@ -5916,7 +5968,7 @@ data:
       - choice 2
       - choice 3
     enrollment_date:
-      type: DATE,
+      type: date
     first_name:
       type: choice
       values:
@@ -5935,7 +5987,7 @@ data:
       type: int
   studentscholarships:
     awarded_date:
-      type: DATE,
+      type: date
     scholarship_id:
       max: 100
       min: 1
@@ -5994,7 +6046,7 @@ data:
       type: int
   studygroups:
     created_date:
-      type: DATE,
+      type: date
     group_id:
       max: 100
       min: 1
@@ -6026,9 +6078,9 @@ data:
       min: 1
       type: int
     end_date:
-      type: DATE,
+      type: date
     start_date:
-      type: DATE,
+      type: date
     supplier_id:
       max: 100
       min: 1
@@ -6231,7 +6283,7 @@ data:
       min: 1
       type: int
     filing_date:
-      type: DATE,
+      type: date
     filing_id:
       max: 100
       min: 1
@@ -6295,7 +6347,7 @@ data:
       min: 1
       type: int
     update_date:
-      type: DATE,
+      type: date
     update_id:
       max: 100
       min: 1
@@ -6310,7 +6362,7 @@ data:
       min: 1
       type: int
     usage_date:
-      type: DATE,
+      type: date
     usage_id:
       max: 100
       min: 1
@@ -6413,10 +6465,9 @@ data:
       min: 1
       type: int
     attended:
-      type: choice
-      values:
-      - 'True'
-      - 'False'
+      max: 1
+      min: 0
+      type: int
     session_id:
       max: 100
       min: 1
@@ -6427,7 +6478,7 @@ data:
       type: int
   trainingprograms:
     end_date:
-      type: DATE,
+      type: date
     program_name:
       type: choice
       values:
@@ -6435,7 +6486,7 @@ data:
       - choice 2
       - choice 3
     start_date:
-      type: DATE,
+      type: date
     training_id:
       max: 100
       min: 1
@@ -6457,7 +6508,7 @@ data:
       type: int
   trainingsessions:
     scheduled_at:
-      type: TIMESTAMP,
+      type: timestamp
     session_id:
       max: 100
       min: 1
@@ -6495,7 +6546,7 @@ data:
       min: 1
       type: int
     usage_date:
-      type: DATE,
+      type: date
     usage_id:
       max: 100
       min: 1
@@ -6506,13 +6557,13 @@ data:
       min: 1
       type: int
     due_date:
-      type: DATE,
+      type: date
     fee_id:
       max: 100
       min: 1
       type: int
     paid_date:
-      type: DATE,
+      type: date
     student_id:
       max: 100
       min: 1
@@ -6523,9 +6574,13 @@ data:
       min: 1
       type: int
     clicks:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     impressions:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     metric_id:
       max: 100
       min: 1
@@ -6679,12 +6734,11 @@ data:
       min: 1
       type: int
     available:
-      type: choice
-      values:
-      - 'True'
-      - 'False'
+      max: 1
+      min: 0
+      type: int
     date:
-      type: DATE,
+      type: date
     tutor_id:
       max: 100
       min: 1
@@ -6701,7 +6755,9 @@ data:
       - choice 2
       - choice 3
     award_year:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     tutor_id:
       max: 100
       min: 1
@@ -6858,9 +6914,9 @@ data:
       - choice 2
       - choice 3
     expiration_date:
-      type: DATE,
+      type: date
     issued_date:
-      type: DATE,
+      type: date
     tutor_id:
       max: 100
       min: 1
@@ -6908,7 +6964,9 @@ data:
       min: 1
       type: int
     year_obtained:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
   tutor_collaborations:
     collaboration_id:
       max: 100
@@ -6932,7 +6990,7 @@ data:
       type: int
   tutor_competitions:
     competition_date:
-      type: DATE,
+      type: date
     competition_id:
       max: 100
       min: 1
@@ -6949,7 +7007,7 @@ data:
       type: int
   tutor_conferences:
     conference_date:
-      type: DATE,
+      type: date
     conference_id:
       max: 100
       min: 1
@@ -7002,7 +7060,7 @@ data:
       type: int
   tutor_eventparticipation:
     event_date:
-      type: DATE,
+      type: date
     event_name:
       type: choice
       values:
@@ -7052,7 +7110,9 @@ data:
       min: 1
       type: int
     years_worked:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
   tutor_feedback:
     created_at:
       type: timestamp
@@ -7217,7 +7277,7 @@ data:
       min: 1
       type: int
     target_date:
-      type: DATE,
+      type: date
     tutor_id:
       max: 100
       min: 1
@@ -7251,7 +7311,7 @@ data:
       type: int
   tutor_interactions:
     interaction_date:
-      type: TIMESTAMP,
+      type: timestamp
     interaction_id:
       max: 100
       min: 1
@@ -7346,9 +7406,11 @@ data:
       type: int
   tutor_meeting:
     meeting_date:
-      type: TIMESTAMP,
+      type: timestamp
     meeting_duration:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     meeting_id:
       max: 100
       min: 1
@@ -7380,7 +7442,7 @@ data:
       - choice 3
   tutor_mentorships:
     end_date:
-      type: DATE,
+      type: date
     mentee_id:
       max: 100
       min: 1
@@ -7390,7 +7452,7 @@ data:
       min: 1
       type: int
     start_date:
-      type: DATE,
+      type: date
     tutor_id:
       max: 100
       min: 1
@@ -7435,7 +7497,7 @@ data:
       - choice 2
       - choice 3
     partnership_date:
-      type: TIMESTAMP,
+      type: timestamp
     partnership_id:
       max: 100
       min: 1
@@ -7563,7 +7625,9 @@ data:
       min: 1
       type: int
     year_obtained:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
   tutor_questions:
     created_at:
       type: timestamp
@@ -7730,7 +7794,7 @@ data:
       - choice 2
       - choice 3
     available_time:
-      type: TIME,
+      type: timestamp
     schedule_id:
       max: 100
       min: 1
@@ -7811,7 +7875,9 @@ data:
       min: 1
       type: int
     followers_count:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     metric_id:
       max: 100
       min: 1
@@ -7845,9 +7911,13 @@ data:
     created_at:
       type: timestamp
     feedback_count:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     session_count:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     statistic_id:
       max: 100
       min: 1
@@ -7917,13 +7987,13 @@ data:
       type: int
   tutor_timings:
     timing_end:
-      type: TIME,
+      type: timestamp
     timing_id:
       max: 100
       min: 1
       type: int
     timing_start:
-      type: TIME,
+      type: timestamp
     tutor_id:
       max: 100
       min: 1
@@ -7953,7 +8023,7 @@ data:
       type: int
   tutor_trainingsessions:
     session_date:
-      type: TIMESTAMP,
+      type: timestamp
     session_id:
       max: 100
       min: 1
@@ -7970,7 +8040,7 @@ data:
       type: int
   tutor_video_sessions:
     session_date:
-      type: TIMESTAMP,
+      type: timestamp
     student_id:
       max: 100
       min: 1
@@ -8035,7 +8105,7 @@ data:
       min: 1
       type: int
     webinar_date:
-      type: TIMESTAMP,
+      type: timestamp
     webinar_id:
       max: 100
       min: 1
@@ -8069,7 +8139,7 @@ data:
       min: 1
       type: int
     workshop_date:
-      type: TIMESTAMP,
+      type: timestamp
     workshop_description:
       type: choice
       values:
@@ -8088,7 +8158,7 @@ data:
       - choice 3
   tutoringevents:
     event_date:
-      type: DATE,
+      type: date
     event_id:
       max: 100
       min: 1
@@ -8109,10 +8179,9 @@ data:
     created_at:
       type: timestamp
     is_read:
-      type: choice
-      values:
-      - 'True'
-      - 'False'
+      max: 1
+      min: 0
+      type: int
     notification_id:
       max: 100
       min: 1
@@ -8129,13 +8198,13 @@ data:
       type: int
   tutoringsessions:
     session_date:
-      type: DATE,
+      type: date
     session_id:
       max: 100
       min: 1
       type: int
     session_time:
-      type: TIME,
+      type: timestamp
     student_id:
       max: 100
       min: 1
@@ -8150,9 +8219,11 @@ data:
       min: 1
       type: int
     session_date:
-      type: TIMESTAMP,
+      type: timestamp
     session_duration:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     session_id:
       max: 100
       min: 1
@@ -8196,7 +8267,9 @@ data:
       - choice 2
       - choice 3
     experience_years:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     first_name:
       type: choice
       values:
@@ -8240,7 +8313,9 @@ data:
       type: int
   useraccounts:
     employee_id:
-      type: INT,
+      max: 100
+      min: 1
+      type: int
     password_hash:
       type: choice
       values:
@@ -8497,7 +8572,7 @@ data:
       - choice 2
       - choice 3
     maintenance_date:
-      type: DATE,
+      type: date
     maintenance_id:
       max: 100
       min: 1
@@ -8571,7 +8646,7 @@ data:
       - choice 3
   vtevents:
     event_date:
-      type: DATE,
+      type: date
     event_id:
       max: 100
       min: 1
@@ -8590,13 +8665,13 @@ data:
       - choice 3
   vtstratimplement:
     end_date:
-      type: DATE,
+      type: date
     implementation_id:
       max: 100
       min: 1
       type: int
     start_date:
-      type: DATE,
+      type: date
     strategy_id:
       max: 100
       min: 1

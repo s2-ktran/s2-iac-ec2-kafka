@@ -1,11 +1,15 @@
 import yaml
 import os
 import uuid
-import datetime
 import random
+from datetime import datetime, timedelta, date
 
 # Get the directory where the script is located
 script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Example: Random date between 2023-01-01 and 2023-12-31
+start_date = date(2023, 1, 1)
+end_date = date(2023, 12, 31)
 
 def read_yaml(yaml_file_path):
     with open(yaml_file_path, 'r') as file:
@@ -28,6 +32,12 @@ def prompt_options(options):
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
+def random_date(start_date, end_date):
+    delta = end_date - start_date
+    random_days = random.randint(0, delta.days)
+    return str(start_date + timedelta(days=random_days))
+
+
 def generate_data(data_format, amount):
     event_logs = []
     keys = data_format.keys()
@@ -38,9 +48,11 @@ def generate_data(data_format, amount):
             if value_type == "uuid":
                 json_value[value] = uuid.uuid4().hex
             elif value_type == "timestamp":
-                json_value[value] = datetime.datetime.now().isoformat()
+                json_value[value] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             elif value_type == "choice":
                 json_value[value] = random.choice(list(data_format[value]["values"]))
+            elif value_type == "date":
+                json_value[value] = random_date(start_date, end_date)
             elif value_type == "int":
                 json_value[value] = random.randint(data_format[value]["min"], data_format[value]["max"])
             elif value_type == "JSON":

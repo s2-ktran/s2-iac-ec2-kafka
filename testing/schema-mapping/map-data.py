@@ -30,18 +30,21 @@ def write_yaml(input_dict, file_path):
 
 def generate_attr_def(attr, attr_type):
     definition = {}
-    if attr_type == "INT" or attr_type.startswith("DECIMAL"):
+    if attr_type.startswith("INT") or attr_type.startswith("DECIMAL") or attr_type.startswith("FLOAT"):
         definition["type"] = "int"
         definition["min"] = 1
         definition["max"] = 100
     elif attr_type.startswith("VARCHAR") or attr_type.startswith("TEXT") or attr_type.startswith("ENUM"):
         definition["type"] = "choice"
         definition["values"] = ["choice 1", "choice 2", "choice 3"]
+    elif attr_type.startswith("DATE"):
+        definition["type"] = "date"
     elif attr_type.startswith("BOOLEAN"):
-        definition["type"] = "choice"
-        definition["values"] = ["True", "False"]
-    elif attr_type == "TIMESTAMP":
-        definition["type"] = attr_type.lower()
+        definition["type"] = "int"
+        definition["min"] = 0
+        definition["max"] = 1
+    elif attr_type.startswith("TIMESTAMP") or attr_type.startswith("TIME"):
+        definition["type"] = "timestamp"
     else: 
         definition["type"] = attr_type
     return definition
@@ -78,7 +81,7 @@ if __name__ == "__main__":
     for name in table_names:
         streaming_list.append({
             "topic_name": name + "_topic",
-            "record_count": 100,
+            "record_count": 1000,
             "dataset": name,
         })
     write_yaml({"streaming": streaming_list}, testing_var_file_path)
