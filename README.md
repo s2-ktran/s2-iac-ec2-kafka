@@ -44,19 +44,19 @@ export EC2_PUBLIC_IP="<outputted public IP>"
 bash scripts/load_kafka.sh
 ```
 
-If you would like to automate the Kafka data loading, create a `data/testing_var.sh` with the following format:
+If you would like to automate the Kafka data loading, create a `testing/testing_var.sh` with the following format:
 
 ```yaml
 streaming:
   - topic_name: "topic_2"
     record_count: 1000
-    dataset: 1
+    dataset: vehicle_data
   - topic_name: "topic_2"
     record_count: 500
-    dataset: 2
+    dataset: log_data
   - topic_name: "topic_3"
     record_count: 2000
-    dataset: 0
+    dataset: user_data
 ```
 
 ### SingleStore Ingestion
