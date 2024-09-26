@@ -35,6 +35,14 @@ Run the following command to build and deploy the application. This script takes
 bash scripts/deploy.sh
 ```
 
+## Mapping MySQL Tables to SingleStore
+
+Input sample tables into the `schema-mapping/mysql-schema.sql` file. Run the following script.
+
+```bash
+python schema-mapping/map-data.py
+```
+
 ### Data Ingestion into Kafka
 
 Run the following commands to load data into the Kafka EC2 instance. The script populates one of the kafka topics with a dataset listed in `testing/data/data.yaml`:
@@ -42,6 +50,21 @@ Run the following commands to load data into the Kafka EC2 instance. The script 
 ```bash
 export EC2_PUBLIC_IP="<outputted public IP>"
 bash scripts/load_kafka.sh
+```
+
+If you would like to automate the Kafka data loading, create a `testing/load_data.sh` with the following format:
+
+```yaml
+streaming:
+  - topic_name: "topic_2"
+    record_count: 1000
+    dataset: vehicle_data
+  - topic_name: "topic_2"
+    record_count: 500
+    dataset: log_data
+  - topic_name: "topic_3"
+    record_count: 2000
+    dataset: user_data
 ```
 
 ### SingleStore Ingestion
@@ -66,8 +89,9 @@ Once you are finished using the project, delete the notebook and the associated 
 
 ### Code Layout
 
-| Path       | Description                                                    |
-| :--------- | :------------------------------------------------------------- |
-| terraform/ | Terraform source code.                                         |
-| scripts/   | shell scripts to build, deploy, and interact with the project. |
-| testing/   | Example kafka ingestion.                                       |
+| Path            | Description                                                    |
+| :-------------- | :------------------------------------------------------------- |
+| terraform/      | Terraform source code.                                         |
+| scripts/        | shell scripts to build, deploy, and interact with the project. |
+| testing/        | Example kafka ingestion.                                       |
+| schema_mapping/ | Mapping out table syntax to sample entries.                    |
