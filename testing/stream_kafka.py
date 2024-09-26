@@ -45,7 +45,7 @@ def produce_event_logs_to_kafka(num_records, topic_name, dataset_num):
 
 
 if __name__ == "__main__":
-    file_path = os.getcwd() + "/testing/testing_var.yaml"
+    file_path = os.getcwd() + "/testing/load_data.yaml"
     if os.path.exists(file_path):
         streaming = read_yaml(file_path)['streaming']
         for stream in streaming:

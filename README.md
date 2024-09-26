@@ -44,7 +44,7 @@ export EC2_PUBLIC_IP="<outputted public IP>"
 bash scripts/load_kafka.sh
 ```
 
-If you would like to automate the Kafka data loading, create a `testing/testing_var.sh` with the following format:
+If you would like to automate the Kafka data loading, create a `testing/load_data.sh` with the following format:
 
 ```yaml
 streaming:
@@ -81,9 +81,9 @@ Once you are finished using the project, delete the notebook and the associated 
 
 ### Code Layout
 
-| Path                    | Description                                                    |
-| :---------------------- | :------------------------------------------------------------- |
-| terraform/              | Terraform source code.                                         |
-| scripts/                | shell scripts to build, deploy, and interact with the project. |
-| testing/                | Example kafka ingestion.                                       |
-| testing/schema_mapping/ | Mapping out MySQL table syntax to sample entries.              |
+| Path            | Description                                                    |
+| :-------------- | :------------------------------------------------------------- |
+| terraform/      | Terraform source code.                                         |
+| scripts/        | shell scripts to build, deploy, and interact with the project. |
+| testing/        | Example kafka ingestion.                                       |
+| schema_mapping/ | Mapping out table syntax to sample entries.                    |
