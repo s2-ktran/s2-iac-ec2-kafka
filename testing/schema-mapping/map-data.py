@@ -2,7 +2,7 @@ import os
 import re
 import yaml
 
-sql_file_name = "example-mysql-schema.sql"
+sql_file_name = "ex-mysql-schema.sql"
 yaml_file_name = "../data/data.yaml"
 kafka_topic_file_name = "kafka_topics.txt"
 testing_var_file_name = "../testing_var.yaml"
@@ -11,6 +11,7 @@ sql_file_path = os.path.join(script_dir, sql_file_name)
 yaml_file_path = os.path.join(script_dir, yaml_file_name)
 kafka_file_path = os.path.join(script_dir, kafka_topic_file_name)
 testing_var_file_path = os.path.join(script_dir, testing_var_file_name)
+RECORD_COUNT = 1000
 
 def topic_config(table_names):
     return [{'name': table + '_topic', 'partitions': 4 } for table in table_names]
@@ -81,7 +82,7 @@ if __name__ == "__main__":
     for name in table_names:
         streaming_list.append({
             "topic_name": name + "_topic",
-            "record_count": 1000,
+            "record_count": RECORD_COUNT,
             "dataset": name,
         })
     write_yaml({"streaming": streaming_list}, testing_var_file_path)
