@@ -50,9 +50,27 @@ def generate_attr_def(attr, attr_type):
         definition["type"] = attr_type
     return definition
 
+# TODO: Substitution of ' to " and removing initial " with '
+def generate_table_names(tables_dict):
+    table_names = tables_dict["data"].keys()
+    topics = topic_config(table_names)
+    with open(kafka_file_path, 'w') as file:
+        file.write("\"")
+        file.write(str(topics))
+        file.write("\"")
+    return table_names
 
-if __name__ == "__main__":
-    create_table_statements = extract_create_statements(sql_file_path)
+def create_streaming_file(table_names):
+    streaming_list = []
+    for name in table_names:
+        streaming_list.append({
+            "topic_name": name + "_topic",
+            "record_count": RECORD_COUNT,
+            "dataset": name,
+        })
+    write_yaml({"streaming": streaming_list}, testing_var_file_path)
+
+def write_tables_dict(create_table_statements):
     tables_dict = {"data": {}}
     for table_statement in create_table_statements:
         table_input = {}
@@ -68,24 +86,14 @@ if __name__ == "__main__":
         tables_dict["data"][name] = table_input
         print("")
     write_yaml(tables_dict, yaml_file_path)
+    return tables_dict
 
-    # Generate table kafka loading
-    table_names = tables_dict["data"].keys()
-    topics = topic_config(table_names)
-    with open(kafka_file_path, 'w') as file:
-        file.write("\"")
-        file.write(str(topics))
-        file.write("\"")
-    
-    # Streaming file
-    streaming_list = []
-    for name in table_names:
-        streaming_list.append({
-            "topic_name": name + "_topic",
-            "record_count": RECORD_COUNT,
-            "dataset": name,
-        })
-    write_yaml({"streaming": streaming_list}, testing_var_file_path)
+
+if __name__ == "__main__":
+    create_table_statements = extract_create_statements(sql_file_path)
+    tables_dict = write_tables_dict(create_table_statements)
+    table_names = generate_table_names(tables_dict)
+    create_streaming_file(table_names)
 
 
     

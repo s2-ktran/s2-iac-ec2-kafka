@@ -81,8 +81,9 @@ Once you are finished using the project, delete the notebook and the associated 
 
 ### Code Layout
 
-| Path       | Description                                                    |
-| :--------- | :------------------------------------------------------------- |
-| terraform/ | Terraform source code.                                         |
-| scripts/   | shell scripts to build, deploy, and interact with the project. |
-| testing/   | Example kafka ingestion.                                       |
+| Path                    | Description                                                    |
+| :---------------------- | :------------------------------------------------------------- |
+| terraform/              | Terraform source code.                                         |
+| scripts/                | shell scripts to build, deploy, and interact with the project. |
+| testing/                | Example kafka ingestion.                                       |
+| testing/schema_mapping/ | Mapping out MySQL table syntax to sample entries.              |

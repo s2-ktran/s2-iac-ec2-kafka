@@ -21,7 +21,6 @@ admin_client = AdminClient({"bootstrap.servers": f"{EC2_PUBLIC_IP}:9092"})
 def create_kafka_topic(topic_name, num_partitions=1, replication_factor=1):
     topic_list = [NewTopic(topic_name, num_partitions, replication_factor)]
     fs = admin_client.create_topics(topic_list)
-
     for topic, f in fs.items():
         try:
             f.result()  # The result itself is None
@@ -39,14 +38,12 @@ def produce_event_logs_to_kafka(num_records, topic_name, dataset_num):
     for log in event_logs:
         producer.produce(topic_name, value=json.dumps(log))
         producer.poll(0)  # Polls the producer for message delivery events
-        # Optional: Sleep for a small amount of time to allow the queue to clear
         time.sleep(0.0001)  # Adjust this value as needed
         print(f"Sent: {log}")
     # Wait up to 5 seconds for messages to be sent
     producer.flush(timeout=5)
 
 
-# Example usage
 if __name__ == "__main__":
     file_path = os.getcwd() + "/testing/testing_var.yaml"
     if os.path.exists(file_path):
