@@ -35,6 +35,14 @@ Run the following command to build and deploy the application. This script takes
 bash scripts/deploy.sh
 ```
 
+## Mapping MySQL Tables to SingleStore
+
+Input sample tables into the `schema-mapping/mysql-schema.sql` file. Run the following script.
+
+```bash
+python schema-mapping/map-data.py
+```
+
 ### Data Ingestion into Kafka
 
 Run the following commands to load data into the Kafka EC2 instance. The script populates one of the kafka topics with a dataset listed in `testing/data/data.yaml`:
