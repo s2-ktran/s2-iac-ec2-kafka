@@ -24,6 +24,12 @@ data "aws_ami" "amazon_linux_2" {
 locals {
   instance_name_prefix = "kafka-instance"
   instance_name        = "${local.instance_name_prefix}-${var.aws_profile_name}"
+  common_tags = {
+    Name        = local.instance_name,
+    Owner       = var.aws_profile_name,
+    Terraform   = "iac-ec2-kafka",
+    Expiry_Date = timeadd(timestamp(), "168h") # 1 week
+  }
 }
 
 variable "aws_profile_name" {
@@ -71,10 +77,12 @@ variable "kafka_topics" {
 
 resource "aws_eip" "kafka_ip" {
   instance = aws_instance.kafka_ec2.id
+  tags = local.common_tags
 }
 
 resource "aws_security_group" "kafka_sg" {
   description = "Security group for Kafka"
+  tags = local.common_tags
 
   ingress {
     from_port   = 22
@@ -126,6 +134,7 @@ resource "local_file" "private_key_pem" {
 resource "aws_key_pair" "deployer" {
   key_name   = var.key_name
   public_key = tls_private_key.ec2_key.public_key_openssh
+  tags = local.common_tags
 }
 
 resource "aws_instance" "kafka_ec2" {
@@ -134,11 +143,7 @@ resource "aws_instance" "kafka_ec2" {
   key_name                    = var.key_name # Use the parameterized key name
   security_groups             = [aws_security_group.kafka_sg.name]
   associate_public_ip_address = false
-  tags = {
-    Name      = local.instance_name,
-    Owner     = var.aws_profile_name,
-    Terraform = "iac-ec2-kafka",
-  }
+  tags = local.common_tags
 
   user_data = file("${path.module}/user_data.sh")
 

@@ -35,6 +35,17 @@ Run the following command to build and deploy the application. This script takes
 bash scripts/deploy.sh
 ```
 
+All resources are tagged with the following:
+
+```bash
+common_tags = {
+    Name        = local.instance_name, #  kafka-instance-{aws_profile_name}
+    Owner       = var.aws_profile_name, # profile name
+    Terraform   = "iac-ec2-kafka", # github deployment name
+    Expiry_Date = timeadd(timestamp(), "168h") # 1 week
+}
+```
+
 ### Data Ingestion into Kafka
 
 Run the following commands to load data into the Kafka EC2 instance. The script populates one of the kafka topics with a dataset listed in `testing/data/data.yaml`:
