@@ -19,7 +19,11 @@ Deploy an EC2 kafka instance programmatically using terraform. The EC2 instance 
 
 ### Input Variables
 
-Set your AWS account using `aws configure`. Retrieve the output IP addresses from 1/ your provisioned SingleStore workspace cluster and 2/ any other IP addresses you would like Kafka to connect with. Run the following command to populate your environment variables:
+Set your AWS account using `aws configure`. Retrieve the output IP addresses from 1/ your provisioned SingleStore workspace cluster and 2/ any other IP addresses you would like Kafka to connect with.
+
+If you'd like to map sample MySQL data create a `schema-mapping/mysql-schema.sql` containing the table.
+
+Then, run the following command to populate your environment variables:
 
 ```bash
 bash scripts/var_gen.sh
@@ -33,14 +37,6 @@ Run the following command to build and deploy the application. This script takes
 
 ```bash
 bash scripts/deploy.sh
-```
-
-## Mapping MySQL Tables to SingleStore
-
-Input sample tables into the `schema-mapping/mysql-schema.sql` file. Run the following script.
-
-```bash
-python schema-mapping/map-data.py
 ```
 
 ### Data Ingestion into Kafka
@@ -66,6 +62,8 @@ streaming:
     record_count: 2000
     dataset: user_data
 ```
+
+Note: creating `schema-mapping/mysql-schema.sql` will automatically create this when you ran the `var_gen.sh` script.
 
 ### SingleStore Ingestion
 
