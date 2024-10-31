@@ -24,7 +24,7 @@ def prompt_options(options):
     while True:
         try:
             choice = int(input("Enter the number corresponding to your choice (eg, 1): "))
-            if 1 <= choice <= 3:
+            if 1 <= choice <= len(options):
                 print(f"You chose: {options[choice - 1]}")
                 return options[choice - 1]
             else:
