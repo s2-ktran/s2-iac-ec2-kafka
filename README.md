@@ -19,7 +19,11 @@ Deploy an EC2 kafka instance programmatically using terraform. The EC2 instance 
 
 ### Input Variables
 
-Set your AWS account using `aws configure`. Retrieve the output IP addresses from 1/ your provisioned SingleStore workspace cluster and 2/ any other IP addresses you would like Kafka to connect with. Run the following command to populate your environment variables:
+Set your AWS account using `aws configure`. Retrieve the output IP addresses from 1/ your provisioned SingleStore workspace cluster and 2/ any other IP addresses you would like Kafka to connect with.
+
+If you'd like to map sample MySQL data create a `schema-mapping/mysql-schema.sql` containing the table.
+
+Then, run the following command to populate your environment variables:
 
 ```bash
 bash scripts/var_gen.sh
@@ -55,6 +59,23 @@ export EC2_PUBLIC_IP="<outputted public IP>"
 bash scripts/load_kafka.sh
 ```
 
+If you would like to automate the Kafka data loading, create a `testing/load_data.sh` with the following format:
+
+```yaml
+streaming:
+  - topic_name: "topic_2"
+    record_count: 1000
+    dataset: vehicle_data
+  - topic_name: "topic_2"
+    record_count: 500
+    dataset: log_data
+  - topic_name: "topic_3"
+    record_count: 2000
+    dataset: user_data
+```
+
+Note: creating `schema-mapping/mysql-schema.sql` will automatically create this when you ran the `var_gen.sh` script.
+
 ### SingleStore Ingestion
 
 Load the notebook `testing/ec2-kafka-s2-notebook.ipynb` into SingleStore Helios.
@@ -77,8 +98,9 @@ Once you are finished using the project, delete the notebook and the associated 
 
 ### Code Layout
 
-| Path       | Description                                                    |
-| :--------- | :------------------------------------------------------------- |
-| terraform/ | Terraform source code.                                         |
-| scripts/   | shell scripts to build, deploy, and interact with the project. |
-| testing/   | Example kafka ingestion.                                       |
+| Path            | Description                                                    |
+| :-------------- | :------------------------------------------------------------- |
+| terraform/      | Terraform source code.                                         |
+| scripts/        | shell scripts to build, deploy, and interact with the project. |
+| testing/        | Example kafka ingestion.                                       |
+| schema_mapping/ | Mapping out table syntax to sample entries.                    |

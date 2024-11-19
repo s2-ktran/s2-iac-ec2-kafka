@@ -2,10 +2,14 @@
 
 In Progress:
 
-- feat - vish: can add connection details into notebook and make it work from local
+- feat: combining load_data.yaml with data.yaml
+- feat: substituting EC2_PUBLIC_IP on deploy in notebook
+- feat: mysql schema mapping included with var_gen.sh
 
 **Future scope:**
 
+- feat: Terraform provider for Confluent Kafka
+- feat: can add connection details into notebook and make it work from local
 - feat: add in dictionary representation to include tagging / description for IP addresses
 - feat: let user pass the table ddl which could be used to generate custom data gen function that could be passed to a streaming script to stream data to created kafka topic
 - Feat: stopping and starting an instance

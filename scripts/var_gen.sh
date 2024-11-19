@@ -63,7 +63,6 @@ fi
 # Write the variables to the output script
 cat <<EOF > $SCRIPT_DIR/output_vars.sh
 #!/bin/bash
-export TF_VAR_singlestore_api_key="$TF_VAR_singlestore_api_key"
 export AWS_REGION="$AWS_REGION"
 export IP_LIST='$IP_LIST'
 export MY_IP="$MY_IP"
