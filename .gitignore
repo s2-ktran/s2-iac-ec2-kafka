@@ -29,3 +29,5 @@ terraform/teardown_details.txt
 
 testing/data/__pycache__/*
 testing/data/__pycache__/generate_data.cpython-312.pyc
+
+terraform/plan.out

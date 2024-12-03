@@ -14,7 +14,8 @@ terraform init \
   -var "instance_type=${INSTANCE_TYPE}" \
   -var "aws_profile_name=${AWS_PROFILE_NAME}"
 
-terraform apply \
+# Generate a Terraform Plan and Save It
+terraform plan \
   -var "my_ip=${MY_IP}/32" \
   -var "ip_list=${IP_LIST}" \
   -var "region=${AWS_REGION}" \
@@ -22,7 +23,10 @@ terraform apply \
   -var "aws_profile_name=${AWS_PROFILE_NAME}" \
   -var "key_name=${KEY_PAIR_NAME}" \
   -var "kafka_topics=${TOPICS_JSON}" \
-  -auto-approve
+  -out="plan.out"
+
+# Apply the Saved Plan
+terraform apply "plan.out"
 
 # Capture the Terraform outputs
 EC2_PUBLIC_IP=$(terraform output -raw ec2_public_ip)
